@@ -1,14 +1,14 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn install
+  /usr/local/Cellar/node/7.6.0/bin/node /usr/local/bin/yarn install
 
 PATH: 
-  /Users/ianwright/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/ImageMagick/bin:/Users/ianwright/.rvm/bin
+  /Users/GuyandCooper/.rbenv/shims:/Applications/Postgres.app/Contents/Versions/9.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/texbin
 
 Yarn version: 
   0.21.3
 
 Node version: 
-  7.7.1
+  7.6.0
 
 Platform: 
   darwin x64
@@ -89,8 +89,8 @@ Lockfile:
 
 Trace: 
   Error: ENOENT: no such file or directory, open '/usr/local/lib/node_modules/yarn/node_modules/har-validator/lib/index.js'
-      at Object.fs.openSync (fs.js:583:18)
-      at Object.fs.readFileSync (fs.js:490:33)
+      at Object.fs.openSync (fs.js:582:18)
+      at Object.fs.readFileSync (fs.js:489:33)
       at Object.Module._extensions..js (module.js:579:20)
       at Module.load (module.js:488:32)
       at tryModuleLoad (module.js:447:12)
