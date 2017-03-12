@@ -1,3 +1,18 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'home#index'
+
+  # DEVISE ROUTES
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+
+  # API ROUTES
+  namespace :api do
+    get 'logged_in_user', to: 'users#logged_in_user'
+  end
+
+  # NO ROUTES BELOW THIS LINE -- React Router
+  get '*unmatched_route', to: 'home#index'
+
 end
