@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'repack', '2.4.2'
 gem 'materialize-sass', '~> 0.98.0'
 gem 'sunlight', '~> 1.1.0'
+gem 'faker'
 
 group :development, :test do
   gem 'pry'
