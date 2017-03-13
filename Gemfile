@@ -15,6 +15,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'repack', '2.4.2'
 gem 'materialize-sass', '~> 0.98.0'
+gem 'httparty', '~> 0.14.0'
+gem 'geocoder'
 
 group :development, :test do
   gem 'pry'
