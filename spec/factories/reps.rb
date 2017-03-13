@@ -4,6 +4,5 @@ FactoryGirl.define do
     first_name "Ian"
     last_name "Wright"
     state "North Dakota"
-    
   end
 end
