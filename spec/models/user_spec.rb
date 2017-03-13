@@ -23,14 +23,14 @@ RSpec.describe User, type: :model do
   end
 
   describe 'association' do
-    it { should have_many(:ties) }
+    it { should have_many(:ties).dependent(:destroy) }
     it { should have_many(:reps).through(:ties) }
   end
 
   describe 'instance methods' do
     it 'gives full name' do
       user = FactoryGirl.create(:user)
-      binding.pry
+
       expect(user.full_name).to eq("#{user.first_name} #{user.last_name}")
     end
   end

@@ -16,7 +16,7 @@ RSpec.describe Rep, type: :model do
   end
 
   describe 'associations' do
-    it { should have_many(:ties) }
+    it { should have_many(:ties).dependent(:destroy) }
     it { should have_many(:users).through(:ties) }
   end
   # QUESTION: have_many spec test

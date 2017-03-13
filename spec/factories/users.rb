@@ -5,6 +5,6 @@ FactoryGirl.define do
     zipcode "84103"
     email "test@test.com"
     password "password"
-    tie
+    
   end
 end
