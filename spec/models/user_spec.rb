@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
       invalid_zipcode_2 = '1234567'
       invalid_zipcode_3 = '123'
       expect(FactoryGirl.create(:user, zipcode: valid_zipcode)).to eq(true)
-      #QUESTION: how do we do this?
+      #TODO: Finish the test
     end
   end
 

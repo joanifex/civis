@@ -19,7 +19,6 @@ RSpec.describe Rep, type: :model do
     it { should have_many(:ties).dependent(:destroy) }
     it { should have_many(:users).through(:ties) }
   end
-  # QUESTION: have_many spec test
 
   describe 'instance methods' do
     it 'gives full name' do
