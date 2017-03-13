@@ -16,17 +16,17 @@ ActiveRecord::Schema.define(version: 20170312201939) do
   enable_extension "plpgsql"
 
   create_table "reps", force: :cascade do |t|
-    t.string   "title",      default: "", null: false
-    t.string   "first_name", default: "", null: false
-    t.string   "last_name",  default: "", null: false
-    t.string   "state",      default: "", null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "title"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ties", force: :cascade do |t|
-    t.integer  "rep_id",     null: false
-    t.integer  "user_id",    null: false
+    t.integer  "rep_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["rep_id"], name: "index_ties_on_rep_id", using: :btree
