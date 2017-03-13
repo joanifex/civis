@@ -1,10 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe RepsController, type: :controller do
-  describe 'GET#show' do
+RSpec.describe Api::UsersController, type: :controller do
+
+  describe 'GET #user_reps' do
 
     it "returns HTTP success" do
-      get :show
+      # TODO: Fix this test
+      get :user_reps
       expect(response).to have_http_status(:success)
     end
 

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   namespace :api do
     get 'logged_in_user', to: 'users#logged_in_user'
 
-    get 'reps/:user_id', to: 'reps#show'
+    get 'user_reps', to: 'users#user_reps'
   end
 
   # NO ROUTES BELOW THIS LINE -- React Router

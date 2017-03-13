@@ -6,4 +6,9 @@ class Api::UsersController < ApplicationController
       render json: {}
     end
   end
+
+  def user_reps
+    user = User.find(current_user.id)
+    render json: user.reps
+  end
 end
