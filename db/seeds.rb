@@ -29,3 +29,5 @@ Tie.create(
   user_id: user.id,
   rep_id: rep2.id
 )
+
+puts ''
