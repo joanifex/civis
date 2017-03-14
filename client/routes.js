@@ -8,18 +8,20 @@ import { UserAuthWrapper } from 'redux-auth-wrapper';
 import Home from './components/Home';
 import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
+import RepIndex from './components/RepIndex';
 
 
 const UserIsAuthenticated = UserAuthWrapper({
   authSelector: state => state.auth,
   predicate: auth => auth.isAuthenticated,
 });
-
+//QUESTION: how to authenticate routes
 export default (
   <Route>
 
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
+      <Route path='/reps' component={RepIndex}/>
       <Route path='/login' component={Login} />
       <Route path='/sign_up' component={SignUp} />
       <Route path='/about_us' component={AboutUs} />

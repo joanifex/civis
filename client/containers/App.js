@@ -19,7 +19,7 @@ class App extends React.Component {
 
     return(
       <div>
-        <Navbar />
+        <Navbar auth={auth} />
         <div style={{ marginBottom: '30px' }}>
           <FlashMessage />
         </div>
@@ -32,4 +32,3 @@ class App extends React.Component {
 }
 
 export default connect()(App);
-
