@@ -214,7 +214,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_girl_rails
-  geocoder
+  geocoder (~> 1.4.3)
   httparty (~> 0.14.0)
   jbuilder (~> 2.5)
   jquery-rails

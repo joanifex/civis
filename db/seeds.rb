@@ -6,28 +6,34 @@ user = User.create(
   zipcode: '84102'
 )
 
-rep1 = Rep.create(
-  first_name: 'Mike',
-  last_name: 'Lee',
-  state: 'Utah',
-  title: 'Senator'
-)
+puts 'Test user created.'
 
-rep2 = Rep.create(
-  first_name: 'Orrin',
-  last_name: 'Hatch',
-  state: 'Utah',
-  title: 'Senator'
+file = File.read('lib/senate.json')
+parsed = JSON.parse(file)
+members = parsed["members"]
+members.each do |mem|
+  Rep.create(
+    first_name: mem["first_name"],
+    last_name: mem["last_name"],
+    state: mem["state"],
+    title: "Senator"
+  )
+end
+
+puts 'Reps created'
+
+location = Geocoder.search(user.zipcode)
+state = location.first.data['address_components'][3]['short_name']
+senators = Rep.where(state: state);
+
+Tie.create(
+  user_id: user.id,
+  rep_id: senators.first.id
 )
 
 Tie.create(
   user_id: user.id,
-  rep_id: rep1.id
+  rep_id: senators.last.id
 )
 
-Tie.create(
-  user_id: user.id,
-  rep_id: rep2.id
-)
-
-puts ''
+puts 'Ties created.'
