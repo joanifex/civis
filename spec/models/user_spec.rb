@@ -14,11 +14,20 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:zipcode) }
     it 'should validate zipcode format' do
       valid_zipcode = '84103'
+      valid_zipcode_2 = '84103-1234'
       invalid_zipcode = 'A1234'
       invalid_zipcode_2 = '1234567'
       invalid_zipcode_3 = '123'
-      expect(FactoryGirl.create(:user, zipcode: valid_zipcode)).to eq(true)
-      #TODO: Finish the test
+      user = FactoryGirl.create(:user, zipcode: valid_zipcode)
+      expect(user).to eq(User.last)
+      user_2 = FactoryGirl.create(:user, zipcode: valid_zipcode_2)
+      expect(user_2).to eq(User.last)
+      user.zipcode = invalid_zipcode
+      expect(user.valid?).to be_falsey
+      user.zipcode = invalid_zipcode_2
+      expect(user.valid?).to be_falsey
+      user.zipcode = invalid_zipcode_3
+      expect(user.valid?).to be_falsey
     end
   end
 
