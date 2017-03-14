@@ -5,6 +5,12 @@ FactoryGirl.define do
     zipcode "84103"
     email "test@test.com"
     password "password"
-    rep
+
+    factory :user_with_reps do
+      after(:create) do |user|
+        user.reps << FactoryGirl.create(:rep)
+        user.reps << FactoryGirl.create(:rep)
+      end
+    end
   end
 end
