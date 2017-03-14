@@ -11,7 +11,10 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'database_cleaner'
 require 'factory_girl_rails'
+require 'devise'
+
 RSpec.configure do |config|
+  config.include Devise::Test::ControllerHelpers, :type => :controller
   config.include FactoryGirl::Syntax::Methods
 end
 

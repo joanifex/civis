@@ -7,5 +7,12 @@ FactoryGirl.define do
       "test#{n}@test.com"
     end
     password "password"
+
+    factory :user_with_reps do
+      after(:create) do |user|
+        user.reps << FactoryGirl.create(:rep)
+        user.reps << FactoryGirl.create(:rep)
+      end
+    end
   end
 end
