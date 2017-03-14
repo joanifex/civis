@@ -9,6 +9,10 @@ class Navbar extends React.Component {
     this.props.dispatch(handleLogout());
   }
 
+  componentDidMount() {
+    $('.button-collapse').sideNav();
+  }
+
   authLinks = () =>{
     let { auth } = this.props;
     if(auth && auth.isAuthenticated) {
@@ -22,18 +26,26 @@ class Navbar extends React.Component {
 
   render() {
     return(
-      <header>
-        <div className='navbar-fixed'>
-          <nav className='blue-grey'>
-            <div className='nav-wrapper'>
-              <Link to='/' className='brand-logo'>Logo</Link>
-              <ul className='right'>
-                { this.authLinks() }
-              </ul>
-            </div>
-          </nav>
+      <nav className='blue-grey'>
+        <div className='nav-wrapper'>
+          <Link to='/' className='brand-logo'>Civis</Link>
+          <a data-activates='mobile' className='button-collapse'>
+            <i className='fa fa-bars'/>
+          </a>
+          <ul className='right hide-on-med-and-down'>
+            <li><Link to='/'>Home </Link></li>
+            <li><Link to='/about_us'>About Us</Link></li>
+            <li><Link to='/contact_us'>Contact Us</Link></li>
+            { this.authLinks() }
+          </ul>
+          <ul className='side-nav' id="mobile">
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/about_us'>About Us</Link></li>
+            <li><Link to='/contact_us'>Contact Us</Link></li>
+            { this.authLinks() }
+          </ul>
         </div>
-      </header>
+      </nav>
     );
   }
 }
