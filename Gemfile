@@ -18,7 +18,7 @@ gem 'materialize-sass', '~> 0.98.0'
 gem 'httparty', '~> 0.14.0'
 gem 'geocoder', '~> 1.4.3'
 gem 'font-awesome-rails'
- 
+
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
@@ -28,6 +28,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'database_cleaner'
   gem 'dotenv-rails'
+  gem 'annotate'
 end
 
 group :development do

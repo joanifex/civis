@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: reps
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  first_name :string
+#  last_name  :string
+#  state      :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Rep < ApplicationRecord
   validates_presence_of :title, :first_name, :last_name, :state
   has_many :ties, dependent: :destroy
