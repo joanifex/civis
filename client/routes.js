@@ -1,15 +1,17 @@
 import React from 'react';
 import { Route, IndexRoute, browserHistory } from 'react-router';
+import { UserAuthWrapper } from 'redux-auth-wrapper';
 import App from './containers/App';
+
+// Components
 import NoMatch from './components/NoMatch';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
-import { UserAuthWrapper } from 'redux-auth-wrapper';
 import Home from './components/Home';
 import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
 import RepIndex from './components/RepIndex';
-
+import Rep from './components/Rep';
 
 const UserIsAuthenticated = UserAuthWrapper({
   authSelector: state => state.auth,
@@ -21,6 +23,7 @@ export default (
   <Route>
     <Route path="/" component={App}>
       <IndexRoute component={UserIsAuthenticated(Home)} />
+      <Route path='/rep' component={Rep} />
       <Route path='/reps' component={RepIndex}/>
       <Route path='/login' component={Login} />
       <Route path='/sign_up' component={SignUp} />

@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
   before_action :set_user, only: [:user_reps, :update_zipcode]
 
   def logged_in_user
@@ -11,7 +11,6 @@ class Api::UsersController < ApplicationController
   end
 
   def user_reps
-    render json: @user.reps
   end
 
   def update_zipcode
@@ -23,6 +22,7 @@ class Api::UsersController < ApplicationController
       senators = Rep.where(state: state)
       @user.ties.create(rep_id: senators.first.id)
       @user.ties.create(rep_id: senators.last.id)
+      # TODO: render :user_reps view
       render json: @user
     else
       render json: {errors: @user.errors.full_messages}, status: 401
