@@ -4,4 +4,5 @@ json.reps @user.reps do |rep|
   json.last_name rep.last_name
   json.state rep.state
   json.title rep.title
+  json.id rep.id
 end

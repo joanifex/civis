@@ -10,15 +10,15 @@ class RepIndex extends React.Component {
   }
 
   displayReps = () => {
-    return this.props.reps.map( (rep, i) => {
+    return this.props.reps.map( (rep) => {
       return(
-        <li key={i} className="collection-item avatar">
+        <li key={rep.id} className="collection-item avatar">
           <span className="title">{`${rep.first_name} ${rep.last_name}`}</span>
           <p>
             {`${rep.title} of ${rep.state}`}
           </p>
           <Link
-            to={`/rep/${i}`}
+            to={`/rep/${rep.id}`}
             href="#!"
             className="secondary-content">
             <i className="fa fa-user-circle fa-2x"></i>
