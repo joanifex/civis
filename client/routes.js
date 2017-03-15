@@ -23,7 +23,7 @@ export default (
   <Route>
     <Route path="/" component={App}>
       <IndexRoute component={UserIsAuthenticated(Home)} />
-      <Route path='/rep' component={Rep} />
+      <Route path='/rep/:id' component={Rep} />
       <Route path='/reps' component={RepIndex}/>
       <Route path='/login' component={Login} />
       <Route path='/sign_up' component={SignUp} />

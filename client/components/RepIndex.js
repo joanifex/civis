@@ -18,10 +18,10 @@ class RepIndex extends React.Component {
             {`${rep.title} of ${rep.state}`}
           </p>
           <Link
-            to="/rep"
+            to={`/rep/${i}`}
             href="#!"
             className="secondary-content">
-            <i className="fa fa-user-circle"></i>
+            <i className="fa fa-user-circle fa-2x"></i>
           </Link>
         </li>
       );
