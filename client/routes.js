@@ -15,12 +15,12 @@ const UserIsAuthenticated = UserAuthWrapper({
   authSelector: state => state.auth,
   predicate: auth => auth.isAuthenticated,
 });
+
 //QUESTION: how to authenticate routes
 export default (
   <Route>
-
     <Route path="/" component={App}>
-      <IndexRoute component={Home} />
+      <IndexRoute component={UserIsAuthenticated(Home)} />
       <Route path='/reps' component={RepIndex}/>
       <Route path='/login' component={Login} />
       <Route path='/sign_up' component={SignUp} />

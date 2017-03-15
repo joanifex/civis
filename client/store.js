@@ -10,7 +10,12 @@ const enhancers = compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 )
 
-const store = createStore(rootReducer, {}, enhancers)
+let appDataSet = document.getElementById('app').dataset;
+let remember = appDataSet.remember;
+
+remember = remember === 'true' ? true : false;
+
+const store = createStore(rootReducer, { auth: { isAuthenticated: remember } }, enhancers)
 
 if(module.hot) {
   module.hot.accept('./reducers/',() => {
@@ -22,4 +27,3 @@ if(module.hot) {
 export const history = syncHistoryWithStore(browserHistory, store)
 
 export default store
-
