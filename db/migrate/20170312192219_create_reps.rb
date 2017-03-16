@@ -5,7 +5,11 @@ class CreateReps < ActiveRecord::Migration[5.0]
       t.string :first_name, null: false, default: ''
       t.string :last_name, null: false, default: ''
       t.string :state, null: false, default: ''
-      # QUESTION: default?
+      t.string :party
+      t.string :phone
+      t.string :url
+      t.string :next_election
+      t.string :twitter_account 
 
       t.timestamps
     end

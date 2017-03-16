@@ -16,15 +16,20 @@ members.each do |mem|
     first_name: mem["first_name"],
     last_name: mem["last_name"],
     state: mem["state"],
-    title: "Senator"
+    title: "Senator",
+    party: mem["party"],
+    phone: mem["phone"],
+    url: mem["url"],
+    next_election: mem["next_election"],
+    twitter_account: mem["twitter_account"]
   )
 end
 
 puts 'Reps created'
 
-location = Geocoder.search(user.zipcode)
-state = location.first.data['address_components'][3]['short_name']
-senators = Rep.where(state: state);
+location = ZipCodes.identify(user.zipcode)
+state = location[:state_code]
+senators = Rep.where(state: state)
 
 Tie.create(
   user_id: user.id,

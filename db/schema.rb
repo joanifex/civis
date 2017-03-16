@@ -16,12 +16,17 @@ ActiveRecord::Schema.define(version: 20170312201939) do
   enable_extension "plpgsql"
 
   create_table "reps", force: :cascade do |t|
-    t.string   "title",      default: "", null: false
-    t.string   "first_name", default: "", null: false
-    t.string   "last_name",  default: "", null: false
-    t.string   "state",      default: "", null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "title",           default: "", null: false
+    t.string   "first_name",      default: "", null: false
+    t.string   "last_name",       default: "", null: false
+    t.string   "state",           default: "", null: false
+    t.string   "party"
+    t.string   "phone"
+    t.string   "url"
+    t.string   "next_election"
+    t.string   "twitter_account"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "ties", force: :cascade do |t|

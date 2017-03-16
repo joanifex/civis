@@ -19,6 +19,11 @@ RSpec.describe Rep, type: :model do
     it { should respond_to(:first_name) }
     it { should respond_to(:last_name) }
     it { should respond_to(:state) }
+    it { should respond_to(:phone) }
+    it { should respond_to(:party) }
+    it { should respond_to(:url) }
+    it { should respond_to(:next_election) }
+    it { should respond_to(:twitter_account) }
   end
 
   describe 'validations' do
