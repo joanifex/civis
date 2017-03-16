@@ -14,19 +14,22 @@ class Api::UsersController < ApplicationController
   end
 
   def update_zipcode
-    zipcode = params.require(:user).permit(:zipcode)
-    if @user.update(zipcode)
-      Tie.delete_all("user_id = #{@user.id}")
-      location = Geocoder.search(@user.zipcode)
-      # TODO: Validate State
-      state = location.first.data['address_components'][3]['short_name']
-      senators = Rep.where(state: state)
-      @user.ties.create(rep_id: senators.first.id)
-      @user.ties.create(rep_id: senators.last.id)
-      # TODO: render :user_reps view
-      render json: @user
+    zipcode_params = params.require(:user).permit(:zipcode)
+    if @user.update(zipcode_params)
+      zipcode = zipcode_params["zipcode"]
+      location = ZipCodes.identify(zipcode)
+      if location.nil?
+        render json: {errors: "Could not find zipcode"}, status: 400
+      else
+        state = location[:state_code]
+        senators = Rep.where(state: state)
+        Tie.delete_all("user_id = #{@user.id}")
+        @user.ties.create(rep_id: senators.first.id)
+        @user.ties.create(rep_id: senators.last.id)
+        head :no_content
+      end
     else
-      render json: {errors: @user.errors.full_messages}, status: 401
+      render json: {errors: @user.errors.full_messages}, status: 400
     end
   end
 

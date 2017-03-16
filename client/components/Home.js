@@ -16,6 +16,7 @@ class Home extends React.Component {
       }).done(data => {
         browserHistory.push('/reps');
       }).fail( data => {
+        // TODO: handle ajax failure
         console.log(data);
       });
     } else {
