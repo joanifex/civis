@@ -16,12 +16,10 @@ class Home extends React.Component {
       }).done(data => {
         browserHistory.push('/reps');
       }).fail( data => {
-        // TODO: handle ajax failure
-        console.log(data);
+        Materialize.toast('Invalid zipcode, Please try again', 3000);
       });
     } else {
-      // TODO: handle invalid zipcode
-      console.log('invalid zipcode');
+      Materialize.toast('Please try again.' ,3000);
     }
   }
 
