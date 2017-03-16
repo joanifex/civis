@@ -12,6 +12,7 @@ import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
 import RepIndex from './components/RepIndex';
 import Rep from './components/Rep';
+import About from './components/About';
 
 const UserIsAuthenticated = UserAuthWrapper({
   authSelector: state => state.auth,
@@ -29,6 +30,7 @@ export default (
       <Route path='/sign_up' component={SignUp} />
       <Route path='/about_us' component={AboutUs} />
       <Route path='/contact_us' component={ContactUs} />
+      <Route path='/about' component={About} />
     </Route>
 
     <Route path="*" status={404} component={NoMatch} />
