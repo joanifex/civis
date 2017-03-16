@@ -18,6 +18,7 @@ class Api::UsersController < ApplicationController
     if @user.update(zipcode)
       Tie.delete_all("user_id = #{@user.id}")
       location = Geocoder.search(@user.zipcode)
+      # TODO: Validate State
       state = location.first.data['address_components'][3]['short_name']
       senators = Rep.where(state: state)
       @user.ties.create(rep_id: senators.first.id)
