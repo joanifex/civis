@@ -34,14 +34,14 @@ class Navbar extends React.Component {
           </a>
           <ul className='right hide-on-med-and-down'>
             <li><Link to='/'>Home </Link></li>
-            <li><Link to='/about_us'>About Us</Link></li>
-            <li><Link to='/contact_us'>Contact Us</Link></li>
+            <li> <Link to="reps">Reps</Link> </li>
+            <li><Link to='/about'>About</Link></li>
             { this.authLinks() }
           </ul>
           <ul className='side-nav' id="mobile">
             <li><Link to='/'>Home</Link></li>
-            <li><Link to='/about_us'>About Us</Link></li>
-            <li><Link to='/contact_us'>Contact Us</Link></li>
+            <li> <Link to="reps">Reps</Link> </li>
+            <li><Link to='/about'>About</Link></li>
             { this.authLinks() }
           </ul>
         </div>

@@ -8,7 +8,6 @@ import NoMatch from './components/NoMatch';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Home from './components/Home';
-import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
 import RepIndex from './components/RepIndex';
 import Rep from './components/Rep';
@@ -28,8 +27,6 @@ export default (
       <Route path='/reps' component={RepIndex}/>
       <Route path='/login' component={Login} />
       <Route path='/sign_up' component={SignUp} />
-      <Route path='/about_us' component={AboutUs} />
-      <Route path='/contact_us' component={ContactUs} />
       <Route path='/about' component={About} />
     </Route>
 
