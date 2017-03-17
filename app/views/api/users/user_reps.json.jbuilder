@@ -9,5 +9,7 @@ json.reps @user.reps do |rep|
   json.phone rep.phone
   json.url rep.url
   json.twitter_account rep.twitter_account
-  json.next_election rep.next_election 
+  json.next_election rep.next_election
+  json.profile_url rep.profile_url
+  json.profile_large_url rep.profile_large_url
 end
