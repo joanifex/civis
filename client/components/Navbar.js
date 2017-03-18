@@ -29,7 +29,7 @@ class Navbar extends React.Component {
   render() {
     return(
       <nav className='blue-grey'>
-        <div className='nav-wrapper'>
+        <div className='nav-wrapper' style={{ margin: '0 30px'}}>
           <Link to='/' className='brand-logo'>Civis</Link>
           <a data-activates='mobile' className='button-collapse'>
             <i className='fa fa-bars'/>

@@ -41,7 +41,7 @@ class ZipcodeForm extends React.Component {
              required
              autoFocus
             />
-            <input className='btn' type='submit'/>
+            <input className='btn blue-grey' type='submit'/>
           </div>
         </form>
       </div>

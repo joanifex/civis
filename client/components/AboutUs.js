@@ -1,4 +1,5 @@
 import React from 'react';
+import { email } from './styles.scss';
 
 class AboutUs extends React.Component{
 
@@ -17,7 +18,7 @@ class AboutUs extends React.Component{
           <img width='100%' src='https://s-media-cache-ak0.pinimg.com/564x/10/3f/62/103f62d4e3aa8f471b3b512c9361cfe1.jpg' />
           <p>Hi, I am Ian and I'm the smartest person in the class! </p>
           <br />
-          <a href="mailto:ian@test.com?subject=Civis">
+          <a className='email' href="mailto:ian@test.com?subject=Civis">
             <i className="fa fa-envelope" aria-hidden="true"></i>
           </a>
           <a href={'https://github.com/wrightianb'}
@@ -58,7 +59,7 @@ class AboutUs extends React.Component{
           <img width='100%' src='https://img.buzzfeed.com/buzzfeed-static/static/enhanced/webdr01/2013/4/18/16/anigif_enhanced-buzz-1786-1366317339-16_preview.gif' />
           <p>Hi! I'm Lindsay and I like drinks! How much could a banana cost? $10?! </p>
           <br />
-          <a href="lindsay.larkin@gmail.com?subject=Civis">
+          <a href="lindsay@test.com?subject=Civis">
             <i className="fa fa-envelope" aria-hidden="true"></i>
           </a>
           <a href={'https://github.com/lilarkin'}
@@ -79,7 +80,7 @@ class AboutUs extends React.Component{
           <img width='100%' src='http://i.dailymail.co.uk/i/pix/2015/09/04/13/190E8A9100000578-0-image-a-26_1441371211282.jpg'/>
           <p>Hi! My name is Valerie and I want to look like Liza</p>
           <br />
-          <a href="mailto:vbarela1@gmail.com?subject=Civis">
+          <a href="mailto:valerie@test.com?subject=Civis">
             <i className="fa fa-envelope" aria-hidden="true"></i>
           </a>
           <a href={'https://github.com/vbarela1'}

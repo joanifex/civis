@@ -23,10 +23,10 @@ class App extends React.Component {
     return(
       <div>
         <Navbar auth={auth} />
-        <div style={{ marginBottom: '30px' }}>
+        <div>
           <FlashMessage />
         </div>
-        <div className='container'>
+        <div>
           { children }
         </div>
       </div>
