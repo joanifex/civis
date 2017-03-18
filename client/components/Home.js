@@ -48,7 +48,7 @@ class Home extends React.Component {
           <div className="footer-copyright">
             <div className="container">
             © 2017 Civis
-            <div className= {`${footerText} right`} style={{ margin: '20px, 0' }}>
+            <div className= {`${footerText} right`} style={{ verticalAlign: 'middle' }}>
             <Link to='/about'>About</Link>
             </div>
             </div>
