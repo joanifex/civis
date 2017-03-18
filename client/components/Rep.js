@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RepIndex from './RepIndex';
 import { updateReps } from '../actions/reps';
 import { Link } from 'react-router';
 
