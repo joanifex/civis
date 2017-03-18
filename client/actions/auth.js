@@ -15,7 +15,7 @@ export const handleLogin = (email, password) => {
       url: '/users/sign_in',
       type: 'POST',
       dataType: 'JSON',
-      data: { user: { email, password } }
+      data: { user: { email, password, } }
     }).done( user => {
       dispatch(login(user));
       browserHistory.push('/')
@@ -57,13 +57,13 @@ export const refreshLogin = () => {
   }
 }
 
-export const handleSignUp = (email, password) => {
+export const handleSignUp = (email, password, firstName, lastName) => {
   return(dispatch) => {
     $.ajax({
       url: '/users',
       type: 'POST',
       dataType: 'JSON',
-      data: { user: { email, password } } 
+      data: { user: { email, password, firstName, lastName } }
     }).done( user => {
       dispatch(login(user));
       browserHistory.push('/');
