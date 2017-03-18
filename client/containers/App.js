@@ -10,7 +10,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(refreshLogin());
-    this.props.dispatch(updateReps());
   }
 
   componentDidUpdate() {
