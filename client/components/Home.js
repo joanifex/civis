@@ -14,15 +14,13 @@ class Home extends React.Component {
   render() {
     return(
       <div>
+        <h2 className='center'>Civis</h2>
+        <HomeCard />
         <div className="parallax-container">
           <div className="parallax">
             <img className={homeImgFirst}
             src="https://c.tribune.com.pk/2016/12/1252658-protests-1480799399-425-160x120.jpg"
             />
-            <div>
-              <h2 className='center'>Civis</h2>
-              <HomeCard />
-            </div>
           </div>
         </div>
         <div className={`${section} white`}>
@@ -60,4 +58,3 @@ class Home extends React.Component {
 };
 
 export default connect()(Home);
-
