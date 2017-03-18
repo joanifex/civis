@@ -4,8 +4,8 @@ export const updateReps = () => {
       url: '/api/user_reps',
       type: 'GET',
       dataType: 'JSON'
-    }).done( reps => {
-      dispatch({ type: 'UPDATE_REPS', reps });
+    }).done( userData => {
+      dispatch({ type: 'UPDATE_REPS', reps: userData.reps });
     }).fail( data => {
       console.log(data);
     });

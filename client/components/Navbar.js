@@ -10,7 +10,9 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    $('.button-collapse').sideNav();
+    $('.button-collapse').sideNav({
+      closeOnClick: true
+    });
   }
 
   authLinks = () =>{
