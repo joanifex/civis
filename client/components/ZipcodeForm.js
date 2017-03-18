@@ -13,7 +13,8 @@ class ZipcodeForm extends React.Component {
         dataType: 'JSON',
         data: {user: {zipcode}}
       }).done(data => {
-        browserHistory.push('/reps');
+        Materialize.toast('Zipcode Updated', 3000);
+        this.props.enteredZipcode();
       }).fail( data => {
         Materialize.toast('Invalid zipcode, Please try again', 3000);
       });
