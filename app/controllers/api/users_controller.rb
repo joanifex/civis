@@ -3,7 +3,7 @@ class Api::UsersController < ApplicationController
   require 'twitter'
 
   skip_before_action :verify_authenticity_token
-  before_action :set_user, only: [:user_reps, :update_zipcode]
+  before_action :set_user, only: [:user_reps, :zipcode, :update_zipcode]
   before_action :set_twitter, only: [:user_reps]
 
   def logged_in_user
@@ -12,6 +12,9 @@ class Api::UsersController < ApplicationController
     else
       render json: {}
     end
+  end
+
+  def zipcode
   end
 
   def user_reps
