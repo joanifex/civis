@@ -9,7 +9,7 @@ import Login from './components/Login';
 import SignUp from './components/SignUp';
 import Home from './components/Home';
 import AboutUs from './components/AboutUs';
-import Rep from './components/Rep';
+import RepInfo from './components/RepInfo';
 import About from './components/About';
 import ContentWrapper from './components/ContentWrapper';
 
@@ -24,7 +24,7 @@ export default (
     <Route path="/" component={App}>
       <IndexRoute component={UserIsAuthenticated(Home)} />
       <Route component={ContentWrapper}>
-        <Route path='/rep/:id' component={Rep} />
+        <Route path='/rep/:id' component={RepInfo} />
         <Route path='/login' component={Login} />
         <Route path='/sign_up' component={SignUp} />
         <Route path='/about' component={About} />

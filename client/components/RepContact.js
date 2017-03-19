@@ -1,0 +1,58 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { updateReps } from '../actions/reps';
+import { Link } from 'react-router';
+
+class RepContact extends React.Component {
+  componentWillMount = () => {
+    this.props.dispatch(updateReps());
+  }
+  render(){
+    let { rep } = this.props;
+    if(rep) {
+      return(
+      <div>
+        <h5>Contact Info:</h5>
+        <div className="row">
+          <div className="col s12 m6 l4">
+            <ul className="collection">
+              <li className="collection-item">
+                <i className="fa fa-phone"></i>
+                <a href={`tel:${rep.phone}`} >
+                  {`   ${rep.phone}`}
+                </a>
+              </li>
+              <li className="collection-item">
+                <i className="fa fa-twitter"></i>
+                <a
+                  href={`https://twitter.com/${rep.twitter_account}`}
+                  target="_blank"
+                >
+                  {`   Twitter`}
+                </a>
+              </li>
+              <li className="collection-item">
+                <i className="fa fa-external-link"></i>
+                <a
+                  href={rep.url}
+                  target="_blank"
+                >
+                {`   Website`}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div> 
+      );
+    } else {
+      return null;
+    }
+  }
+}
+
+const mapStateToProps = (state, props) => {
+  return { rep: state.reps.find( r => r.id == props.params.id ) }
+}
+
+export default connect(mapStateToProps)(RepContact);
