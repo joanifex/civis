@@ -12,25 +12,28 @@ class HomeCard extends React.Component {
   }
 
   componentDidMount = () => {
-    if ( this.isLoaded() )
+    if ( this.hasLoaded() )
       this.setState({ loading: false });
     if ( this.hasZipcode() )
       this.zipcodeEntered();
   }
 
   componentDidUpdate = () => {
-    if ( this.state.loading && this.isLoaded() )
+    if ( this.state.loading && this.hasLoaded() )
       this.setState({ loading: false });
-    if ( this.state.editingZipcode && this.hasZipcode() )
+    if ( this.state.editingZipcode && this.hasZipcode() ) {
       this.zipcodeEntered();
+    }
   }
 
-  isLoaded = () => {
+  hasLoaded = () => {
     return this.props.reps[0] === 'loading' ? false : true;
   }
 
   hasZipcode = () => {
-    return this.props.reps.length === 0 ? false : true;
+    if ( this.props.reps.length === 0 || this.props.reps[0] === 'loading' )
+      return false;
+    return true;
   }
 
   zipcodeEntered = () => {

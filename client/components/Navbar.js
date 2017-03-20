@@ -8,6 +8,7 @@ class Navbar extends React.Component {
   logout = (e) => {
     e.preventDefault();
     this.props.dispatch(handleLogout());
+    this.props.dispatch({ type: "USER_LOGOUT" });
   }
 
   componentDidMount() {
