@@ -1,6 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 
+// TODO: refactor into presentational component
 class ZipcodeForm extends React.Component {
 
   handleSubmit = (e) => {
