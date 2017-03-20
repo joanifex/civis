@@ -15,7 +15,7 @@ class ZipcodeForm extends React.Component {
         data: {user: {zipcode}}
       }).done(data => {
         Materialize.toast('Zipcode Updated', 3000);
-        this.props.enteredZipcode();
+        this.props.zipcodeEntered();
       }).fail( data => {
         Materialize.toast('Invalid zipcode, Please try again', 3000);
       });

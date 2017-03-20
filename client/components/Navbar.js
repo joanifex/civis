@@ -3,12 +3,10 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import { handleLogout } from '../actions/auth';
-import { resetZipcode } from '../actions/zipcode';
 
 class Navbar extends React.Component {
   logout = (e) => {
     e.preventDefault();
-    this.props.dispatch(resetZipcode());
     this.props.dispatch(handleLogout());
   }
 

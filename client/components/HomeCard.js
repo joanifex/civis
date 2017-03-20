@@ -5,53 +5,57 @@ import RepIndexCard from './RepIndexCard';
 import { updateReps } from '../actions/reps'
 
 class HomeCard extends React.Component {
-  state = { loading: true, editingZipcode: true }
+  state = { loading: true, editingZipcode: true };
+
+  componentWillMount = () => {
+    this.props.dispatch(updateReps());
+  }
 
   componentDidMount = () => {
-    this.props.dispatch(updateReps())
-    if ( this.hasReps() ) {
+    if ( this.isLoaded() )
       this.setState({ loading: false });
-      this.enteredZipcode();
-    }
+    if ( this.hasZipcode() )
+      this.zipcodeEntered();
   }
 
   componentDidUpdate = () => {
-    if ( this.hasReps() )
+    if ( this.state.loading && this.isLoaded() )
       this.setState({ loading: false });
-    if ( this.state.editingZipcode && this.props.reps.count > 0 )
-      this.enteredZipcode();
+    if ( this.state.editingZipcode && this.hasZipcode() )
+      this.zipcodeEntered();
   }
 
-  hasReps = () => {
-    return this.props.reps.count > 0 ? true : false;
+  isLoaded = () => {
+    return this.props.reps[0] === 'loading' ? false : true;
   }
 
-  enteredZipcode = () => {
-    this.setState({ editingZipcode: false })
+  hasZipcode = () => {
+    return this.props.reps.length === 0 ? false : true;
+  }
+
+  zipcodeEntered = () => {
+    this.setState({ editingZipcode: false });
   }
 
   displayLoading = () => {
-    return(
-      <p>Loading</p>
-    );
+    return( <p>Loading</p> );
   }
 
-  displayCardContent = () => {
-    if (this.state.editingZipcode) {
-      return <ZipcodeForm enteredZipcode={this.enteredZipcode}/>;
-    } else {
+  displayContent = () => {
+    if (this.state.editingZipcode)
+      return <ZipcodeForm zipcodeEntered={this.zipcodeEntered}/>;
+    else
       return <RepIndexCard />;
-    }
   }
 
-  render(){
+  render() {
     let { loading } = this.state;
     return(
       <div className="row">
         <div className="col s12 m10 offset-m1 l8 offset-l2">
           <div className="card grey lighten-4">
             <div className="card-content">
-              { loading ? this.displayLoading() : this.displayCardContent()}
+              { loading ? this.displayLoading() : this.displayContent() }
             </div>
           </div>
         </div>
@@ -61,7 +65,7 @@ class HomeCard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { reps: state.reps }
+  return { reps: state.reps };
 }
 
 export default connect(mapStateToProps)(HomeCard);

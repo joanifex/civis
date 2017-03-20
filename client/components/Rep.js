@@ -42,9 +42,15 @@ class Rep extends React.Component {
   }
 
   render = () => {
-    if ( this.state.loading )
-      return(<h1>Loading</h1>);
-    return (this.displayRepData());
+    if ( this.state.loading ) {
+      return( <p>Loading</p> );
+    } else {
+      return (
+        <div>
+          { this.displayRepData() }
+        </div>
+      );
+    }
   }
 }
 
