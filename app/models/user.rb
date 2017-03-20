@@ -34,4 +34,22 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def set_reps_pictures
+    set_twitter
+    self.reps.each do |rep|
+      if rep.profile_url.nil?
+        profile_url = @client.user(rep.twitter_account).profile_image_url.to_s
+        rep.update(profile_url: profile_url)
+      end
+    end
+  end
+
+  private
+    def set_twitter
+      @client = Twitter::REST::Client.new do |config|
+        config.consumer_key = ENV['TWITTER_API_KEY']
+        config.consumer_secret = ENV['TWITTER_SECRET']
+      end
+    end
 end

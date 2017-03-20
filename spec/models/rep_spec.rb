@@ -24,6 +24,7 @@ RSpec.describe Rep, type: :model do
     it { should respond_to(:url) }
     it { should respond_to(:next_election) }
     it { should respond_to(:twitter_account) }
+    it { should respond_to(:profile_url) }
   end
 
   describe 'validations' do
@@ -42,6 +43,7 @@ RSpec.describe Rep, type: :model do
     before(:each) do
       @rep = FactoryGirl.create(:rep)
     end
+
     it 'gives full name' do
       expect(@rep.full_name).to eq("#{@rep.first_name} #{@rep.last_name}")
     end
