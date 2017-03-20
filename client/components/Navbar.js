@@ -10,7 +10,9 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    $('.button-collapse').sideNav();
+    $('.button-collapse').sideNav({
+      closeOnClick: true
+    });
   }
 
   authLinks = () =>{
@@ -27,21 +29,16 @@ class Navbar extends React.Component {
   render() {
     return(
       <nav className='blue-grey'>
-        <div className='nav-wrapper'>
+        <div className='nav-wrapper' style={{ margin: '0 30px'}}>
           <Link to='/' className='brand-logo'>Civis</Link>
           <a data-activates='mobile' className='button-collapse'>
             <i className='fa fa-bars'/>
           </a>
           <ul className='right hide-on-med-and-down'>
-            <li><Link to='/'>Home </Link></li>
-            <li> <Link to="reps">Reps</Link> </li>
-            <li><Link to='/about'>About</Link></li>
+
             { this.authLinks() }
           </ul>
           <ul className='side-nav' id="mobile">
-            <li><Link to='/'>Home</Link></li>
-            <li> <Link to="reps">Reps</Link> </li>
-            <li><Link to='/about'>About</Link></li>
             { this.authLinks() }
           </ul>
         </div>

@@ -13,6 +13,7 @@ class RepIndex extends React.Component {
     return this.props.reps.map( (rep) => {
       return(
         <li key={rep.id} className="collection-item avatar">
+          <img src={rep.profile_url} alt="" className="circle" />
           <span className="title">{`${rep.first_name} ${rep.last_name}`}</span>
           <p>
             {`${rep.title} of ${rep.state}`}
@@ -32,8 +33,7 @@ class RepIndex extends React.Component {
     return(
       <ul className="collection">
         {this.displayReps()}
-      </ul>
-    );
+      </ul> );
   }
 }
 

@@ -16,6 +16,8 @@ FactoryGirl.define do
     title "Senator"
     first_name "Ian"
     last_name "Wright"
-    state "North Dakota"
+    state "ND"
+    party "D"
+    profile_url "http://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3_normal.png"
   end
 end

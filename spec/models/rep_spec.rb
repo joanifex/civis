@@ -39,9 +39,24 @@ RSpec.describe Rep, type: :model do
   end
 
   describe 'instance methods' do
+    before(:each) do
+      @rep = FactoryGirl.create(:rep)
+    end
     it 'gives full name' do
-      rep = FactoryGirl.create(:rep)
-      expect(rep.full_name).to eq("#{rep.first_name} #{rep.last_name}")
+      expect(@rep.full_name).to eq("#{@rep.first_name} #{@rep.last_name}")
+    end
+
+    it 'makes rep profile picture large' do
+      correct_url = "http://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3.png"
+      expect(@rep.profile_large_url).to eq(correct_url)
+    end
+
+    it 'gives full party name' do
+      expect(@rep.full_party).to eq("Democrat")
+    end
+
+    it 'changes state abbreviation to states full name' do
+      expect(@rep.full_state).to eq("North Dakota")
     end
   end
 end
