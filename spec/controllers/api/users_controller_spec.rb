@@ -30,8 +30,7 @@ RSpec.describe Api::UsersController, type: :controller do
         get :user_reps, format: :json
         reps = JSON.parse(response.body)
         # TODO: fix no implicit integer to string error in pry
-        binding.pry
-        expect(reps.first['id']).to eq(@user.reps.first.id.to_s)
+        expect(reps.first[1].first['id'].to_s).to eq(@user.reps.first.id.to_s)
       end
     end
 

@@ -23,10 +23,7 @@ class Api::UsersController < ApplicationController
         render json: {errors: "Could not find zipcode"}, status: 400
       else
         state = location[:state_code]
-        senators = Rep.where(state: state)
-        Tie.delete_all("user_id = #{current_user.id}")
-        current_user.ties.create(rep_id: senators.first.id)
-        current_user.ties.create(rep_id: senators.last.id)
+        current_user.create_ties(state)
         head :no_content
       end
     else
