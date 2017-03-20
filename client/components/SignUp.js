@@ -8,9 +8,14 @@ class SignUp extends React.Component {
     e.preventDefault();
     let email = this.refs.email.value;
     let password = this.refs.password.value;
-    let first_name = this.refs.firstName.value;
-    let last_name = this.refs.lastName.value;
-    this.props.dispatch(handleSignUp(email, password, first_name, last_name));
+    let confirmPassword = this.refs.confirmPassword.value;
+    let firstName = this.refs.firstName.value;
+    let lastName = this.refs.lastName.value;
+    if ( password === confirmPassword )  {
+      this.props.dispatch(handleSignUp(email, password, confirmPassword, firstName, lastName));
+    } else {
+      this.refs.confirmPassword.setCustomValidity("Passwords Don't Match");
+    }
   }
 
   render() {
@@ -21,22 +26,40 @@ class SignUp extends React.Component {
            <div className="card grey lighten-4">
              <div className="card-content black-text">
                <span className="card-title">Sign Up For A New Account</span>
-               <form onSubmit={ this.handleSubmit }>
+               <form id='sign_up' onSubmit={ this.handleSubmit }>
                  <div className="row">
                    <div className="col s12">
-                     <input ref='firstName' type="text" required placeholder="First Name"/>
-                     <br />
-                     <input ref='lastName' type="text" required placeholder="Last Name"/>
-                     <br />
-                     <i className="fa fa-envelope-o prefix" aria-hidden="true"></i>
-                     <input ref='email' className="icon_prefix" type='text' required placeholder='Email' />
-                     <br />
-                    <input ref='password' type='password' required placeholder='Password' />
-                    <br />
-                    <input type='submit' className='btn' value='Sign Up' />
-                    <Link to='/login' className='btn grey'>Cancel</Link>
+
+                     <div className="input-field">
+                       <i className="fa fa-user-circle-o prefix"></i>
+                       <input ref='firstName' className="icon_prefix" type='text' required placeholder='First Name' />
+                     </div>
+
+                     <div className="input-field">
+                       <i className="fa fa-user-circle-o prefix"></i>
+                       <input ref='lastName' className="icon_prefix" type='text' required placeholder='Last Name' />
+                    </div>
+
+                     <div className="input-field">
+                       <i className="fa fa-envelope-o prefix"></i>
+                       <input ref='email' className="icon_prefix" type='email' required placeholder='Email' />
+                     </div>
+
+
+                     <div className="input-field">
+                       <i className="fa fa-unlock-alt prefix"></i>
+                       <input ref='password' className="icon_prefix" type='password' required placeholder='Password' />
+                     </div>
+
+                     <div className="input-field">
+                       <i className="fa fa-unlock-alt prefix"></i>
+                       <input ref='confirmPassword' className="icon_prefix" type='password' required placeholder='confirm Password' />
+                     </div>
+
+                     <input type='submit' className='btn' value='Sign Up' />
+                     <Link to='/login' className='btn grey'>Cancel</Link>
+                   </div>
                  </div>
-               </div>
                </form>
              </div>
            </div>

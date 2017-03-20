@@ -57,13 +57,13 @@ export const refreshLogin = () => {
   }
 }
 
-export const handleSignUp = (email, password, firstName, lastName) => {
+export const handleSignUp = (email, password, confirmPassword, firstName, lastName) => {
   return(dispatch) => {
     $.ajax({
       url: '/users',
       type: 'POST',
       dataType: 'JSON',
-      data: { user: { email, password, firstName, lastName } }
+      data: { user: { email, password, confirmPassword, firstName, lastName } }
     }).done( user => {
       dispatch(login(user));
       browserHistory.push('/');

@@ -20,10 +20,14 @@ class Login extends React.Component {
             <div className="card-content black-text">
               <span className="card-title">Login</span>
                 <form onSubmit={ this.handleSubmit }>
-                  <input ref='email' type='text' required placeholder='Email' />
-                  <br />
-                  <input ref='password' type='password' required placeholder='Password' />
-                  <br />
+                  <div className="input-field">
+                    <i className="fa fa-envelope-o prefix"></i>
+                    <input ref='email' className="icon_prefix" type='email' required placeholder='Email' />
+                  </div>
+                  <div className="input-field">
+                    <i className="fa fa-unlock-alt prefix"></i>
+                    <input ref='password' className="icon_prefix" type='password' required placeholder='Password' />
+                  </div>
                   <input type='submit' className='btn' />
                   <Link to='/sign_up'className='btn grey'>Sign Up</Link>
                 </form>
