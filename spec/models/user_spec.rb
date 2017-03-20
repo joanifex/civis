@@ -31,9 +31,6 @@ RSpec.describe User, type: :model do
   end
 
   describe 'validations' do
-    it { should validate_presence_of(:first_name) }
-    it { should validate_presence_of(:last_name) }
-    it { should validate_presence_of(:zipcode) }
     it 'should validate zipcode format' do
       valid_zipcode = '84103'
       valid_zipcode_2 = '84103-1234'
@@ -59,11 +56,28 @@ RSpec.describe User, type: :model do
   end
 
   describe 'instance methods' do
-    it 'gives full name' do
-      user = FactoryGirl.create(:user)
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+    end
 
-      expect(user.full_name).to eq("#{user.first_name} #{user.last_name}")
+    it 'gives full name' do
+      expect(@user.full_name).to eq("#{@user.first_name} #{@user.last_name}")
+    end
+
+    it 'sets the rep profile picture' do
+      rep = @user.reps.create(
+        title: 'Senator', 
+        first_name: 'Your', 
+        last_name: 'face', 
+        state: 'Utah',
+        twitter_account: 'SenOrrinHatch'
+        )
+      profile_picture = "http://pbs.twimg.com/profile_images/1265985804/09232010_master_copy_normal.jpg"
+      @user.set_reps_pictures
+      expect(@user.reps.last.profile_url).to eq(profile_picture)
+
+      # call @user.set_reps_pictures
+      # expect new reps profile_url to eq what it should
     end
   end
-
 end

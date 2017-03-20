@@ -1,18 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateReps } from '../actions/reps';
 import ZipcodeForm from './ZipcodeForm';
 import RepIndexCard from './RepIndexCard';
+import { setZipcode } from '../actions/zipcode';
 
 class HomeCard extends React.Component {
   state = { editingZipcode: true }
 
-  componentWillMount = () => {
-    this.props.dispatch(updateReps());
+  componentDidMount = () => {
+    this.props.dispatch(setZipcode())
+    if (this.props.zipcode.length > 1)
+      this.enteredZipcode();
   }
 
-  componentDidMount = () => {
-    if (this.props.reps.length !== 0)
+  componentDidUpdate = () => {
+    if ( this.state.editingZipcode && this.props.zipcode )
       this.enteredZipcode();
   }
 
@@ -44,7 +46,7 @@ class HomeCard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { reps: state.reps }
+  return { zipcode: state.zipcode }
 }
 
 export default connect(mapStateToProps)(HomeCard);

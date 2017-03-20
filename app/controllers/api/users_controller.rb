@@ -3,8 +3,7 @@ class Api::UsersController < ApplicationController
   require 'twitter'
 
   skip_before_action :verify_authenticity_token
-  before_action :set_user, only: [:user_reps, :update_zipcode]
-  before_action :set_twitter, only: [:user_reps]
+  before_action :set_user, only: [:user_reps, :zipcode, :update_zipcode]
 
   def logged_in_user
     if current_user
@@ -14,13 +13,11 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def zipcode
+  end
+
   def user_reps
-    @user.reps.each do |rep|
-      if rep.profile_url.nil?
-        profile_url = @client.user(rep.twitter_account).profile_image_url.to_s
-        rep.update(profile_url: profile_url)
-      end
-    end
+    @user.set_reps_pictures
   end
 
   def update_zipcode
@@ -44,14 +41,8 @@ class Api::UsersController < ApplicationController
   end
 
   private
+  # put conditional in method for if this, else error
     def set_user
       @user = User.find(current_user.id)
-    end
-
-    def set_twitter
-      @client = Twitter::REST::Client.new do |config|
-        config.consumer_key = ENV['TWITTER_API_KEY']
-        config.consumer_secret = ENV['TWITTER_SECRET']
-      end
     end
 end

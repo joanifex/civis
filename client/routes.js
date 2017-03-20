@@ -18,7 +18,6 @@ const UserIsAuthenticated = UserAuthWrapper({
   predicate: auth => auth.isAuthenticated,
 });
 
-//QUESTION: how to authenticate routes
 export default (
   <Route>
     <Route path="/" component={App}>

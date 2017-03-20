@@ -22,7 +22,7 @@ class RepIndex extends React.Component {
             to={`/rep/${rep.id}`}
             href="#!"
             className="secondary-content">
-            <i className="fa fa-user-circle fa-2x"></i>
+            <i className="fa fa-institution fa-2x"></i>
           </Link>
         </li>
       );
