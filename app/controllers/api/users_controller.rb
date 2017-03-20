@@ -1,9 +1,6 @@
 class Api::UsersController < ApplicationController
-
   require 'twitter'
-
   skip_before_action :verify_authenticity_token
-  before_action :set_user, only: [:user_reps, :zipcode, :update_zipcode]
 
   def logged_in_user
     if current_user
@@ -13,16 +10,13 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def zipcode
-  end
-
   def user_reps
-    @user.set_reps_pictures
+    current_user.set_reps_pictures
   end
 
   def update_zipcode
     zipcode_params = params.require(:user).permit(:zipcode)
-    if @user.update(zipcode_params)
+    if current_user.update(zipcode_params)
       zipcode = zipcode_params["zipcode"]
       location = ZipCodes.identify(zipcode)
       if location.nil?
@@ -30,19 +24,13 @@ class Api::UsersController < ApplicationController
       else
         state = location[:state_code]
         senators = Rep.where(state: state)
-        Tie.delete_all("user_id = #{@user.id}")
-        @user.ties.create(rep_id: senators.first.id)
-        @user.ties.create(rep_id: senators.last.id)
+        Tie.delete_all("user_id = #{current_user.id}")
+        current_user.ties.create(rep_id: senators.first.id)
+        current_user.ties.create(rep_id: senators.last.id)
         head :no_content
       end
     else
-      render json: {errors: @user.errors.full_messages}, status: 400
+      render json: {errors: current_user.errors.full_messages}, status: 400
     end
   end
-
-  private
-  # put conditional in method for if this, else error
-    def set_user
-      @user = User.find(current_user.id)
-    end
 end

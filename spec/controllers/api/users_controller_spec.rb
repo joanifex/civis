@@ -1,34 +1,39 @@
 require 'rails_helper'
 
 RSpec.describe Api::UsersController, type: :controller do
-  include Devise::Test::ControllerHelpers
 
-  describe 'GET #user_reps' do
-     before(:each) do
-       @request.env["devise.mapping"] = Devise.mappings[:user]
-       user = FactoryGirl.create(:user_with_reps)
-       user.confirm!
-       sign_in user
-     end
-
-    it "returns HTTP success" do
+  describe 'GET #logged_in_user' do
+    context 'logged out' do
+      it 'blocks unauthenticated access' do
+        get :logged_in_user
+        user = JSON.parse(response.body)
+        expect(user).to eq({})
+      end
     end
 
-    it "returns the JSON of reps" do
-      # QUESTION: how do we do this????
-      # FactoryGirl creates a user with rep associations
-      # send the HTTP request, with the user parameter
-      expect(false).to eq(true)
-      # parsed = JSON.parse(response.body)
-      # expect(parsed.size).to eq(2)
-      # expect(parsed.full_name).to eq("Jeremy Cram")
+    context 'logged in' do
+      login_user
+
+      it 'allows authenticated access' do
+        get :logged_in_user
+        user = JSON.parse(response.body)
+        expect(user['id']).to eq(@user.id)
+      end
     end
   end
 
-  describe 'GET #user_reps without a user' do
-    it 'a thing' do
-      get :user_reps
-      expect(response).to be_success    
+  describe 'GET #user_reps' do
+    context 'logged in user' do
+      login_user
+
+      it 'render JSON of the users reps' do
+        get :user_reps, format: :json
+        reps = JSON.parse(response.body)
+        # TODO: fix no implicit integer to string error in pry
+        binding.pry
+        expect(reps.first['id']).to eq(@user.reps.first.id.to_s)
+      end
     end
+
   end
 end

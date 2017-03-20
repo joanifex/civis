@@ -12,10 +12,13 @@ require 'rspec/rails'
 require 'database_cleaner'
 require 'factory_girl_rails'
 require 'devise'
+require 'support/controller_macros'
 
 RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, :type => :controller
   config.include FactoryGirl::Syntax::Methods
+  config.extend ControllerMacros, :type => :controller
+  config.render_views = true
 end
 
 Shoulda::Matchers.configure do |config|
