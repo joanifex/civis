@@ -31,6 +31,7 @@ class Rep extends React.Component {
           title={rep.title}
           state={rep.state}
           next_election={rep.next_election}
+          district={rep.district}
         />
         <RepContact
           phone={rep.phone}

@@ -46,12 +46,14 @@ class User < ApplicationRecord
   end
 
   def create_ties(state)
-    senators = Rep.where(state: state)
+    senators = Rep.where(state: state, title: 'Senator')
+    representatives = Rep.where(state: state, title: 'Representative').first
     Tie.delete_all("user_id = #{self.id}")
     self.ties.create(rep_id: senators.first.id)
     self.ties.create(rep_id: senators.last.id)
+    self.ties.create(rep_id: representatives.id)
   end
-
+#TODO: create new ties for rep 
   private
     def set_twitter
       @client = Twitter::REST::Client.new do |config|

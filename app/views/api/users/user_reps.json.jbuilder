@@ -11,4 +11,5 @@ json.reps current_user.reps do |rep|
   json.next_election rep.next_election
   json.profile_url rep.profile_url
   json.profile_large_url rep.profile_large_url
+  json.district rep.district 
 end
