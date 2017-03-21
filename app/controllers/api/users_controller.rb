@@ -15,10 +15,8 @@ class Api::UsersController < ApplicationController
   end
 
   def update_zipcode
-    zipcode_params = params.require(:user).permit(:zipcode)
-    if current_user.update(zipcode_params)
-      zipcode = zipcode_params["zipcode"]
-      location = ZipCodes.identify(zipcode)
+    if current_user.update(user_params)
+      location = ZipCodes.identify(current_user.zipcode)
       if location.nil?
         render json: {errors: "Could not find zipcode"}, status: 400
       else
@@ -29,5 +27,10 @@ class Api::UsersController < ApplicationController
     else
       render json: {errors: current_user.errors.full_messages}, status: 400
     end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:zipcode)
   end
 end
