@@ -32,7 +32,11 @@ class Navbar extends React.Component {
     return(
       <nav className='blue-grey'>
         <div className='nav-wrapper' style={{ margin: '0 30px'}}>
-          <Link to='/' className='brand-logo'>Civis</Link>
+          <Link to='/' className='brand-logo'>
+            <img src='http://res.cloudinary.com/dx6ytyvvg/image/upload/c_scale,h_44/v1490061952/civis_logo_white_myb2hu.png'
+            style={{ marginTop: '10px'}} 
+            />
+            </Link>
           <a data-activates='mobile' className='button-collapse'>
             <i className='fa fa-bars'/>
           </a>
