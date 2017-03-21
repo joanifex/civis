@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateReps } from '../actions/reps';
+
+// Components
 import RepContact from './RepContact';
 import RepInfo from './RepInfo';
 import RepHeader from './RepHeader';
+import Articles from './Articles';
 
 class Rep extends React.Component {
   state = { loading: true }
@@ -26,17 +29,26 @@ class Rep extends React.Component {
           first_name={rep.first_name}
           last_name={rep.last_name}
         />
-        <RepInfo
-          party={rep.party}
-          title={rep.title}
-          state={rep.state}
-          next_election={rep.next_election}
-        />
-        <RepContact
-          phone={rep.phone}
-          twitter_account={rep.twitter_account}
-          url={rep.url}
-        />
+        <div className="row">
+          <div className="col s12 l4">
+            <RepInfo
+              party={rep.party}
+              title={rep.title}
+              state={rep.state}
+              next_election={rep.next_election}
+            />
+            <RepContact
+              phone={rep.phone}
+              twitter_account={rep.twitter_account}
+              url={rep.url}
+            />
+          </div>
+          <div className="col s12 l8">
+            <Articles
+              fullName={rep.full_name}
+            />
+          </div>
+        </div>
       </div>
     );
   }
