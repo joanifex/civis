@@ -49,6 +49,6 @@ puts "House Rep Created"
 
 location = ZipCodes.identify(user.zipcode)
 state = location[:state_code]
-user.create.ties(state)
+user.create_ties(state)
 
 puts 'Ties created.'
