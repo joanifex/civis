@@ -28,9 +28,10 @@ RSpec.describe Api::UsersController, type: :controller do
 
       it 'render JSON of the users reps' do
         get :user_reps, format: :json
-        reps = JSON.parse(response.body)
-        # TODO: fix no implicit integer to string error in pry
-        expect(reps.first[1].first['id'].to_s).to eq(@user.reps.first.id.to_s)
+        parsed = JSON.parse(response.body)
+        reps = parsed["reps"]
+        expect(reps.first['id']).to eq(@user.reps.first.id)
+        expect(reps.count).to eq(@user.reps.count)
       end
     end
 
