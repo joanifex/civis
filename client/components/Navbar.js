@@ -41,10 +41,11 @@ class Navbar extends React.Component {
             <i className='fa fa-bars'/>
           </a>
           <ul className='right hide-on-med-and-down'>
-
+            <li><Link to='/account'>Account</Link></li>
             { this.authLinks() }
           </ul>
           <ul className='side-nav' id="mobile">
+            <li><Link to='/account'>Account</Link></li>
             { this.authLinks() }
           </ul>
         </div>

@@ -14,3 +14,4 @@ json.reps current_user.reps do |rep|
   json.profile_large_url rep.profile_large_url
   json.district rep.district 
 end
+
