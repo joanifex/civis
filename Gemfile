@@ -19,6 +19,7 @@ gem 'httparty', '~> 0.14.0'
 gem 'zip-codes', '~> 0.2.1'
 gem 'font-awesome-rails', '~> 4.7.0.1'
 gem 'twitter', '~> 6.1.0'
+gem 'faker'
 
 group :development, :test do
   gem 'pry'

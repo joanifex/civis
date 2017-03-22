@@ -1,3 +1,5 @@
+require 'faker'
+
 FactoryGirl.define do
   factory :article do
     web_url "web_url"
