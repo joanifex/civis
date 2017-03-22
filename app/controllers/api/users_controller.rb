@@ -15,22 +15,16 @@ class Api::UsersController < ApplicationController
   end
 
   def update_zipcode
-    if current_user.update(user_params)
-      location = ZipCodes.identify(current_user.zipcode)
-      if location.nil?
-        render json: {errors: "Could not find zipcode"}, status: 400
-      else
-        state = location[:state_code]
-        current_user.create_ties(state)
-        head :no_content
-      end
+    address = user_params["zipcode"]
+    if current_user.create_ties(address)
+      head :no_content
     else
-      render json: {errors: current_user.errors.full_messages}, status: 400
+      render json: {errors: "ERROR"}, status: 400
     end
   end
-
+  
   private
-  def user_params
-    params.require(:user).permit(:zipcode)
-  end
+    def user_params
+      params.require(:user).permit(:zipcode)
+    end
 end

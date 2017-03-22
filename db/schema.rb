@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20170322194543) do
     t.datetime "updated_at",                          null: false
     t.string   "first_name",             default: ""
     t.string   "last_name",              default: ""
-    t.string   "zipcode",                default: ""
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

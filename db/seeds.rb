@@ -3,7 +3,6 @@ user = User.create(
   password: 'password',
   first_name: 'Valerie',
   last_name: 'Barela',
-  zipcode: '84102'
 )
 
 puts 'Test user created.'
@@ -63,8 +62,7 @@ end
 
 puts "House Rep Created"
 
-location = ZipCodes.identify(user.zipcode)
-state = location[:state_code]
-user.create_ties(state)
+
+user.create_ties("84103")
 
 puts 'Ties created.'

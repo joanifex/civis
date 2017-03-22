@@ -25,9 +25,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_format_of :zipcode, with: /\A\d{5}-\d{4}|\A\d{5}\z/, message:
-  'Should be Valid', allow_blank: true
-
   has_many :ties, dependent: :destroy
   has_many :reps, through: :ties
 
@@ -60,12 +57,12 @@ class User < ApplicationRecord
       division_id = parsed[:offices].first[:divisionId]
       district = division_id.split(/cd:/).last
       state = parsed[:normalizedInput][:state]
-      representative = Rep.where(district: district, state: state)
+      representative = Rep.find_by(district: district, state: state)
       senators = Rep.where(state: state, title: 'Senator')
       Tie.delete_all("user_id = #{self.id}")
       self.ties.create(rep_id: senators.first.id)
       self.ties.create(rep_id: senators.last.id)
-      self.ties.create(rep_id: representatives.id)
+      self.ties.create(rep_id: representative.id)
     rescue => e
       success = false
       # check what is e if that gives a good error
