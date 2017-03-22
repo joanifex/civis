@@ -11,6 +11,15 @@ class Api::UsersController < ApplicationController
   end
 
   def show_user
+    current_user.full_name
+  end
+
+  def update_user
+    if current_user.update(user_params)
+      render json: current_user
+    else
+      render json: { errors: "Could Not Save Updates"}, status: 400
+    end
   end
 
   def user_reps
@@ -34,6 +43,6 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:zipcode)
+    params.require(:user).permit(:zipcode, :first_name, :last_name)
   end
 end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # DEVISE ROUTES
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
   }
 
   # API ROUTES
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get 'zipcode' ,to: 'users#zipcode'
     get 'user_reps', to: 'users#user_reps'
     patch 'user/zipcode', to: 'users#update_zipcode'
+    put 'user_update', to: 'users#update_user'
+    get 'show_user', to: 'users#show_user'
   end
 
   # NO ROUTES BELOW THIS LINE -- React Router
