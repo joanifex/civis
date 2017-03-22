@@ -22,7 +22,7 @@ class Login extends React.Component {
                 <form onSubmit={ this.handleSubmit }>
                   <div className="input-field">
                     <i className="fa fa-envelope-o prefix"></i>
-                    <input ref='email' className="icon_prefix" type='email' required placeholder='Email' />
+                    <input id='email' ref='email' className="icon_prefix" type='email' required placeholder='Email' />
                   </div>
                   <div className="input-field">
                     <i className="fa fa-unlock-alt prefix"></i>

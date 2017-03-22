@@ -13,6 +13,7 @@ require 'database_cleaner'
 require 'factory_girl_rails'
 require 'devise'
 require 'support/controller_macros'
+require 'capybara/rspec'
 
 RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, :type => :controller

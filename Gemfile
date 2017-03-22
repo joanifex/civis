@@ -30,6 +30,8 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'dotenv-rails'
   gem 'annotate'
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do
