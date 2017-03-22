@@ -10,6 +10,9 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def show_user
+  end
+
   def user_reps
     current_user.set_reps_pictures
   end

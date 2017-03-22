@@ -15,7 +15,7 @@ const RepInfo = ({
           <li className="collection-item">
             {`${party} ${title} of ${state}`}
           </li>
-          <li className="collection-item">
+          <li className="collection-item">  
             Next Election: {`${next_election}`} <br />
           </li>
           {
