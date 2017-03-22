@@ -45,15 +45,35 @@ class User < ApplicationRecord
     end
   end
 
-  def create_ties(state)
-    senators = Rep.where(state: state, title: 'Senator')
-    representatives = Rep.where(state: state, title: 'Representative').first
-    Tie.delete_all("user_id = #{self.id}")
-    self.ties.create(rep_id: senators.first.id)
-    self.ties.create(rep_id: senators.last.id)
-    self.ties.create(rep_id: representatives.id)
+  def create_ties(address)
+    # TODO: Add customs error messages
+    # result = { message: 'Created Ties', success: true }
+    success = true
+    begin
+      api_url = "https://www.googleapis.com/civicinfo/v2/representatives?"
+      address = "address=#{address}"
+      roles = "roles=legislatorLowerBody"
+      api_key = "key=#{ENV['GOOGLE_CIVIC_API_KEY']}"
+      request = "#{api_url}#{address}&#{api_key}&#{roles}"
+      response = HTTParty.get(request, format: :plain)
+      parsed = JSON.parse response, symbolize_names: true
+      division_id = parsed[:offices].first[:divisionId]
+      district = division_id.split(/cd:/).last
+      state = parsed[:normalizedInput][:state]
+      representative = Rep.where(district: district, state: state)
+      senators = Rep.where(state: state, title: 'Senator')
+      Tie.delete_all("user_id = #{self.id}")
+      self.ties.create(rep_id: senators.first.id)
+      self.ties.create(rep_id: senators.last.id)
+      self.ties.create(rep_id: representatives.id)
+    rescue => e
+      success = false
+      # check what is e if that gives a good error
+      # result = { message: e, success: false }
+    end
+    success
   end
-#TODO: create new ties for rep 
+
   private
     def set_twitter
       @client = Twitter::REST::Client.new do |config|

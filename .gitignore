@@ -19,6 +19,6 @@
 /public/webpack
 npm-debug.log
 
-coverage
+coverage/
 .env
 .DS_Store
