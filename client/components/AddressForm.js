@@ -2,7 +2,7 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 
 // TODO: refactor into presentational component
-class ZipcodeForm extends React.Component {
+class AddressForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -14,9 +14,9 @@ class ZipcodeForm extends React.Component {
       data: { address }
     }).done(data => {
       Materialize.toast('Address Updated', 3000);
-      this.props.zipcodeEntered();
+      this.props.addressEntered();
     }).fail( data => {
-      Materialize.toast('Invalid zipcode, Please try again', 3000);
+      Materialize.toast('Invalid address, Please try again', 3000);
     });
   }
 
@@ -24,15 +24,14 @@ class ZipcodeForm extends React.Component {
     return(
       <div>
         <span className='card-title center'>
-          Enter your zip code to see your elected officials.
+          Find your legislators by zip code or address.
         </span>
         <form className='center' onSubmit={this.handleSubmit}>
           <div className="row">
             <input
              ref={ n => this.address = n}
-             className="col s12 m6 offset-m1"
-             type='number'
-             placeholder='Zip code...'
+             className="col s12 m8 offset-m1"
+             placeholder='Zip code or Address'
              required
              autoFocus
             />
@@ -44,4 +43,4 @@ class ZipcodeForm extends React.Component {
   }
 }
 
-export default ZipcodeForm;
+export default AddressForm;

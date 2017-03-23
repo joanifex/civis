@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ZipcodeForm from './ZipcodeForm';
+import AddressForm from './AddressForm';
 import RepIndexCard from './RepIndexCard';
 import { updateReps } from '../actions/reps'
 
 class HomeCard extends React.Component {
-  state = { loading: true, editingZipcode: true };
+  state = { loading: true, editingAddress: true };
 
   componentWillMount = () => {
     this.props.dispatch(updateReps());
@@ -14,15 +14,15 @@ class HomeCard extends React.Component {
   componentDidMount = () => {
     if ( this.hasLoaded() )
       this.setState({ loading: false });
-    if ( this.hasZipcode() )
-      this.zipcodeEntered();
+    if ( this.hasAddress() )
+      this.addressEntered();
   }
 
   componentDidUpdate = () => {
     if ( this.state.loading && this.hasLoaded() )
       this.setState({ loading: false });
-    if ( this.state.editingZipcode && this.hasZipcode() ) {
-      this.zipcodeEntered();
+    if ( this.state.editingAddress && this.hasAddress() ) {
+      this.addressEntered();
     }
   }
 
@@ -30,14 +30,14 @@ class HomeCard extends React.Component {
     return this.props.reps[0] === 'loading' ? false : true;
   }
 
-  hasZipcode = () => {
+  hasAddress = () => {
     if ( this.props.reps.length === 0 || this.props.reps[0] === 'loading' )
       return false;
     return true;
   }
 
-  zipcodeEntered = () => {
-    this.setState({ editingZipcode: false });
+  addressEntered = () => {
+    this.setState({ editingAddress: false });
   }
 
   displayLoading = () => {
@@ -45,8 +45,8 @@ class HomeCard extends React.Component {
   }
 
   displayContent = () => {
-    if (this.state.editingZipcode)
-      return <ZipcodeForm zipcodeEntered={this.zipcodeEntered}/>;
+    if (this.state.editingAddress)
+      return <AddressForm addressEntered={this.addressEntered}/>;
     else
       return <RepIndexCard />;
   }
