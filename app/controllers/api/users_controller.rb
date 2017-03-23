@@ -28,7 +28,7 @@ class Api::UsersController < ApplicationController
   def update_address
     address = params["address"]
     if current_user.create_ties(address)
-      head :no_content         
+      head :no_content
     else
       render json: {errors: "ERROR"}, status: 400
     end
@@ -37,7 +37,7 @@ class Api::UsersController < ApplicationController
   def destroy
     User.find(params[:id]).destroy
   end
-  
+
 
   private
   def user_params
