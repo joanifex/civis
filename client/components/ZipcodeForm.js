@@ -6,22 +6,18 @@ class ZipcodeForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let zipcode = this.zipcode.value
-    if (/^\d{5}(-\d{4})?$/.test(zipcode)) {
-      $.ajax({
-        type: 'PATCH',
-        url: '/api/user/zipcode',
-        dataType: 'JSON',
-        data: {user: {zipcode}}
-      }).done(data => {
-        Materialize.toast('Zipcode Updated', 3000);
-        this.props.zipcodeEntered();
-      }).fail( data => {
-        Materialize.toast('Invalid zipcode, Please try again', 3000);
-      });
-    } else {
-      Materialize.toast('Please try again.' ,3000);
-    }
+    let address = this.address.value
+    $.ajax({
+      type: 'PATCH',
+      url: '/api/user/address',
+      dataType: 'JSON',
+      data: { address }
+    }).done(data => {
+      Materialize.toast('Address Updated', 3000);
+      this.props.zipcodeEntered();
+    }).fail( data => {
+      Materialize.toast('Invalid zipcode, Please try again', 3000);
+    });
   }
 
   render(){
@@ -33,12 +29,10 @@ class ZipcodeForm extends React.Component {
         <form className='center' onSubmit={this.handleSubmit}>
           <div className="row">
             <input
-             ref={ n => this.zipcode = n}
+             ref={ n => this.address = n}
              className="col s12 m6 offset-m1"
              type='number'
              placeholder='Zip code...'
-             // TODO: fix input pattern
-             pattern="(\d{5}([\-]\d{4})?)"
              required
              autoFocus
             />

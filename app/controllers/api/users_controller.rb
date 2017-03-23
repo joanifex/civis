@@ -26,15 +26,15 @@ class Api::UsersController < ApplicationController
     current_user.set_reps_pictures
   end
 
-  def update_zipcode
-    address = user_params["zipcode"]
+  def update_address
+    address = params["address"]
     if current_user.create_ties(address)
       head :no_content
     else
       render json: {errors: "ERROR"}, status: 400
     end
   end
-  
+
   private
   def user_params
     params.require(:user).permit(:zipcode, :first_name, :last_name)
