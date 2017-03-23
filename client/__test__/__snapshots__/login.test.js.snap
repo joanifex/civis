@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component is rendered 1`] = `
+<div
+  className="row"
+>
+  <div
+    className="col s12 m10 offset-m1 l8 offset-l2"
+  >
+    <div
+      className="card grey lighten-4"
+    >
+      <div
+        className="card-content black-text"
+      >
+        <span
+          className="card-title"
+        >
+          Login
+        </span>
+        <form
+          onSubmit={[Function]}
+        >
+          <div
+            className="input-field"
+          >
+            <i
+              className="fa fa-envelope-o prefix"
+            />
+            <input
+              className="icon_prefix"
+              id="email"
+              placeholder="Email"
+              required={true}
+              type="email"
+            />
+          </div>
+          <div
+            className="input-field"
+          >
+            <i
+              className="fa fa-unlock-alt prefix"
+            />
+            <input
+              className="icon_prefix"
+              placeholder="Password"
+              required={true}
+              type="password"
+            />
+          </div>
+          <input
+            className="btn"
+            type="submit"
+          />
+          <a
+            className="btn grey"
+            onClick={[Function]}
+            style={Object {}}
+          >
+            Sign Up
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
