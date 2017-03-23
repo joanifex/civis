@@ -15,7 +15,7 @@ class UserProfile extends React.Component {
       <div>
         <div>
           <h3>Welcome, {user.full_name} </h3>
-          <h5>Update Your Zipcode:</h5>
+          <h5>Update Your Address or Zipcode:</h5>
           <AddressForm />
           <h5>Update Your User Name:</h5>
           <UserNameForm user={user} />
@@ -24,11 +24,17 @@ class UserProfile extends React.Component {
           <button
             onClick={ () => { 
               if (confirm('Do you really want to delete your User Profile?'))
-                dispatch(deleteUser(user.id, this.props.history)) 
+                this.props.dispatch(deleteUser(user.id, this.props.history)) 
             }}
             className='btn blue-grey'
           >
           Delete User Profile
+          </button>
+          <br />
+          <button className='btn blue-grey'>
+            <Link to={'/'} className='white-text'>
+              Home
+            </Link>
           </button>
         </div>
       </div>
