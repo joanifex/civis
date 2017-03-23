@@ -21,6 +21,10 @@ class UserProfile extends React.Component {
           <UserNameForm user={user} />
         </div>
         <div>
+          <button className='btn blue-grey'>
+            <Link to={'/'} className='white-text'>Home</Link>
+          </button>
+          <br />
           <button
             onClick={ () => { 
               if (confirm('Do you really want to delete your User Profile?'))
