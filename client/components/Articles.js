@@ -1,33 +1,15 @@
 import React from 'react'
 
 class Articles extends React.Component {
-  state = { articles: [] }
-
-  componentWillMount() {
-    let url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-    url += '?' + $.param({
-      'api-key': "840fa537906e446e85d0f308393e3385",
-      'q': `\"${this.props.fullName}\"`,
-      'sort': "newest",
-      'fl': "web_url,pub_date,headline,lead_paragraph",
-      'hl': 'true',
-    });
-    $.ajax({
-      url: url,
-      method: 'GET',
-    }).done(data => {
-      let { docs } = data.response
-      this.setState({ articles: docs })
-    }).fail(err => {
-      console.log(err);
-    });
-  }
 
   displayArticles = () => {
-    return this.state.articles.map( (article, i) => {
+    let { articles } = this.props
+    return articles.map( (article, i) => {
       return(
         <li key={i} className="collection-item">
-          <a href={`${article.web_url}`} target="_blank">{article.headline.main}</a>
+          <a href={article.web_url} target="_blank">
+            {article.headline}
+          </a>
           <p>{article.lead_paragraph}</p>
           <p>{article.snippet}</p>
           <p>{article.pub_date}</p>

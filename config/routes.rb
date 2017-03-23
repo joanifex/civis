@@ -10,11 +10,11 @@ Rails.application.routes.draw do
   # API ROUTES
   namespace :api do
     get 'logged_in_user', to: 'users#logged_in_user'
-    get 'zipcode' ,to: 'users#zipcode'
     get 'user_reps', to: 'users#user_reps'
-    patch 'user/zipcode', to: 'users#update_zipcode'
+    patch 'user/address', to: 'users#update_address'
     put 'user_update', to: 'users#update_user'
     get 'show_user', to: 'users#show_user'
+    delete 'delete_user/:id', to: 'users#destroy'
   end
 
   # NO ROUTES BELOW THIS LINE -- React Router

@@ -46,6 +46,7 @@ class Rep extends React.Component {
           <div className="col s12 l8">
             <Articles
               fullName={rep.full_name}
+              articles={rep.articles}
             />
           </div>
         </div>

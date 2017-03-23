@@ -54,8 +54,7 @@ class User < ApplicationRecord
       request = "#{api_url}#{address}&#{api_key}&#{roles}"
       response = HTTParty.get(request, format: :plain)
       parsed = JSON.parse response, symbolize_names: true
-      division_id = parsed[:offices].first[:divisionId]
-      district = division_id.split(/cd:/).last
+      district = parsed[:offices].first[:divisionId].split(/cd:/).last
       state = parsed[:normalizedInput][:state]
       representative = Rep.find_by(district: district, state: state)
       senators = Rep.where(state: state, title: 'Senator')
