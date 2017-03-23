@@ -15,9 +15,9 @@ class Api::UsersController < ApplicationController
 
   def update_user
     if current_user.update(user_params)
-      render json: current_user
+      render :show_user
     else
-      render json: { errors: "Could Not Save Updates"}, status: 400
+      render json: { errors: "Could Not Save Updates" }, status: 400
     end
   end
 
@@ -34,13 +34,11 @@ class Api::UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-=======
   def destroy
     User.find(params[:id]).destroy
   end
   
->>>>>>> test-branch
+
   private
   def user_params
     params.require(:user).permit(:zipcode, :first_name, :last_name)

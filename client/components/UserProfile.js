@@ -7,7 +7,6 @@ import { updateUser, deleteUser } from '../actions/user';
 
 class UserProfile extends React.Component {
 
-// TODO: welcome w/ full_name method (in model and show_user.json.jbuilder)
 // TODO: add a change password form
 
   render() {

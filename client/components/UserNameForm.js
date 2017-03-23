@@ -7,6 +7,7 @@ const UserNameForm = ({ dispatch, user }) => {
 
     let firstName;
     let lastName;
+
     if(Object.keys(user).length > 2) {
       let { first_name, last_name } = user;
       return(
