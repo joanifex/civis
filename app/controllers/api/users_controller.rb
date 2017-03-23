@@ -4,14 +4,13 @@ class Api::UsersController < ApplicationController
 
   def logged_in_user
     if current_user
-      render json: current_user
+      render :show_user
     else
       render json: {}
     end
   end
 
   def show_user
-    current_user.full_name
   end
 
   def update_user
@@ -29,12 +28,19 @@ class Api::UsersController < ApplicationController
   def update_address
     address = params["address"]
     if current_user.create_ties(address)
-      head :no_content
+      head :no_content         
     else
       render json: {errors: "ERROR"}, status: 400
     end
   end
 
+<<<<<<< HEAD
+=======
+  def destroy
+    User.find(params[:id]).destroy
+  end
+  
+>>>>>>> test-branch
   private
   def user_params
     params.require(:user).permit(:zipcode, :first_name, :last_name)

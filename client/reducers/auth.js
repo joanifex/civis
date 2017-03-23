@@ -12,6 +12,8 @@ const auth = (state = {}, action) => {
         ...state,
         ...action.user
       }
+    case 'DELETE_USER':
+      return {}
     default:
      return state;
   }
