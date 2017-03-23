@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     patch 'user/zipcode', to: 'users#update_zipcode'
     put 'user_update', to: 'users#update_user'
     get 'show_user', to: 'users#show_user'
+    delete 'delete_user/:id', to: 'users#destroy'
   end
 
   # NO ROUTES BELOW THIS LINE -- React Router
