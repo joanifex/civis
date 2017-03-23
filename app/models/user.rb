@@ -49,12 +49,15 @@ class User < ApplicationRecord
     begin
       api_url = "https://www.googleapis.com/civicinfo/v2/representatives?"
       address = "address=#{address}"
-      roles = "roles=legislatorLowerBody"
       api_key = "key=#{ENV['GOOGLE_CIVIC_API_KEY']}"
-      request = "#{api_url}#{address}&#{api_key}&#{roles}"
+      levels = "levels=country"
+      offices = "includeOffices=false"
+      roles = "roles=legislatorLowerBody"
+      request = "#{api_url}#{address}&#{api_key}&#{levels}&#{offices}&#{roles}"
       response = HTTParty.get(request, format: :plain)
       parsed = JSON.parse response, symbolize_names: true
-      district = parsed[:offices].first[:divisionId].split(/cd:/).last
+      division = parsed[:divisions].keys.first.to_s.split(/cd:/)
+      district = division.class == Array ? division.last : "1"
       state = parsed[:normalizedInput][:state]
       representative = Rep.find_by(district: district, state: state)
       senators = Rep.where(state: state, title: 'Senator')

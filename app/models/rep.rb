@@ -114,7 +114,7 @@ class Rep < ApplicationRecord
       )
     end
     rescue => e
-      binding.pry
+      puts e
       puts "Could not find articles for #{self.full_name}"
     end
   end
