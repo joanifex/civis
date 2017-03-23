@@ -14,7 +14,8 @@ class AddressForm extends React.Component {
       data: { address }
     }).done(data => {
       Materialize.toast('Address Updated', 3000);
-      this.props.addressEntered();
+      if (this.props.addressEntered)
+        this.props.addressEntered();
     }).fail( data => {
       Materialize.toast('Invalid address, Please try again', 3000);
     });
