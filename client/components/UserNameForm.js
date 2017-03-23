@@ -12,30 +12,48 @@ const UserNameForm = ({ dispatch, user }) => {
       let { first_name, last_name } = user;
       return(
         <div>
-          <form className='center' onSubmit={ e => {
-            e.preventDefault();
-            dispatch(updateUser(firstName.value, lastName.value))
-            }}>
-            <div className="row">
-              <input
-              ref={ n => firstName = n}
-              className="col s12 m6 offset-m1"
-              type='text'
-              placeholder='First Name'
-              defaultValue={first_name}
-              required
-              autoFocus
-              />
-              <input
-              ref={ n => lastName = n}
-              className="col s12 m6 offset-m1"
-              type='text'
-              placeholder='Last Name'
-              defaultValue={last_name}
-              />
-              <input className='btn blue-grey' type='submit'/>
+          <div className="row">
+            <div className="col s12 m10 offset-m1 l8 offset-l2">
+              <div className="card grey lighten-4">
+                <div className="card-content black-text">
+                  <span className="card-title">Login</span>
+                    <form className='center' onSubmit={ e => {
+                      e.preventDefault();
+                      dispatch(updateUser(firstName.value, lastName.value))
+                      }}>
+
+                      <div className="row ">
+                        <div className='input-field'>
+                          <i className='fa fa-user-circle-o prefix'></i>
+                          <input
+                          ref={ n => firstName = n}
+                          className="icon_prefix"
+                          type='text'
+                          placeholder='First Name'
+                          defaultValue={first_name}
+                          required
+                          autoFocus
+                          />
+                        </div>
+
+                        <div className='input-field'>
+                          <i className='fa fa-user-circle-o prefix'></i>
+                          <input
+                          ref={ n => lastName = n}
+                          className="icon_prefix"
+                          type='text'
+                          placeholder='Last Name'
+                          defaultValue={last_name}
+                          />
+                          
+                          <input className='btn blue-grey' type='submit'/>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
-          </form>
         </div>
       )
     } else {
