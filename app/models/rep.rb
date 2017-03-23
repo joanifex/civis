@@ -95,7 +95,7 @@ class Rep < ApplicationRecord
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     uri.query = URI.encode_www_form({
-      "api-key" => "840fa537906e446e85d0f308393e3385",
+      "api-key" => ENV["NYT_API_KEY"],
       "q" => "\"#{self.full_name}\"",
       "sort" => "newest",
       "fl" => "web_url,pub_date,headline,lead_paragraph",
