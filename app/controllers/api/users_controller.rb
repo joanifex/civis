@@ -10,9 +10,6 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def show_user
-  end
-
   def update_user
     if current_user.update(user_params)
       render :show_user
