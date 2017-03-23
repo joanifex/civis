@@ -12,7 +12,7 @@ def create_article(rep)
     web_url: "https://www.google.com",
     snippet: Faker::Hipster.paragraph,
     pub_date: Faker::Date.backward(23),
-    headline: Faker::Hipster.sentence,
+    headline: "FAKE NEWS!",
     lead_paragraph: Faker::Hipster.paragraph
   )
 end
