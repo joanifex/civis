@@ -26,7 +26,13 @@ class Rep < ApplicationRecord
   end
 
   def full_party
-    self.party === "D" ? "Democrat" : "Republican"
+    if self.party === "D"
+      "Democrat"
+    elsif self.party === "R"
+      "Republican"
+    else
+      "Independent"
+    end 
   end
 
   def full_state
