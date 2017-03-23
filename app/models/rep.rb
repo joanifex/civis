@@ -30,7 +30,8 @@ class Rep < ApplicationRecord
   end
 
   def full_state
-    state_hash = {  AK: "Alaska",
+    state_hash = {
+      AK: "Alaska",
       AL: "Alabama",
       AR: "Arkansas",
       AS: "American Samoa",
@@ -86,12 +87,35 @@ class Rep < ApplicationRecord
       WV: "West Virginia",
       WY: "Wyoming"
     }
-    state_hash.each do |abbrv, full_state|
-      if (self.state == abbrv.to_s)
-        return full_state
-      end
-    end
+    state_hash[state.to_sym]
   end
 
-
+  def fetch_articles
+    uri = URI("https://api.nytimes.com/svc/search/v2/articlesearch.json")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    uri.query = URI.encode_www_form({
+      "api-key" => "840fa537906e446e85d0f308393e3385",
+      "q" => "\"#{self.full_name}\"",
+      "sort" => "newest",
+      "fl" => "web_url,pub_date,headline,lead_paragraph",
+      "hl" => "true"
+    })
+    begin
+      request = Net::HTTP::Get.new(uri.request_uri)
+      articles = JSON.parse(http.request(request).body)["response"]["docs"]
+      articles.each do |article|
+      self.articles.create(
+        web_url: article["web_url"],
+        snippet: article["snippet"],
+        pub_date: article["pub_date"],
+        headline: article["headline"]["main"],
+        lead_paragraph: article["lead_paragraph"]
+      )
+    end
+    rescue => e
+      binding.pry
+      puts "Could not find articles for #{self.full_name}"
+    end
+  end
 end
