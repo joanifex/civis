@@ -19,5 +19,23 @@ FactoryGirl.define do
     state "ND"
     party "D"
     profile_url "http://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3_normal.png"
+
+    factory :senator_from_utah do
+      state "UT"
+      title "Senator"
+    end
+
+    factory :senator2_from_utah do
+      state "UT"
+      title "Senator"
+    end
+
+    factory :representative_from_utah do
+      state "UT"
+      title "Representative"
+      district "2"
+    end
+
+
   end
 end
