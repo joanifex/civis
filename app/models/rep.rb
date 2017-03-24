@@ -109,17 +109,25 @@ class Rep < ApplicationRecord
     })
     begin
       request = Net::HTTP::Get.new(uri.request_uri)
-      articles = JSON.parse(http.request(request).body)["response"]["docs"]
+      json = JSON.parse(http.request(request).body)
+      articles = []
+      if json["response"] && json["response"]["docs"]
+        articles = json["response"]["docs"]
+      end
+      @article_count = 0
       articles.each do |article|
-      self.articles.create(
-        web_url: article["web_url"],
-        snippet: article["snippet"],
-        pub_date: article["pub_date"],
-        headline: article["headline"]["main"],
-        lead_paragraph: article["lead_paragraph"]
-      )
-    end
+        self.articles.create(
+          web_url: article["web_url"],
+          snippet: article["snippet"],
+          pub_date: article["pub_date"],
+          headline: article["headline"]["main"],
+          lead_paragraph: article["lead_paragraph"]
+        )
+        @article_count += 1
+      end
+      puts "Created #{@article_count} Articles for #{self.full_name}"
     rescue => e
+      binding.pry
       puts e
       puts "Could not make articles for #{self.full_name}"
     end
