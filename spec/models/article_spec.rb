@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-  describe attributes do
+  describe "attributes" do
     it { should respond_to(:web_url) }
     it { should respond_to(:snippet) }
     it { should respond_to(:pub_date) }
