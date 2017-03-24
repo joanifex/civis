@@ -25,6 +25,7 @@ RSpec.describe Rep, type: :model do
     it { should respond_to(:next_election) }
     it { should respond_to(:twitter_account) }
     it { should respond_to(:profile_url) }
+    it { should respond_to(:atricles) }
   end
 
   describe 'validations' do
@@ -45,7 +46,7 @@ RSpec.describe Rep, type: :model do
     end
 
     it 'gives full name' do
-      expect(@rep.full_name).to eq("#{@rep.first_name} #{@rep.last_name}")
+      expect(@rep.full_name).to eq("Ian Wright")
     end
 
     it 'makes rep profile picture large' do
@@ -55,10 +56,20 @@ RSpec.describe Rep, type: :model do
 
     it 'gives full party name' do
       expect(@rep.full_party).to eq("Democrat")
+      rep2 = FactoryGirl.create(:rep, party: "R")
+      expect(rep2.full_party).to eq("Republican")
+      rep3 = FactoryGirl.create(:rep, party: "I")
+      expect(rep3.full_party).to eq("Independent")
+
     end
 
     it 'changes state abbreviation to states full name' do
       expect(@rep.full_state).to eq("North Dakota")
+    end
+
+    it 'fetches articles for the representatives' do
+
+      expect(@rep.fetch_articles).to eq(article)
     end
   end
 end

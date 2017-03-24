@@ -36,11 +36,11 @@ RSpec.describe User, type: :model do
 
   describe 'instance methods' do
     before(:each) do
-      @user = FactoryGirl.create(:user)
+      @user = FactoryGirl.create(:user_with_reps)
     end
 
     it 'gives full name' do
-      expect(@user.full_name).to eq("#{@user.first_name} #{@user.last_name}")
+      expect(@user.full_name).to eq("Lindsay Larkin")
     end
 
     it 'sets the rep profile picture' do
@@ -56,8 +56,19 @@ RSpec.describe User, type: :model do
       expect(@user.reps.last.profile_url).to eq(profile_picture)
     end
 
-    it 'creates representative ties with valid address' do
-      #TODO: finish this 
+    context "@user.create_ties" do
+      it "sets the address parameter with the address argument" do
+        expect(@user.reps.first.first_name).to eq("Ian")
+        FactoryGirl.create(:senator_from_utah)
+        FactoryGirl.create(:senator2_from_utah)
+        FactoryGirl.create(:representative_from_utah)
+        @user.create_ties("84103")
+      end
+    end
+
+    it 'fails to set the address parameter with the address argument' do
+      @user.create_ties("84")
+      expect().to eq("false")
     end
   end
 end

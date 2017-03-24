@@ -47,21 +47,13 @@ class User < ApplicationRecord
     # result = { message: 'Created Ties', success: true }
     success = true
     begin
-      api_url = "https://www.googleapis.com/civicinfo/v2/representatives?"
-      address = "address=#{address}"
-      api_key = "key=#{ENV['GOOGLE_CIVIC_API_KEY']}"
-      levels = "levels=country"
-      offices = "includeOffices=false"
-      roles = "roles=legislatorLowerBody"
-      request = "#{api_url}#{address}&#{api_key}&#{levels}&#{offices}&#{roles}"
-      response = HTTParty.get(request, format: :plain)
-      parsed = JSON.parse response, symbolize_names: true
+      parsed = fetch_civic_info(address)
       division = parsed[:divisions].keys.first.to_s.split(/cd:/)
       district = division.length == 1 ? "1" : division.last
       state = parsed[:normalizedInput][:state]
       representative = Rep.find_by(district: district, state: state)
       senators = Rep.where(state: state, title: 'Senator')
-      Tie.delete_all("user_id = #{self.id}")
+      Tie.where(user_id: "#{self.id}").delete_all
       self.ties.create(rep_id: senators.first.id)
       self.ties.create(rep_id: senators.last.id)
       self.ties.create(rep_id: representative.id)
@@ -79,5 +71,17 @@ class User < ApplicationRecord
         config.consumer_key = ENV['TWITTER_API_KEY']
         config.consumer_secret = ENV['TWITTER_SECRET']
       end
+    end
+
+    def fetch_civic_info(address)
+      api_url = "https://www.googleapis.com/civicinfo/v2/representatives?"
+      address = "address=#{address}"
+      api_key = "key=#{ENV['GOOGLE_CIVIC_API_KEY']}"
+      levels = "levels=country"
+      offices = "includeOffices=false"
+      roles = "roles=legislatorLowerBody"
+      request = "#{api_url}#{address}&#{api_key}&#{levels}&#{offices}&#{roles}"
+      response = HTTParty.get(request, format: :plain)
+      JSON.parse response, symbolize_names: true
     end
 end
