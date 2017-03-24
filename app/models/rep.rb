@@ -32,7 +32,7 @@ class Rep < ApplicationRecord
       "Republican"
     else
       "Independent"
-    end 
+    end
   end
 
   def full_state
@@ -121,7 +121,7 @@ class Rep < ApplicationRecord
     end
     rescue => e
       puts e
-      puts "Could not find articles for #{self.full_name}"
+      puts "Could not make articles for #{self.full_name}"
     end
   end
 end
