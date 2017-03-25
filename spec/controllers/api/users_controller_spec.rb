@@ -39,10 +39,11 @@ RSpec.describe Api::UsersController, type: :controller do
       end
 
       it 'fails to update user with invalid params' do
-        patch :update_user, {user: {first_name: 'Jeremy', last_name: '' } }
+        patch :update_user, { user: {first_name: '', last_name: 'Cram' } }
         current_user = JSON.parse(response.body)
-        @user.reload
-        expect(User.count).to eq(0)
+        expect(current_user.keys).to eq(['errors'])
+        expect(current_user['errors']).to include("Could Not Save Updates")
+        expect(current_user['first_name']).to_not eq(@user.first_name)
       end
     end
   end
@@ -56,11 +57,7 @@ RSpec.describe Api::UsersController, type: :controller do
         expect(response).to have_http_status(:success)
       end
 
-      it 'calls the sets_reps_pictures method on the current user' do
-        # expect the users reps to not have profile_urls
-        # get :user_reps, format: :json
-        # expect the users reps to have profile_urls
-      end
+      # TODO: call this method somewhere more superiorer
 
       it 'render JSON of the users reps' do
         get :user_reps, format: :json
@@ -68,6 +65,23 @@ RSpec.describe Api::UsersController, type: :controller do
         reps = parsed["reps"]
         expect(reps.first['id']).to eq(@user.reps.first.id)
         expect(reps.count).to eq(@user.reps.count)
+      end
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    context 'logged in user' do
+      login_user
+
+      it 'destroys the user' do
+        delete :destroy, params: {id: @user.id}
+        binding.pry
+        @user.destroy
+        expect(User.count).to eq(0)
+      end
+
+      it 'redirects to the home page' do
+        expect(response).to redirect_to(root_url)
       end
     end
   end

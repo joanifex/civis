@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     get 'user_reps', to: 'users#user_reps'
     patch 'user/address', to: 'users#update_address'
     put 'user_update', to: 'users#update_user'
-    get 'show_user', to: 'users#show_user'
     delete 'delete_user/:id', to: 'users#destroy'
   end
 

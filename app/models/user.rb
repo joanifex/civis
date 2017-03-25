@@ -27,6 +27,7 @@ class User < ApplicationRecord
 
   has_many :ties, dependent: :destroy
   has_many :reps, through: :ties
+  validates_presence_of :first_name 
 
   def full_name
     "#{first_name} #{last_name}"

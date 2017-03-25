@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
     if current_user.update(user_params)
       render :current_user
     else
-      render json: { errors: "Could Not Save Updates" }, status: 400
+      render json: { errors: "Could Not Save Updates #{current_user.errors.full_messages.to_sentence}" }, status: 400
     end
   end
 
