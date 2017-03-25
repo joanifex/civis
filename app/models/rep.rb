@@ -98,6 +98,7 @@ class Rep < ApplicationRecord
 
   def fetch_articles
     url = "https://api.nytimes.com/svc/search/v2/articlesearch.json"
+    # TODO: Improve this query. Gets back any article with a matching name.
     params = {
       "api-key" => ENV["NYT_API_KEY"],
       "q" => "\"#{self.full_name}\"",

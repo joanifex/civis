@@ -27,6 +27,14 @@ class Api::UsersController < ApplicationController
 
   def update_address
     address = params["address"]
+    coords = params["coords"]
+    # TODO: Refactor into helper?
+    if ["lat", "lng"].all? { |key| coords.key? key }
+      url = 'https://maps.googleapis.com/maps/api/geocode/json?'
+      key = ENV["GOOGLE_MAPS_API_KEY"]
+      response = HTTParty.get("#{url}latlng=#{coords["lat"]},#{coords["lng"]}&key=#{key}")
+      address = response["results"].first["formatted_address"]
+    end
     if current_user.create_ties(address)
       head :no_content
     else
@@ -36,10 +44,6 @@ class Api::UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-  end
-
-  def geolocate
-    
   end
 
   private
