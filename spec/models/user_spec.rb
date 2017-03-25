@@ -66,9 +66,6 @@ RSpec.describe User, type: :model do
       end
     end
 
-    it 'fails to set the address parameter with the address argument' do
-      @user.create_ties("84")
-      expect().to eq("false")
-    end
+    it 'fails to set the address parameter with the address argument'
   end
 end
