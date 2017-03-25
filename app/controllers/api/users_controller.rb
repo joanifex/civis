@@ -38,9 +38,12 @@ class Api::UsersController < ApplicationController
     User.find(params[:id]).destroy
   end
 
+  def geolocate
+    
+  end
 
   private
-  def user_params
-    params.require(:user).permit(:first_name, :last_name)
-  end
+    def user_params
+      params.require(:user).permit(:first_name, :last_name)
+    end
 end
