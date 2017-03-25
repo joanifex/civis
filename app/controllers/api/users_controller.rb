@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
 
   def logged_in_user
     if current_user
-      render :show_user
+      render :current_user
     else
       render json: {}
     end
@@ -12,9 +12,9 @@ class Api::UsersController < ApplicationController
 
   def update_user
     if current_user.update(user_params)
-      render :show_user
+      render :current_user
     else
-      render json: { errors: "Could Not Save Updates" }, status: 400
+      render json: { errors: "Could Not Save Updates #{current_user.errors.full_messages.to_sentence}" }, status: 400
     end
   end
 
