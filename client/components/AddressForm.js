@@ -23,7 +23,7 @@ class AddressForm extends React.Component {
     }
   }
 
-  updateAddress = ({ address = "", coords = [] }) => {
+  updateAddress = ({ address = "", coords = "" }) => {
     $.ajax({
       type: 'PATCH',
       url: `/api/user/address`,
