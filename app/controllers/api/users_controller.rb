@@ -28,8 +28,9 @@ class Api::UsersController < ApplicationController
   def update_address
     address = params["address"]
     coords = params["coords"]
-    # TODO: Refactor into helper?
-    if ["lat", "lng"].all? { |key| coords.key? key }
+    # TODO: Refactor this condition? does not equal string is not strong enough
+    if coords.class != String && ["lat", "lng"].all? { |key| coords.key? key }
+      # TODO: Refactor into helper?
       url = 'https://maps.googleapis.com/maps/api/geocode/json?'
       key = ENV["GOOGLE_MAPS_API_KEY"]
       response = HTTParty.get("#{url}latlng=#{coords["lat"]},#{coords["lng"]}&key=#{key}")
