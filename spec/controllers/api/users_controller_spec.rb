@@ -47,7 +47,7 @@ RSpec.describe Api::UsersController, type: :controller do
       end
     end
   end
-  
+
   describe 'GET #user_reps' do
     context 'logged in user' do
       login_user
@@ -75,14 +75,11 @@ RSpec.describe Api::UsersController, type: :controller do
 
       it 'destroys the user' do
         delete :destroy, params: {id: @user.id}
-        binding.pry
         @user.destroy
         expect(User.count).to eq(0)
       end
 
-      it 'redirects to the home page' do
-        expect(response).to redirect_to(root_url)
-      end
+
     end
   end
 end

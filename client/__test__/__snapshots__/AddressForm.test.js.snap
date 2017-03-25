@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressForm is rendered 1`] = `
+<div>
+  <span
+    className="card-title center"
+  >
+    Find your legislators by zip code or address.
+  </span>
+  <form
+    className="center"
+    onSubmit={[Function]}
+  >
+    <div
+      className="row"
+    >
+      <input
+        autoFocus={true}
+        className="col s12 m8 offset-m1"
+        placeholder="Zip code or Address"
+        required={true}
+      />
+      <input
+        className="btn blue-grey"
+        type="submit"
+      />
+    </div>
+  </form>
+</div>
+`;
