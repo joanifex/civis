@@ -6,7 +6,7 @@ class AddressForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     let address = this.address.value
-    this.updateAddress(address)
+    this.updateAddress({address})
   }
 
   geolocate = () => {
@@ -16,30 +16,19 @@ class AddressForm extends React.Component {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        console.log(coords);
-        let url = 'https://maps.googleapis.com/maps/api/geocode/json?'
-        let key = 'AIzaSyCk8j46oOc98pfId6TdgvjgDqCcEkJxB40'
-        $.ajax({
-          url: `${url}latlng=${coords.lat},${coords.lng}&key=${key}`,
-          type: 'GET'
-        }).done( data => {
-          let address = data.results[0].formatted_address;
-          this.updateAddress(address);
-        }).fail( err => {
-          Materialize.toast('Error');
-        });
+        this.updateAddress({coords})
       });
     } else {
       Materialize.toast("Can't Geolocate.")
     }
   }
 
-  updateAddress = (address) => {
+  updateAddress = ({ address = "", coords = [] }) => {
     $.ajax({
       type: 'PATCH',
       url: `/api/user/address`,
       dataType: 'JSON',
-      data: { address }
+      data: { address, coords }
     }).done(data => {
       Materialize.toast('Address Updated', 3000);
       if (this.props.addressEntered)
