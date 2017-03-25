@@ -1,10 +1,10 @@
 import React from 'react';
-import AboutUs from '../components/AboutUs.js';
+import Footer from '../components/Footer.js';
 import renderer from 'react-test-renderer';
 
-test('AboutUs Component is rendered', () => {
+test('Footer component is rendered',  () => {
   const component = renderer.create(
-      <AboutUs />
+    <Footer />
   );
 
   let tree = component.toJSON();

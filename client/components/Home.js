@@ -5,7 +5,7 @@ import HomeCard from './HomeCard';
 import AboutUs from './AboutUs';
 import Footer from './Footer';
 import ParallaxContainer from './ParallaxContainer';
-import { s } from './styles.scss';
+
 
 class Home extends React.Component {
 

@@ -1,12 +1,14 @@
 import React from 'react';
-import Articles from '../components/Articles.js';
+import Home from '../components/Home';
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import store from './helpers/store';
 
-test('Component is rendered', () => {
+test( 'Home component is rendered', () => {
   const component = renderer.create(
-    <Articles articles={[]}/>
+    <Provider store={store({})}>
+      <Home />
+    </Provider>
   );
 
   let tree = component.toJSON();

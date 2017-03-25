@@ -26,5 +26,11 @@ exports[`AddressForm is rendered 1`] = `
       />
     </div>
   </form>
+  <button
+    className="btn"
+    onClick={[Function]}
+  >
+    Geolocate
+  </button>
 </div>
 `;

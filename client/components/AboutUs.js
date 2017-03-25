@@ -1,5 +1,4 @@
 import React from 'react';
-import { emailIcon } from './styles.scss';
 
 class AboutUs extends React.Component{
 
@@ -11,7 +10,7 @@ class AboutUs extends React.Component{
     return(
       <div className='row'>
         <h1 className='center'>Our Team</h1>
-        
+
         <div className='col s12 m6 l3'>
           <h5 className='center'>Ian Wright</h5>
           <br />
@@ -35,7 +34,7 @@ class AboutUs extends React.Component{
             />
           </a>
         </div>
-          
+
         <div className='col s12 m6 l3'>
           <h5 className='center'>Jeremy Cram</h5>
           <br />
@@ -58,7 +57,7 @@ class AboutUs extends React.Component{
             />
           </a>
         </div>
-       
+
         <div className='col s12 m6 l3'>
           <h5 className='center'>Lindsay Larkin</h5>
           <br />
@@ -82,7 +81,7 @@ class AboutUs extends React.Component{
             />
           </a>
         </div>
-        
+
         <div className='col s12 m6 l3'>
           <h5 className='center'>Valerie Barela</h5>
           <br />

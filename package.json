@@ -4,6 +4,13 @@
   "version": "0.0.1",
   "license": "MIT",
   "engine": "node >= 0.4.1",
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/client/__tests__/__mocks__/fileMock.js",
+      "\\.(css|scss)$": "<rootDir>/client/__tests__/__mocks__/styleMock.js"
+    },
+    "testRegex": "test.js$"
+  },
   "scripts": {
     "dev_server": "./node_modules/.bin/webpack-dev-server --config config/webpack.config.js",
     "build": "webpack --config=config/webpack.config.js -p",
@@ -49,6 +56,7 @@
     "babel-jest": "^19.0.0",
     "babel-plugin-transform-class-properties": "^6.23.0",
     "enzyme": "^2.7.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^19.0.2",
     "react-addons-test-utils": "^15.4.1",
     "react-shallow-renderer": "^1.1.4",
