@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   namespace :api do
     get 'logged_in_user', to: 'users#logged_in_user'
     get 'user_reps', to: 'users#user_reps'
+    get 'reps', to: 'reps#index'
     patch 'user/address', to: 'users#update_address'
     put 'user_update', to: 'users#update_user'
     delete 'delete_user/:id', to: 'users#destroy'
