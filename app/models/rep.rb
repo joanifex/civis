@@ -1,4 +1,4 @@
-# == Schema Information
+  # == Schema Information
 #
 # Table name: reps
 #
@@ -97,24 +97,20 @@ class Rep < ApplicationRecord
   end
 
   def fetch_articles
-    uri = URI("https://api.nytimes.com/svc/search/v2/articlesearch.json")
-    http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
-    uri.query = URI.encode_www_form({
+    url = "https://api.nytimes.com/svc/search/v2/articlesearch.json"
+    params = {
       "api-key" => ENV["NYT_API_KEY"],
       "q" => "\"#{self.full_name}\"",
       "sort" => "newest",
       "fl" => "web_url,pub_date,headline,lead_paragraph",
       "hl" => "true"
-    })
+    }
+    attempts = 0
+    # TODO: refactor with HTTParty
     begin
-      request = Net::HTTP::Get.new(uri.request_uri)
-      json = JSON.parse(http.request(request).body)
-      articles = []
-      if json["response"] && json["response"]["docs"]
-        articles = json["response"]["docs"]
-      end
-      @article_count = 0
+      response = HTTP.get(url, params: params).to_s
+      parsed = JSON.parse(response)
+      articles = parsed["response"]["docs"]
       articles.each do |article|
         self.articles.create(
           web_url: article["web_url"],
@@ -123,12 +119,12 @@ class Rep < ApplicationRecord
           headline: article["headline"]["main"],
           lead_paragraph: article["lead_paragraph"]
         )
-        @article_count += 1
       end
-      puts "Created #{@article_count} Articles for #{self.full_name}"
+      puts "Created Articles for #{self.full_name}"
     rescue => e
-      binding.pry
-      puts e
+      # TODO: this is unsafe? improve it
+      attempts += 1
+      fetch_articles unless attempts > 5
       puts "Could not make articles for #{self.full_name}"
     end
   end

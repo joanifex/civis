@@ -18,7 +18,8 @@ gem 'materialize-sass', '~> 0.98.0'
 gem 'httparty', '~> 0.14.0'
 gem 'font-awesome-rails', '~> 4.7.0.1'
 gem 'twitter', '~> 6.1.0'
-gem 'faker'
+gem 'faker', '~> 1.7.3'
+gem 'http', '~> 2.2.1'
 
 group :development, :test do
   gem 'pry'

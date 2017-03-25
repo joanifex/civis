@@ -58,6 +58,7 @@ GEM
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
+    curb (0.9.3)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
     devise (4.2.1)
@@ -271,12 +272,15 @@ PLATFORMS
 DEPENDENCIES
   annotate
   capybara
+  curb
   database_cleaner
   devise
   dotenv-rails
   factory_girl_rails
   faker
+  faraday
   font-awesome-rails (~> 4.7.0.1)
+  http
   httparty (~> 0.14.0)
   jbuilder (~> 2.5)
   jquery-rails
