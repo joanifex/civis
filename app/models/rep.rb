@@ -124,8 +124,9 @@ class Rep < ApplicationRecord
       puts "Created Articles for #{self.full_name}"
     rescue => e
       # TODO: this is unsafe? improve it
-      attempts += 1
-      fetch_articles unless attempts > 5
+      # Column on the Rep model: failed_attempts
+      # self.update(failed_attempts: self.failed_attempts + 1)
+      # fetch_articles unless self.failed_attempts > 5
       puts "Could not make articles for #{self.full_name}"
     end
   end
