@@ -11,3 +11,7 @@ export const updateReps = () => {
     });
   }
 }
+
+export const resetReps = () => {
+  return ({ type: 'RESET_REPS'})
+}
