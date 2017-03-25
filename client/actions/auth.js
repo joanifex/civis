@@ -1,5 +1,6 @@
 import { browserHistory } from 'react-router';
 import { setFlash } from './flash';
+import { resetReps } from './reps'
 
 const logout = () => {
   return { type: 'LOGOUT' }
@@ -33,6 +34,7 @@ export const handleLogout = () => {
       dataType: 'JSON'
     }).done( data => {
       dispatch(logout());
+      dispatch(resetReps());
       browserHistory.push('/');
     }).fail( data => {
       dispatch(setFlash('Error Logging Out.', 'error'));
