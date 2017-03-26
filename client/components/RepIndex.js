@@ -1,16 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { updateReps } from '../actions/reps';
 import { Link } from 'react-router';
 
-class RepIndex extends React.Component {
+const RepIndex = ({reps}) => {
 
-  componentWillMount = () => {
-    this.props.dispatch(updateReps());
-  }
-
-  displayReps = () => {
-    return this.props.reps.map( (rep) => {
+  let displayReps = () => {
+    return reps.map( (rep) => {
       return(
         <li key={rep.id} className="collection-item avatar">
           <img src={rep.profile_url} alt="" className="circle" />
@@ -29,16 +23,12 @@ class RepIndex extends React.Component {
     });
   }
 
-  render(){
-    return(
-      <ul className="collection">
-        {this.displayReps()}
-      </ul> );
-  }
+  // TODO: add button to switch to address form
+  return(
+    <ul className="collection">
+      {displayReps()}
+    </ul>
+  );
 }
 
-const mapStateToProps = (state) => {
-  return {reps: state.reps}
-}
-
-export default connect(mapStateToProps)(RepIndex);
+export default RepIndex;

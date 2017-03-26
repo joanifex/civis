@@ -1,17 +1,7 @@
-export const updateReps = () => {
-  return (dispatch) => {
-    $.ajax({
-      url: '/api/user_reps',
-      type: 'GET',
-      dataType: 'JSON'
-    }).done( userData => {
-      dispatch({ type: 'UPDATE_REPS', reps: userData.reps });
-    }).fail( data => {
-      console.log(data);
-    });
-  }
+export const updateReps = (reps) => {
+  return ({ type: 'UPDATE_REPS', reps });
 }
 
 export const resetReps = () => {
-  return ({ type: 'RESET_REPS'})
+  return ({ type: 'RESET_REPS'});
 }

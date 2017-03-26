@@ -1,12 +1,14 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+import { updateReps } from '../actions/reps';
 
 class AddressForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
     let address = this.address.value
-    this.updateAddress({address})
+    this.findReps({address})
   }
 
   geolocate = () => {
@@ -16,23 +18,26 @@ class AddressForm extends React.Component {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        this.updateAddress({coords})
+        this.findReps({coords})
       });
     } else {
       Materialize.toast("Can't Geolocate.")
     }
   }
 
-  updateAddress = ({ address = "", coords = "" }) => {
+  findReps = ({ address = "", coords = "" }) => {
     $.ajax({
-      type: 'PATCH',
-      url: `/api/user/address`,
+      type: 'GET',
+      url: `/api/reps`,
       dataType: 'JSON',
       data: { address, coords }
     }).done(data => {
-      Materialize.toast('Address Updated', 3000);
+      this.props.dispatch(updateReps(data.reps));
+      // TODO: refactor this
       if (this.props.addressEntered)
         this.props.addressEntered();
+      else
+        browserHistory.push('/');
     }).fail( data => {
       Materialize.toast('Invalid address, Please try again', 3000);
     });
@@ -42,7 +47,7 @@ class AddressForm extends React.Component {
     return(
       <div>
         <span className='card-title center'>
-          Find your legislators by zip code or address.
+          Find your legislators by zip code or address
         </span>
         <form className='center' onSubmit={this.handleSubmit}>
           <div className="row">
@@ -62,4 +67,4 @@ class AddressForm extends React.Component {
   }
 }
 
-export default AddressForm;
+export default connect()(AddressForm);

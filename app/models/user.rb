@@ -27,12 +27,13 @@ class User < ApplicationRecord
 
   has_many :ties, dependent: :destroy
   has_many :reps, through: :ties
-  validates_presence_of :first_name 
+  validates_presence_of :first_name
 
   def full_name
     "#{first_name} #{last_name}"
   end
 
+  # TODO: FIX THIS METHOD. Not good. Bad. Goes somewhere else. 
   def set_reps_pictures
     set_twitter
     self.reps.each do |rep|
@@ -43,27 +44,10 @@ class User < ApplicationRecord
     end
   end
 
-  def create_ties(address)
-    # TODO: Add customs error messages
-    # result = { message: 'Created Ties', success: true }
-    success = true
-    begin
-      parsed = fetch_civic_info(address)
-      division = parsed[:divisions].keys.first.to_s.split(/cd:/)
-      district = division.length == 1 ? "1" : division.last
-      state = parsed[:normalizedInput][:state]
-      representative = Rep.find_by(district: district, state: state)
-      senators = Rep.where(state: state, title: 'Senator')
-      Tie.where(user_id: "#{self.id}").delete_all
-      self.ties.create(rep_id: senators.first.id)
-      self.ties.create(rep_id: senators.last.id)
-      self.ties.create(rep_id: representative.id)
-    rescue => e
-      success = false
-      # check what is e if that gives a good error
-      # result = { message: e, success: false }
-    end
-    success
+  def create_ties(reps)
+    # TODO: should this method go somewhere else?
+    self.ties.delete_all
+    reps.each { |rep| self.ties.create(rep_id: rep.id) }
   end
 
   private
@@ -72,17 +56,5 @@ class User < ApplicationRecord
         config.consumer_key = ENV['TWITTER_API_KEY']
         config.consumer_secret = ENV['TWITTER_SECRET']
       end
-    end
-
-    def fetch_civic_info(address)
-      api_url = "https://www.googleapis.com/civicinfo/v2/representatives?"
-      address = "address=#{address}"
-      api_key = "key=#{ENV['GOOGLE_CIVIC_API_KEY']}"
-      levels = "levels=country"
-      offices = "includeOffices=false"
-      roles = "roles=legislatorLowerBody"
-      request = "#{api_url}#{address}&#{api_key}&#{levels}&#{offices}&#{roles}"
-      response = HTTParty.get(request, format: :plain)
-      JSON.parse response, symbolize_names: true
     end
 end

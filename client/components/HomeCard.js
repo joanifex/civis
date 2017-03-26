@@ -1,43 +1,48 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AddressForm from './AddressForm';
-import RepIndexCard from './RepIndexCard';
 import { updateReps } from '../actions/reps'
+import AddressForm from './AddressForm';
+import RepIndex from './RepIndex';
 
 class HomeCard extends React.Component {
-  state = { loading: true, editingAddress: true };
-
-  componentWillMount = () => {
-    this.props.dispatch(updateReps());
-  }
+  state = { loading: true, showingReps: false };
 
   componentDidMount = () => {
     if ( this.hasLoaded() )
-      this.setState({ loading: false });
-    if ( this.hasAddress() )
-      this.addressEntered();
+      this.setNotLoading();
+    if ( this.hasReps() )
+      this.setShowingReps();
   }
 
   componentDidUpdate = () => {
     if ( this.state.loading && this.hasLoaded() )
-      this.setState({ loading: false });
-    if ( this.state.editingAddress && this.hasAddress() ) {
-      this.addressEntered();
-    }
+      this.setNotLoading();
+    if ( !this.state.showingReps && this.hasReps() )
+      this.setShowingReps();
+    if ( this.state.showingReps && !this.hasReps() )
+      this.setNotShowingReps();
   }
 
   hasLoaded = () => {
     return this.props.reps[0] === 'loading' ? false : true;
   }
 
-  hasAddress = () => {
-    if ( this.props.reps.length === 0 || this.props.reps[0] === 'loading' )
-      return false;
-    return true;
+  hasReps = () => {
+    if ( this.hasLoaded() && this.props.reps.length !== 0 )
+      return true;
+    return false;
   }
 
-  addressEntered = () => {
-    this.setState({ editingAddress: false });
+  setNotLoading = () => {
+    this.setState({ loading: false });
+  }
+
+  setShowingReps = () => {
+    this.setState({ showingReps: true });
+  }
+
+  setNotShowingReps = () => {
+    this.setState({ showingReps: false });
   }
 
   displayLoading = () => {
@@ -45,10 +50,10 @@ class HomeCard extends React.Component {
   }
 
   displayContent = () => {
-    if (this.state.editingAddress)
-      return <AddressForm addressEntered={this.addressEntered}/>;
+    if (this.state.showingReps)
+      return <RepIndex reps={this.props.reps}/>;
     else
-      return <RepIndexCard />;
+      return <AddressForm addressEntered={this.setShowingReps}/>;
   }
 
   render() {

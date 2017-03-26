@@ -1,4 +1,10 @@
-json.reps current_user.reps do |rep|
+json.first_name current_user.first_name
+json.last_name current_user.last_name
+json.full_name current_user.full_name
+json.id current_user.id
+json.email current_user.email
+# TODO: refactor to reuse index.jbuilder?
+json.reps current_user.reps.each do |rep|
   json.first_name rep.first_name
   json.last_name rep.last_name
   json.full_name rep.full_name
@@ -13,5 +19,5 @@ json.reps current_user.reps do |rep|
   json.profile_url rep.profile_url
   json.profile_large_url rep.profile_large_url
   json.district rep.district
-  json.articles rep.articles 
+  json.articles rep.articles
 end

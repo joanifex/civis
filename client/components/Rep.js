@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateReps } from '../actions/reps';
 
 // Components
 import RepContact from './RepContact';
@@ -8,19 +7,21 @@ import RepInfo from './RepInfo';
 import RepHeader from './RepHeader';
 import Articles from './Articles';
 
+// TODO: Redirect to home on refresh if no current session
 class Rep extends React.Component {
   state = { loading: true }
 
-  componentWillMount = () => {
-      this.props.dispatch(updateReps());
-  }
-
-  componentDidUpdate = () => {
-    if (this.state.loading)
+  componentDidMount = () => {
+    if (this.props.rep)
       this.setState({ loading: false });
   }
 
-  displayRepData = () => {
+  componentDidUpdate = () => {
+    if (this.state.loading && this.props.rep)
+      this.setState({ loading: false });
+  }
+
+  displayRep = () => {
     let { rep } = this.props;
     return (
       <div>
@@ -55,15 +56,10 @@ class Rep extends React.Component {
   }
 
   render = () => {
-    if ( this.state.loading ) {
+    if ( this.state.loading )
       return( <p>Loading</p> );
-    } else {
-      return (
-        <div>
-          { this.displayRepData() }
-        </div>
-      );
-    }
+    else
+      return ( this.displayRep() );
   }
 }
 

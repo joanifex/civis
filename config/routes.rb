@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   # API ROUTES
   namespace :api do
     get 'logged_in_user', to: 'users#logged_in_user'
-    get 'user_reps', to: 'users#user_reps'
+    get 'user', to: 'users#show'
     get 'reps', to: 'reps#index'
-    patch 'user/address', to: 'users#update_address'
-    put 'user_update', to: 'users#update_user'
+    # TODO: make names consistent
+    post 'user_update', to: 'users#update'
     delete 'delete_user/:id', to: 'users#destroy'
   end
 

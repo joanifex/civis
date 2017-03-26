@@ -22,7 +22,7 @@ const UserIsAuthenticated = UserAuthWrapper({
 export default (
   <Route>
     <Route path="/" component={App}>
-      <IndexRoute component={UserIsAuthenticated(Home)} />
+      <IndexRoute component={Home} />
       <Route component={ContentWrapper}>
         <Route path='/rep/:id' component={Rep} />
         <Route path='/login' component={Login} />
@@ -31,7 +31,6 @@ export default (
         <Route path='/account' component={UserProfile} />
       </Route>
     </Route>
-
     <Route path="*" status={404} component={NoMatch} />
   </Route>
 )

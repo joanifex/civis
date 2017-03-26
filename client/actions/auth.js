@@ -1,6 +1,6 @@
 import { browserHistory } from 'react-router';
 import { setFlash } from './flash';
-import { resetReps } from './reps'
+import { updateReps, resetReps } from './reps';
 
 const logout = () => {
   return { type: 'LOGOUT' }
@@ -19,6 +19,7 @@ export const handleLogin = (email, password) => {
       data: { user: { email, password, } }
     }).done( user => {
       dispatch(login(user));
+      dispatch(updateReps(user.reps));
       browserHistory.push('/')
     }).fail( data => {
       dispatch(setFlash('Error Logging In.', 'error'));
@@ -34,7 +35,6 @@ export const handleLogout = () => {
       dataType: 'JSON'
     }).done( data => {
       dispatch(logout());
-      dispatch(resetReps());
       browserHistory.push('/');
     }).fail( data => {
       dispatch(setFlash('Error Logging Out.', 'error'));
@@ -49,10 +49,14 @@ export const refreshLogin = () => {
       type: 'GET',
       dataType: 'JSON'
     }).done( user => {
-      if(user.id)
+      if(user.id) {
         dispatch(login(user))
-      else
+        dispatch(updateReps(user.reps));
+      }
+      else {
+        dispatch(resetReps());
         dispatch(logout());
+      }
     }).fail( data => {
       dispatch(setFlash('Error Refreshing User Data.', 'error'));
     });
@@ -67,6 +71,7 @@ export const handleSignUp = (email, password, confirmPassword, first_name, last_
       dataType: 'JSON',
       data: { user: { email, password, confirmPassword, first_name, last_name } }
     }).done( user => {
+      dispatch(resetReps());
       dispatch(login(user));
       browserHistory.push('/');
     }).fail(data => {

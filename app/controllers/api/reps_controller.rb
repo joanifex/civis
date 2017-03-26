@@ -1,8 +1,10 @@
-class RepsController < ApplicationController
+class Api::RepsController < ApplicationController
   def index
     address = params["address"]
     coords = params["coords"]
-    if ["lat", "lng"].all? { |key| coords.key? key }
+    # TODO: refactor into helper?
+    # TODO: better validation than not string
+    if coords.class != String && ["lat", "lng"].all? { |key| coords.key? key }
       url = 'https://maps.googleapis.com/maps/api/geocode/json?'
       key = ENV["GOOGLE_MAPS_API_KEY"]
       response = HTTParty.get("#{url}latlng=#{coords["lat"]},#{coords["lng"]}&key=#{key}")
@@ -23,9 +25,11 @@ class RepsController < ApplicationController
       state = parsed[:normalizedInput][:state]
       representative = Rep.find_by(district: district, state: state)
       senators = Rep.where(state: state, title: 'Senator')
-      reps = { senatorors: senators, represenative: representative }
-      render json: reps
+      @reps = [*senators, representative]
+      current_user.create_ties(@reps) if current_user
     rescue => e
+      # TODO: Add customs error messages
+      # result = { message: 'Created Ties', success: true }
       render json: {errors: "ERROR"}, status: 400
     end
   end
