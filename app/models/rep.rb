@@ -95,7 +95,7 @@ class Rep < ApplicationRecord
     }
     state_hash[state.to_sym]
   end
-
+  
   def fetch_articles
     url = "https://api.nytimes.com/svc/search/v2/articlesearch.json"
     # TODO: Improve this query. Gets back any article with a matching name.
