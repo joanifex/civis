@@ -21,7 +21,7 @@ json.reps current_user.reps.each do |rep|
   json.district rep.district
   json.articles rep.articles.each do |article|
     json.web_url article.web_url
-    json.snippet article.snippet
+    json.snippet article.formatted_snippet
     json.pub_date article.formatted_pub_date
     json.headline article.headline
     json.lead_paragraph article.lead_paragraph
