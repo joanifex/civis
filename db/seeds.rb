@@ -9,18 +9,18 @@ puts 'Test user created.'
 
 file = File.read('lib/senate.json')
 parsed = JSON.parse(file)
-members = parsed["members"]
-members.each do |mem|
-  rep = Rep.create(
-    first_name: mem["first_name"],
-    last_name: mem["last_name"],
-    state: mem["state"],
+senators = parsed["members"]
+senators.each do |rep|
+  Rep.create(
+    first_name: rep["first_name"],
+    last_name: rep["last_name"],
+    state: rep["state"],
     title: "Senator",
-    party: mem["party"],
-    phone: mem["phone"],
-    url: mem["url"],
-    next_election: mem["next_election"],
-    twitter_account: mem["twitter_account"]
+    party: rep["party"],
+    phone: rep["phone"],
+    url: rep["url"],
+    next_election: rep["next_election"],
+    twitter_account: rep["twitter_account"]
   )
 end
 
@@ -28,25 +28,27 @@ puts 'Senators created'
 
 file = File.read('lib/house.json')
 parsed = JSON.parse(file)
-members = parsed["members"]
-members.each do |mem|
-  rep = Rep.create(
-    first_name: mem["first_name"],
-    last_name: mem["last_name"],
-    state: mem["state"],
+representatives = parsed["members"]
+representatives.each do |rep|
+  Rep.create(
+    first_name: rep["first_name"],
+    last_name: rep["last_name"],
+    state: rep["state"],
     title: "Representative",
-    party: mem["party"],
-    phone: mem["phone"],
-    url: mem["url"],
-    next_election: mem["next_election"],
-    twitter_account: mem["twitter_account"],
-    district: mem["district"]
+    party: rep["party"],
+    phone: rep["phone"],
+    url: rep["url"],
+    next_election: rep["next_election"],
+    twitter_account: rep["twitter_account"],
+    district: rep["district"]
   )
 end
 
 puts "House Rep Created"
 
-
-user.create_ties("84103")
+representative = Rep.find_by(district: 2, state: "UT")
+senators = Rep.where(state: "UT", title: 'Senator')
+reps = [*senators, representative]
+user.create_ties(reps)
 
 puts 'Ties created.'
