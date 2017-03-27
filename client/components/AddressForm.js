@@ -9,7 +9,7 @@ class AddressForm extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     let { address } = this.state;
-    this.findReps({ address })
+    this.findReps({ address });
   }
 
   geolocate = () => {
@@ -34,7 +34,7 @@ class AddressForm extends React.Component {
       data: { address, coords }
     }).done(data => {
       this.props.dispatch(updateReps(data.reps));
-      // TODO: refactor this
+      // TODO: refactor this. This component is being used in two different places
       if (this.props.addressEntered)
         this.props.addressEntered();
       else

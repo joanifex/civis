@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get 'user', to: 'users#show'
     get 'reps', to: 'reps#index'
     # TODO: make names consistent
-    post 'user_update', to: 'users#update'
+    put 'user_update', to: 'users#update'
     delete 'delete_user/:id', to: 'users#destroy'
   end
 
