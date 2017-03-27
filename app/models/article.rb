@@ -3,7 +3,7 @@ class Article < ApplicationRecord
   belongs_to :rep
 
     def formatted_pub_date
-      DateTime.parse(self.pub_date.to_s)
+      Date.strptime(self.pub_date.to_s.split[0], "%Y-%m-%d")
     end
 
 end
