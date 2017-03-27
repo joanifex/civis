@@ -4,10 +4,7 @@ import { connect } from 'react-redux';
 import { updateUser } from '../actions/user';
 
 class UserNameForm extends React.Component {
-  state = {
-    firstName: "",
-    lastName: ""
-  }
+  state = { firstName: "", lastName: "" }
 
   hasLoaded() {
     return Object.keys(this.props.user).length > 2 ? true : false

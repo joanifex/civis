@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const RepIndex = ({reps}) => {
+const RepIndex = ({ reps }) => {
 
   let displayReps = () => {
     return reps.map( (rep) => {

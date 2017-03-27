@@ -1,11 +1,6 @@
 import React from 'react';
 
-const RepHeader =({
-                  profile_large_url,
-                  first_name,
-                  last_name
-                  }) => (
-
+const RepHeader = ({ profile_large_url, first_name, last_name }) => (
   <div className="center">
     <img
       src={profile_large_url}
