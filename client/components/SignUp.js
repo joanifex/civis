@@ -4,6 +4,8 @@ import { handleSignUp } from '../actions/auth';
 import { connect } from 'react-redux';
 
 class SignUp extends React.Component {
+  // TODO: rewrite with controller inputs: refactor refs
+
   handleSubmit = (e) => {
     e.preventDefault();
     let email = this.refs.email.value;
@@ -20,7 +22,6 @@ class SignUp extends React.Component {
 
   render() {
     return(
-
       <div className="row">
          <div className="col s12 m10 offset-m1 l8 offset-l2">
            <div className="card grey lighten-4">

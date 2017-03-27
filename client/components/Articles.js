@@ -1,9 +1,8 @@
 import React from 'react'
 
-class Articles extends React.Component {
+const Articles = ({ articles }) => {
 
-  displayArticles = () => {
-    let { articles } = this.props
+  let displayArticles = (articles) => {
     return articles.map( (article, i) => {
       return(
         <li key={i} className="collection-item">
@@ -18,20 +17,18 @@ class Articles extends React.Component {
     });
   }
 
-  render(){
-    return(
-      <div>
-        <h5>Articles</h5>
-        <div className="row">
-          <div className="col s12 m8">
-            <ul className="collection">
-              { this.displayArticles() }
-            </ul>
-          </div>
+  return(
+    <div>
+      <h5>Articles</h5>
+      <div className="row">
+        <div className="col s12 m8">
+          <ul className="collection">
+            { displayArticles(articles) }
+          </ul>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Articles;

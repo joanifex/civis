@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 class Login extends React.Component {
+  // TODO: rewrite with controller inputs: refactor refs
+
   handleSubmit = (e) => {
     e.preventDefault();
     let email = this.refs.email.value;
@@ -13,7 +15,6 @@ class Login extends React.Component {
 
   render() {
     return(
-
       <div className="row">
         <div className="col s12 m10 offset-m1 l8 offset-l2">
           <div className="card grey lighten-4">
