@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import { updateReps } from '../actions/reps';
 
 class AddressForm extends React.Component {
+  state = { address: "" }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let address = this.address.value
-    this.findReps({address})
+    let { address } = this.state;
+    this.findReps({ address })
   }
 
   geolocate = () => {
@@ -18,7 +19,7 @@ class AddressForm extends React.Component {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        this.findReps({coords})
+        this.findReps({ coords })
       });
     } else {
       Materialize.toast("Can't Geolocate.")
@@ -43,7 +44,13 @@ class AddressForm extends React.Component {
     });
   }
 
-  render(){
+  handleChange = (e) => {
+    let { target: { value } } = e;
+    this.setState({ address: value });
+  }
+
+  render() {
+    let { address } = this.state
     return(
       <div>
         <span className='card-title center'>
@@ -52,11 +59,13 @@ class AddressForm extends React.Component {
         <form className='center' onSubmit={this.handleSubmit}>
           <div className="row">
             <input
-             ref={ n => this.address = n}
-             className="col s12 m8 offset-m1"
-             placeholder='Zip code or Address'
-             required
-             autoFocus
+              id="address"
+              value={address}
+              onChange={this.handleChange}
+              className="col s12 m8 offset-m1"
+              placeholder='Zip code or Address'
+              required
+              autoFocus
             />
             <input className='btn blue-grey' type='submit'/>
           </div>

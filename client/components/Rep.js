@@ -21,6 +21,7 @@ class Rep extends React.Component {
       this.setState({ loading: false });
   }
 
+  // TODO: Refactor with JavaScript named variables in the object destructure.
   displayRep = () => {
     let { rep } = this.props;
     return (

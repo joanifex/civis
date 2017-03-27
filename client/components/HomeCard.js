@@ -7,14 +7,14 @@ import RepIndex from './RepIndex';
 class HomeCard extends React.Component {
   state = { loading: true, showingReps: false };
 
-  componentDidMount = () => {
+  componentDidMount() {
     if ( this.hasLoaded() )
       this.setNotLoading();
     if ( this.hasReps() )
       this.setShowingReps();
   }
 
-  componentDidUpdate = () => {
+  componentDidUpdate() {
     if ( this.state.loading && this.hasLoaded() )
       this.setNotLoading();
     if ( !this.state.showingReps && this.hasReps() )
@@ -28,9 +28,7 @@ class HomeCard extends React.Component {
   }
 
   hasReps = () => {
-    if ( this.hasLoaded() && this.props.reps.length !== 0 )
-      return true;
-    return false;
+    return !this.state.loading && this.props.reps.length !== 0 ? true : false;
   }
 
   setNotLoading = () => {
@@ -45,7 +43,7 @@ class HomeCard extends React.Component {
     this.setState({ showingReps: false });
   }
 
-  displayLoading = () => {
+  displayLoading() {
     return( <p>Loading</p> );
   }
 
