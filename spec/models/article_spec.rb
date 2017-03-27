@@ -21,4 +21,19 @@ RSpec.describe Article, type: :model do
   describe 'associations' do
     it { belong_to(:rep)}
   end
+
+  describe 'instance methods' do
+    before(:each) do
+      @article = FactoryGirl.create(:article)
+    end
+
+    it 'reformats the date' do
+      expect(@article.formatted_pub_date).to eq("Wed, 22 Mar 2017")
+    end 
+
+    it 'formats snippet' do
+      expect(@article.formatted_snippet).to eq("")
+    end
+    
+  end 
 end

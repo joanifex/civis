@@ -7,6 +7,6 @@ FactoryGirl.define do
     pub_date "2017-03-22 13:45:43"
     headline "HEADLINE!"
     lead_paragraph "lead_paragraph"
-    rep :rep
+    rep 
   end
 end
