@@ -8,32 +8,31 @@ import { updateUser, deleteUser } from '../actions/user';
 class UserProfile extends React.Component {
 
 // TODO: add a change password form
+  deleteUser = () => {
+    if (confirm('Do you really want to delete your User Profile?'))
+      this.props.dispatch(deleteUser(user.id, this.props.history));
+  }
 
   render() {
     let user = this.props.user
     return(
       <div>
-        <div>
-          <h3>Welcome, {user.full_name} </h3>
-          <h5>Update Your Address or Zipcode:</h5>
-          <AddressForm />
-          <h5>Update Your User Name:</h5>
-          <UserNameForm user={user} />
-        </div>
-        <div>
-          <button className='btn blue-grey'>
-            <Link to={'/'} className='white-text'>Home</Link>
-          </button>
-          <br />
-          <button
-            onClick={ () => {
-              if (confirm('Do you really want to delete your User Profile?'))
-                this.props.dispatch(deleteUser(user.id, this.props.history))
-            }}
-            className='btn blue-grey'
-          >
-          Delete User Profile
-          </button>
+        <div className="row">
+          <div className="col s12 m10 offset-m1 l8 offset-l2">
+            <div className="card grey lighten-4">
+              <div className="card-content black-text">
+                <h3 className="center">{user.full_name} </h3>
+                <AddressForm />
+                <br />
+                <UserNameForm user={user} />
+                <button onClick={this.deleteUser} className='btn blue-grey'>
+                  Delete User Profile
+                </button>
+                <br />
+                <Link to={'/'} className='btn blue-grey'>Home</Link>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     )
