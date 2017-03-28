@@ -35,23 +35,19 @@ namespace :jobs do
   end
 
   desc "Grabs Reps Picture Urls"
-  task fetch_rep_pictures: :environment do
+  task fetch_pictures: :environment do
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key = ENV['TWITTER_API_KEY']
       config.consumer_secret = ENV['TWITTER_SECRET']
     end
 
     Rep.find_each do |rep|
-      if rep.profile_url.nil?
-        begin
-          profile_url = @client.user(rep.twitter_account).profile_image_url.to_s
-          rep.update(profile_url: profile_url)
-          puts "Found picture for #{rep.full_name}."
-        rescue => e
-          puts "Could not find picture for #{rep.full_name}."
-        end
-      else
-        puts "Already have picture for #{rep.full_name}."
+      begin
+        profile_url = @client.user(rep.twitter_account).profile_image_url.to_s
+        rep.update(profile_url: profile_url)
+        puts "Found picture for #{rep.full_name}."
+      rescue => e
+        puts "Could not find picture for #{rep.full_name}."
       end
     end
   end
