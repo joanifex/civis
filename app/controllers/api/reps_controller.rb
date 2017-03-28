@@ -58,4 +58,11 @@ class Api::RepsController < ApplicationController
       senators = Rep.where(state: state, title: 'Senator')
       [*senators, representative]
     end
+  end
+
+  # def rep_bio
+  #   rep = Wikipedia.find(params[:rep])
+  #   find by rep full_name, state, and title
+  #   call summary
+  # end
 end

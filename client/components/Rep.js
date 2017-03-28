@@ -14,6 +14,17 @@ class Rep extends React.Component {
   componentDidMount = () => {
     if (this.props.rep)
       this.setState({ loading: false });
+      // TODO: ajax call here for rep_bio
+      // $.ajax({
+      //   url: '/api/rep_bio',
+      //   type: 'POST',
+      //   dataType: 'JSON',
+      //   data:{}
+      // }).done (rep => {
+      //   this.setState
+      // }).fail (data => {
+      //   console.log(data);
+      // });
   }
 
   componentDidUpdate = () => {
