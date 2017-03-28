@@ -38,7 +38,8 @@ ActiveRecord::Schema.define(version: 20170328175435) do
     t.string   "url"
     t.string   "next_election"
     t.string   "twitter_account"
-    t.string   "profile_url"
+    t.string   "profile_url",     default: ""
+    t.string   "contact_url",     default: ""
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.text     "bio"

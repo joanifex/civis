@@ -47,6 +47,7 @@ class Rep extends React.Component {
               phone={rep.phone}
               twitter_account={rep.twitter_account}
               url={rep.url}
+              contact_url={rep.contact_url}
             />
           </div>
           <div className="col s12 l8">

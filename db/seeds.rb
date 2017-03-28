@@ -6,11 +6,22 @@ user = User.create(
 )
 
 puts 'Test user created.'
+parsed = YAML.load_file('./lib/all_reps_email.yaml')
+contact_info_hash = {}
+parsed.each do |rep|
+  term_with_info = rep["terms"].find { |term| term.has_key?("contact_form") }
+  if term_with_info
+    contact_form = term_with_info["contact_form"]
+    id = rep["id"]["bioguide"]
+    contact_info_hash[id.to_sym] = contact_form
+  end
+end
 
 file = File.read('lib/senate.json')
 parsed = JSON.parse(file)
 senators = parsed["members"]
 senators.each do |rep|
+  contact_url = contact_info_hash[rep["id"].to_sym]
   Rep.create(
     first_name: rep["first_name"],
     last_name: rep["last_name"],
@@ -21,7 +32,8 @@ senators.each do |rep|
     url: rep["url"],
     next_election: rep["next_election"],
     twitter_account: rep["twitter_account"],
-    profile_url: "https://abs.twimg.com/sticky/default_profile_images/default_profile_4_normal.png"
+    profile_url: "https://abs.twimg.com/sticky/default_profile_images/default_profile_4_normal.png",
+    contact_url: contact_url
   )
 end
 
