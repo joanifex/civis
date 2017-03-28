@@ -95,37 +95,4 @@ class Rep < ApplicationRecord
     }
     state_hash[state.to_sym]
   end
-
-  def fetch_articles
-    url = "https://api.nytimes.com/svc/search/v2/articlesearch.json"
-    # TODO: Improve this query. Gets back any article with a matching name.
-    params = {
-      "api-key" => ENV["NYT_API_KEY"],
-      "q" => "\"#{self.full_name}\"",
-      "sort" => "newest",
-      "fl" => "web_url,pub_date,headline,lead_paragraph",
-      "hl" => "true"
-    }
-    # TODO: refactor with HTTParty
-    begin
-      retries ||= 0
-      response = HTTP.get(url, params: params).to_s
-      parsed = JSON.parse(response)
-      articles = parsed["response"]["docs"]
-      articles.each do |article|
-        self.articles.create(
-          web_url: article["web_url"],
-          snippet: article["snippet"],
-          pub_date: article["pub_date"],
-          headline: article["headline"]["main"],
-          lead_paragraph: article["lead_paragraph"]
-        )
-      end
-      puts "Created Articles for #{self.full_name}"
-    rescue => e
-      retry if (retries += 1) < 5
-      puts "Could not make articles for #{self.full_name}"
-    end
-  end
-
 end
