@@ -13,8 +13,7 @@ class CreateReps < ActiveRecord::Migration[5.0]
       t.string :twitter_account
       t.string :profile_url, default: ''
       t.string :contact_url, default: ''
-
-
+      t.integer :new_articles, null: false, default: 0
       t.timestamps
     end
   end
