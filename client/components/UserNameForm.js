@@ -4,10 +4,18 @@ import { connect } from 'react-redux';
 import { updateUser } from '../actions/user';
 
 class UserNameForm extends React.Component {
-  state = { firstName: "", lastName: "" }
+  state = {  firstName: "", lastName: "" }
 
   hasLoaded() {
     return Object.keys(this.props.user).length > 2 ? true : false
+  }
+
+  setNotLoading = () => {
+    this.setState({ loading: false });
+  }
+
+  displayLoading() {
+    return( <div><i className="fa fa-spinner fa-lg"></i></div> );
   }
 
   handleSubmit = (e) => {
@@ -20,13 +28,13 @@ class UserNameForm extends React.Component {
     this.setState({ [id]: value });
   }
 
-  render() {
+  displayForm = () => {
     let { firstName, lastName } = this.state;
     return(
-      <div>
-        { this.hasLoaded() ?
           <div>
-            <p>Update Your User Name:</p>
+          <span className='card-title center'>
+            Update user
+          </span>
             <form className='center' onSubmit={this.handleSubmit} >
               <div className="row">
                 <div className='input-field'>
@@ -53,14 +61,18 @@ class UserNameForm extends React.Component {
                     value={lastName}
                     required
                   />
-                  <input className='btn blue-grey' type='submit'/>
+                  <input className='btn ' type='submit'/>
                 </div>
               </div>
             </form>
           </div>
-          :
-          <div>Loading</div>
-        }
+        )
+      }
+  render() {
+    let { loading } = this.state;
+    return(
+      <div>
+        { loading ? this.displayLoading() : this.displayForm() }
       </div>
     );
   }

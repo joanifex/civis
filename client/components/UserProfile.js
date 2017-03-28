@@ -25,11 +25,13 @@ class UserProfile extends React.Component {
                 <HomeCard />
                 <br />
                 <UserNameForm user={user} />
-                <button onClick={this.deleteUser} className='btn blue-grey'>
-                  Delete User Profile
-                </button>
-                <br />
-                <Link to={'/'} className='btn blue-grey'>Home</Link>
+                <div className="center">
+                  <button className='btn blue-grey ' onClick={this.deleteUser} >
+                    Delete User Profile
+                  </button>
+                    &nbsp;
+                  <Link to={'/'} className='btn blue-grey'>Home</Link>
+                </div>
               </div>
             </div>
           </div>
