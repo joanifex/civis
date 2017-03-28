@@ -32,6 +32,8 @@ RSpec.describe Rep, type: :model do
     it { should validate_presence_of(:first_name) }
     it { should validate_presence_of(:last_name) }
     it { should validate_presence_of(:state) }
+    it { should validate_presence_of(:profile_url) }
+    it { should validate_presence_of(:party) }
   end
 
   describe 'associations' do
@@ -67,6 +69,6 @@ RSpec.describe Rep, type: :model do
       expect(@rep.full_state).to eq("North Dakota")
     end
 
-    it 'fetches articles for the representatives' 
+    it 'fetches articles for the representatives'
   end
 end

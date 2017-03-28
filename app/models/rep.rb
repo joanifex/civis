@@ -12,7 +12,7 @@
 #
 
 class Rep < ApplicationRecord
-  validates_presence_of :title, :first_name, :last_name, :state
+  validates_presence_of :title, :first_name, :last_name, :state, :profile_url, :party
   has_many :ties, dependent: :destroy
   has_many :users, through: :ties
   has_many :articles, dependent: :destroy

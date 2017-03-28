@@ -20,7 +20,8 @@ senators.each do |rep|
     phone: rep["phone"],
     url: rep["url"],
     next_election: rep["next_election"],
-    twitter_account: rep["twitter_account"]
+    twitter_account: rep["twitter_account"],
+    profile_url: "https://abs.twimg.com/sticky/default_profile_images/default_profile_4_normal.png"
   )
 end
 
@@ -40,7 +41,8 @@ representatives.each do |rep|
     url: rep["url"],
     next_election: rep["next_election"],
     twitter_account: rep["twitter_account"],
-    district: rep["district"]
+    district: rep["district"],
+    profile_url: "https://abs.twimg.com/sticky/default_profile_images/default_profile_4_normal.png"
   )
 end
 
