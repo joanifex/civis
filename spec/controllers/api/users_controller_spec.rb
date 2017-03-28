@@ -57,8 +57,6 @@ RSpec.describe Api::UsersController, type: :controller do
         @user.destroy
         expect(User.count).to eq(0)
       end
-
-
     end
   end
 end

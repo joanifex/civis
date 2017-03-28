@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
 // Components
 import RepContact from './RepContact';
@@ -11,13 +12,15 @@ import Articles from './Articles';
 class Rep extends React.Component {
   state = { loading: true }
 
-  componentDidMount = () => {
-    if (this.props.rep)
+  componentDidMount() {
+    let rep = this.props.rep;
+    if (rep) {
       this.setState({ loading: false });
+    }
   }
 
-  componentDidUpdate = () => {
-    if (this.state.loading && this.props.rep)
+  componentDidUpdate() {
+    if (this.state.loading && this.props.rep.first_name)
       this.setState({ loading: false });
   }
 
@@ -37,6 +40,7 @@ class Rep extends React.Component {
               party={rep.party}
               title={rep.title}
               state={rep.state}
+              bio={rep.bio}
               next_election={rep.next_election}
             />
             <RepContact
@@ -65,7 +69,10 @@ class Rep extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  return { rep: state.reps.find( r => r.id == props.params.id ) }
+  if(!state.auth.isAuthenticated && state.reps.length === 0)
+    browserHistory.push('/')
+  else
+    return { rep: state.reps.find( r => r.id == props.params.id ) }
 }
 
 export default connect(mapStateToProps)(Rep);

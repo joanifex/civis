@@ -1,4 +1,6 @@
 class Api::RepsController < ApplicationController
+  require 'wikipedia'
+
   def index
     address = params["address"]
     coords = params["coords"]
@@ -58,4 +60,6 @@ class Api::RepsController < ApplicationController
       senators = Rep.where(state: state, title: 'Senator')
       [*senators, representative]
     end
+
+ 
 end

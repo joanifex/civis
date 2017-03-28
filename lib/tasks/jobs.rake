@@ -1,3 +1,5 @@
+require 'wikipedia'
+
 namespace :jobs do
   desc "Fetch All News Articles For Reps"
   task fetch_articles: :environment do
@@ -30,6 +32,28 @@ namespace :jobs do
       rescue => e
         retry if (retries += 1) < 5
         puts "Could not make articles for #{rep.full_name}"
+      end
+    end
+  end
+
+  desc "Grab Rep Bios From Wiki"
+  task fetch_rep_wiki: :environment do
+    def get_summary(rep)
+      summary = nil
+      ['', '_(politician)', '_(U.S._politician)'].each do |term|
+        wiki_result = Wikipedia.find("#{rep.full_name}#{term}")
+        summary = wiki_result.summary ? wiki_result.summary : "https://en.wikipedia.org/w/index.php?search=#{rep.first_name}+#{rep.last_name}"
+      end
+      summary
+    end
+
+    Rep.find_each do |rep|
+      summary = get_summary(rep)
+      if summary
+        rep.update(bio: summary)
+        puts "updated bio for #{rep.full_name}"
+      else
+        puts "Failed Getting Bio For: #{rep.full_name}"
       end
     end
   end
