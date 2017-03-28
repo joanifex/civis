@@ -48,27 +48,6 @@ RSpec.describe Api::UsersController, type: :controller do
     end
   end
 
-  describe 'GET #user_reps' do
-    context 'logged in user' do
-      login_user
-
-      it 'returns http success' do
-        get :user_reps, format: :json
-        expect(response).to have_http_status(:success)
-      end
-
-      # TODO: call this method somewhere more superiorer
-
-      it 'render JSON of the users reps' do
-        get :user_reps, format: :json
-        parsed = JSON.parse(response.body)
-        reps = parsed["reps"]
-        expect(reps.first['id']).to eq(@user.reps.first.id)
-        expect(reps.count).to eq(@user.reps.count)
-      end
-    end
-  end
-
   describe 'DELETE #destroy' do
     context 'logged in user' do
       login_user

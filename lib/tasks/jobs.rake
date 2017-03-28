@@ -55,9 +55,8 @@ namespace :jobs do
       end
     end
   end
-  
+
   desc "Seed Fake News Articles"
-  # TODO: refactor to be only in development?
   task fake_news: :environment do
     Rep.find_each do |rep|
       begin
