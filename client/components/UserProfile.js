@@ -21,6 +21,7 @@ class UserProfile extends React.Component {
           <div className="col s12 m10 offset-m1 l8 offset-l2">
             <div className="card grey lighten-4">
               <div className="card-content black-text">
+                {/* TODO: User name not showing after signup. Check signup action */}
                 <h3 className="center">{user.full_name} </h3>
                 <HomeCard />
                 <br />
