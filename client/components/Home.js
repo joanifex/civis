@@ -22,8 +22,8 @@ class Home extends React.Component {
 
         <div className='section white'>
           <div className="row container">
-            <h2 className="header">Parallax</h2>
-            <p className="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+            <h3 className="header center">Register To Vote!</h3>
+            <Link className="register to vote" target="_blank" href ="https://www.usvotefoundation.org/vote/voter-registration-absentee-voting.htm?gclid=Cj0KEQjwk-jGBRCbxoPLld_bp-IBEiQAgJaftZKlqzQIhh7SUEz7ELELmRqTowsXkDlVMfo8N90PkbgaAlTo8P8HAQ">Here!</Link>
           </div>
         </div>
         <div className='section white'>

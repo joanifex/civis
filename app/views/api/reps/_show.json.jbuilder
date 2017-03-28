@@ -12,6 +12,7 @@ json.next_election rep.next_election
 json.profile_url rep.profile_url
 json.profile_large_url rep.profile_large_url
 json.district rep.district
+json.contact_url rep.contact_url
 json.articles rep.articles do |article|
   json.partial! 'api/articles/show/', article: article
 end
