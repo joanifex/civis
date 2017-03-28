@@ -10,6 +10,7 @@ const RepContact = ({ phone, twitter_account, url, contact_url }) => (
           {`   ${phone}`}
         </a>
       </li>
+      {/* TODO: if no twitter, do not display */}
       <li className="collection-item">
         <i className="fa fa-twitter"></i>
         <a
@@ -28,6 +29,7 @@ const RepContact = ({ phone, twitter_account, url, contact_url }) => (
         {`   Website`}
         </a>
       </li>
+      {/* TODO: if no contact_url, do not display */}
       <li className='collection-item'>
         <i className="fa fa-external-link"></i>
         <a

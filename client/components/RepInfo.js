@@ -25,6 +25,7 @@ const RepInfo = ({
         :
         null
       }
+      {/* TODO: if there is a bio, show bio, if not do not */}
       <li className="collection-item">
         Bio: {`${bio}`} <br/>
       </li>

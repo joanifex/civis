@@ -21,6 +21,7 @@ export const deleteUser = (id, history) => {
       url: `/api/user/${id}`,
       dataType: 'JSON',
     }).done (user => {
+      dispatch({ type: 'RESET_REPS'})
       dispatch({ type: 'DELETE_USER', id })
       history.push('/');
     }).fail (data => {
