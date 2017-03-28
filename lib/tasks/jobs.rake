@@ -39,10 +39,11 @@ namespace :jobs do
   desc "Grab Rep Bios From Wiki"
   task fetch_rep_wiki: :environment do
     def get_summary(rep)
-      summary = nil
+      summary = "https://en.wikipedia.org/w/index.php?search=#{rep.first_name}+#{rep.last_name}"
       ['', '_(politician)', '_(U.S._politician)'].each do |term|
         wiki_result = Wikipedia.find("#{rep.full_name}#{term}")
-        summary = wiki_result.summary ? wiki_result.summary : "https://en.wikipedia.org/w/index.php?search=#{rep.first_name}+#{rep.last_name}"
+        next if wiki_result.summary.nil?
+        summary = wiki_result.summary
       end
       summary
     end
