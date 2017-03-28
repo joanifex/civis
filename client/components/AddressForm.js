@@ -53,7 +53,6 @@ class AddressForm extends React.Component {
   }
 
   render() {
-    // TODO: style with materialize form
     let { address } = this.state
     return(
       <div>
@@ -71,10 +70,12 @@ class AddressForm extends React.Component {
               required
               autoFocus
             />
-            <input className='btn blue-grey' type='submit'/>
+            <input className='btn' type='submit'/>
           </div>
         </form>
-        <button className="btn" onClick={this.geolocate}>Geolocate</button>
+         <div className=''>
+          <button className="btn center" onClick={this.geolocate}>Geolocate</button>
+        </div>
       </div>
     );
   }

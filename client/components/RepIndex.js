@@ -23,7 +23,6 @@ const RepIndex = ({ reps, showAddressForm }) => {
     });
   }
 
-  // TODO: add button to switch to address form
   return(
     <div>
       <ul className="collection">

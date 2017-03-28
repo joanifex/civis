@@ -53,7 +53,7 @@ class HomeCard extends React.Component {
   }
 
   displayLoading() {
-    return( <p>Loading</p> );
+    return( <div><i className="fa fa-spinner fa-lg"></i></div> );
   }
 
   displayContent = () => {
@@ -63,9 +63,9 @@ class HomeCard extends React.Component {
     }
     else if ( changingReps ) {
       return (
-        <div>
+        <div className='center'>
           <AddressForm enteredAddress={this.setShowingReps} />
-          <button className="btn" onClick={this.setShowingReps}>Back</button>
+          <button className="btn blue-grey" onClick={this.setShowingReps}>Back</button>
         </div>
       );
     }

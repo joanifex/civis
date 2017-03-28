@@ -58,7 +58,7 @@ class Rep extends React.Component {
 
   render = () => {
     if ( this.state.loading )
-      return( <p>Loading</p> );
+      return( <div><i className="fa fa-spinner fa-lg"></i></div> );
     else
       return ( this.displayRep() );
   }
