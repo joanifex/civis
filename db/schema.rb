@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322194543) do
+ActiveRecord::Schema.define(version: 20170328175435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170322194543) do
     t.string   "profile_url"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.text     "bio"
   end
 
   create_table "ties", force: :cascade do |t|

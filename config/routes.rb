@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     put 'user', to: 'users#update'
     delete 'user/:id', to: 'users#destroy'
     # TODO: make names consistent
-    post 'rep_bio', to: 'reps#rep_bio'
     put 'user_update', to: 'users#update'
     delete 'delete_user/:id', to: 'users#destroy'
   end

@@ -5,7 +5,8 @@ const RepInfo = ({
     title,
     state,
     next_election,
-    district
+    district,
+    bio
   }) => (
   <div>
     <h5>Official Info:</h5>
@@ -18,12 +19,15 @@ const RepInfo = ({
       </li>
       {
         district ?
-        <li classname="collection-item">
+        <li className="collection-item">
           District: {`${district}`} <br/>
         </li>
         :
         null
       }
+      <li className="collection-item">
+        Bio: {`${bio}`} <br/>
+      </li>
     </ul>
   </div>
 );

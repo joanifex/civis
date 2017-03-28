@@ -1,4 +1,4 @@
-const reps = (state = ['loading'], action) => {
+const reps = (state = [], action) => {
   switch(action.type) {
     case 'UPDATE_REPS':
       return action.reps;
