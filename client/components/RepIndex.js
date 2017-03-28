@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const RepIndex = ({ reps }) => {
+const RepIndex = ({ reps, showAddressForm }) => {
 
   let displayReps = () => {
     return reps.map( (rep) => {
@@ -25,9 +25,12 @@ const RepIndex = ({ reps }) => {
 
   // TODO: add button to switch to address form
   return(
-    <ul className="collection">
-      {displayReps()}
-    </ul>
+    <div>
+      <ul className="collection">
+        {displayReps()}
+      </ul>
+      <button className="btn" onClick={showAddressForm}>Update Adress</button>
+    </div>
   );
 }
 

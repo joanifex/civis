@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import AddressForm from './AddressForm';
+import HomeCard from './HomeCard';
 import UserNameForm from './UserNameForm';
 import { updateUser, deleteUser } from '../actions/user';
 
@@ -22,7 +22,7 @@ class UserProfile extends React.Component {
             <div className="card grey lighten-4">
               <div className="card-content black-text">
                 <h3 className="center">{user.full_name} </h3>
-                <AddressForm />
+                <HomeCard />
                 <br />
                 <UserNameForm user={user} />
                 <button onClick={this.deleteUser} className='btn blue-grey'>

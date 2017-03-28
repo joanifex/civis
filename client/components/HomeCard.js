@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateReps } from '../actions/reps'
+import { updateReps, resetReps } from '../actions/reps'
 import AddressForm from './AddressForm';
 import RepIndex from './RepIndex';
 
 class HomeCard extends React.Component {
-  state = { loading: true, showingReps: false };
+  state = { loading: true, showingReps: false, changingReps: false };
 
   componentDidMount() {
     if ( this.hasLoaded() )
@@ -15,11 +15,14 @@ class HomeCard extends React.Component {
   }
 
   componentDidUpdate() {
-    if ( this.state.loading && this.hasLoaded() )
+    let { loading, showingReps, changingReps } = this.state;
+    if ( loading && this.hasLoaded() )
       this.setNotLoading();
-    if ( !this.state.showingReps && this.hasReps() )
+    if ( showingReps && changingReps )
+      this.setNotShowingReps();
+    else if ( !showingReps && this.hasReps() && !changingReps )
       this.setShowingReps();
-    if ( this.state.showingReps && !this.hasReps() )
+    if ( showingReps && !this.hasReps() )
       this.setNotShowingReps();
   }
 
@@ -36,6 +39,8 @@ class HomeCard extends React.Component {
   }
 
   setShowingReps = () => {
+    if ( this.state.changingReps )
+      this.setState({ changingReps: false });
     this.setState({ showingReps: true });
   }
 
@@ -43,28 +48,37 @@ class HomeCard extends React.Component {
     this.setState({ showingReps: false });
   }
 
+  setChangingReps = () => {
+    this.setState({ changingReps: true });
+  }
+
   displayLoading() {
     return( <p>Loading</p> );
   }
 
   displayContent = () => {
-    if (this.state.showingReps)
-      return <RepIndex reps={this.props.reps}/>;
-    else
-      return <AddressForm addressEntered={this.setShowingReps}/>;
+    let { showingReps, changingReps } = this.state
+    if (this.state.showingReps) {
+      return <RepIndex reps={this.props.reps} showAddressForm={this.setChangingReps}/>;
+    }
+    else if ( changingReps ) {
+      return (
+        <div>
+          <AddressForm enteredAddress={this.setShowingReps} />
+          <button className="btn" onClick={this.setShowingReps}>Back</button>
+        </div>
+      );
+    }
+    else {
+      return <AddressForm enteredAddress={this.setShowingReps} />
+    }
   }
 
   render() {
     let { loading } = this.state;
     return(
-      <div className="row">
-        <div className="col s12 m10 offset-m1 l8 offset-l2">
-          <div className="card grey lighten-4">
-            <div className="card-content">
-              { loading ? this.displayLoading() : this.displayContent() }
-            </div>
-          </div>
-        </div>
+      <div>
+        { loading ? this.displayLoading() : this.displayContent() }
       </div>
     );
   }

@@ -35,8 +35,8 @@ class AddressForm extends React.Component {
     }).done(data => {
       this.props.dispatch(updateReps(data.reps));
       // TODO: refactor this. This component is being used in two different places
-      if (this.props.addressEntered)
-        this.props.addressEntered();
+      if (this.props.enteredAddress)
+        this.props.enteredAddress();
       else
         browserHistory.push('/');
     }).fail( err => {
@@ -53,6 +53,7 @@ class AddressForm extends React.Component {
   }
 
   render() {
+    // TODO: style with materialize form
     let { address } = this.state
     return(
       <div>

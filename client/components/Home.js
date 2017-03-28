@@ -17,9 +17,16 @@ class Home extends React.Component {
     return(
       <div>
         <h2 className='center'>Civis</h2>
-        <HomeCard />
+        <div className="row">
+          <div className="col s12 m10 offset-m1 l8 offset-l2">
+            <div className="card grey lighten-4">
+              <div className="card-content">
+                <HomeCard />
+              </div>
+            </div>
+          </div>
+        </div>
         <ParallaxContainer />
-
         <div className='section white'>
           <div className="row container">
             <h2 className="header">Parallax</h2>
