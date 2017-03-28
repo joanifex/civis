@@ -13,5 +13,11 @@ json.reps @reps.each do |rep|
   json.profile_url rep.profile_url
   json.profile_large_url rep.profile_large_url
   json.district rep.district
-  json.articles rep.articles
+  json.articles rep.articles.each do |article|
+    json.web_url article.web_url
+    json.snippet article.formatted_snippet
+    json.pub_date article.formatted_pub_date
+    json.headline article.headline
+    json.lead_paragraph article.lead_paragraph
+  end
 end

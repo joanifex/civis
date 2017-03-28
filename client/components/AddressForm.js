@@ -39,8 +39,11 @@ class AddressForm extends React.Component {
         this.props.addressEntered();
       else
         browserHistory.push('/');
-    }).fail( data => {
-      Materialize.toast('Invalid address, Please try again', 3000);
+    }).fail( err => {
+      let message = "Could not find address. Try another one."
+      if ( err.responseText === "Requires More Specific Address")
+        message = "That address includes multiple districts. Try searching for a full address.";
+      Materialize.toast(message, 3000);
     });
   }
 
