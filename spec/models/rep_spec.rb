@@ -69,6 +69,6 @@ RSpec.describe Rep, type: :model do
       expect(@rep.full_state).to eq("North Dakota")
     end
 
-    it 'fetches articles for the representatives'
+    it 'fetches articles for the representatives'do
   end
 end

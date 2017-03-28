@@ -28,11 +28,11 @@ RSpec.describe Article, type: :model do
     end
 
     it 'reformats the date' do
-      expect(@article.formatted_pub_date).to eq("Wed, 22 Mar 2017")
+      expect(@article.formatted_pub_date).to eq("2017-03-22")
     end 
 
     it 'formats snippet' do
-      expect(@article.formatted_snippet).to eq("")
+      expect(@article.formatted_snippet).to eq("snippet")
     end
     
   end 
