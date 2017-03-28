@@ -9,5 +9,5 @@ class Article < ApplicationRecord
   def formatted_snippet
     self.snippet.gsub("<strong>", "").gsub("</strong>", "")
   end
-  
+
 end

@@ -2,6 +2,7 @@ namespace :jobs do
   desc "Fetch All News Articles For Reps"
   task fetch_articles: :environment do
     Rep.find_each do |rep|
+      rep.update(new_articles: 0 )
       url = "https://api.nytimes.com/svc/search/v2/articlesearch.json"
       # TODO: Improve this query. Gets back any article with a matching name.
       params = {
@@ -18,18 +19,21 @@ namespace :jobs do
         parsed = JSON.parse(response)
         articles = parsed["response"]["docs"]
         articles.each do |article|
-          rep.articles.create(
-            web_url: article["web_url"],
-            snippet: article["snippet"],
-            pub_date: article["pub_date"],
-            headline: article["headline"]["main"],
-            lead_paragraph: article["lead_paragraph"]
-          )
+          unless rep.articles.where(headline: article["headline"]["main"]).count > 0
+            new_article = rep.articles.create(
+              web_url: article["web_url"],
+              snippet: article["snippet"],
+              pub_date: article["pub_date"],
+              headline: article["headline"]["main"],
+              lead_paragraph: article["lead_paragraph"]
+            )
+            rep.update(new_articles: rep.new_articles + 1)
+          end
         end
-        puts "Created Articles for #{rep.full_name}"
+        puts "Created #{rep.new_articles} Articles for #{rep.full_name}"
       rescue => e
         retry if (retries += 1) < 5
-        puts "Could not make articles for #{rep.full_name}"
+        puts "Could Not Make New Articles for #{rep.full_name}"
       end
     end
   end

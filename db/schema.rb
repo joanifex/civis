@@ -39,15 +39,18 @@ ActiveRecord::Schema.define(version: 20170322194543) do
     t.string   "next_election"
     t.string   "twitter_account"
     t.string   "profile_url"
+    t.integer  "new_articles",    default: 0,  null: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
 
   create_table "ties", force: :cascade do |t|
-    t.integer  "rep_id",     null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "new_articles", default: 0
+    t.boolean  "subscription", default: false
+    t.integer  "rep_id",                       null: false
+    t.integer  "user_id",                      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.index ["rep_id"], name: "index_ties_on_rep_id", using: :btree
     t.index ["user_id"], name: "index_ties_on_user_id", using: :btree
   end

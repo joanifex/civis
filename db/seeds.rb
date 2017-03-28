@@ -52,5 +52,8 @@ representative = Rep.find_by(district: 2, state: "UT")
 senators = Rep.where(state: "UT", title: 'Senator')
 reps = [*senators, representative]
 user.create_ties(reps)
+user.ties.each do |tie|
+  tie.update(subscription: true)
+end
 
 puts 'Ties created.'
