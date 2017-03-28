@@ -3,8 +3,8 @@ class Api::RepsController < ApplicationController
 
   def index
     address = params["address"]
-    coords = params["coords"]
-    if coords.class == Hash && ["lat", "lng"].all? { |key| coords.key? key }
+    if params["coords"] && params["coords"].has_key?("lat") && params["coords"].has_key?("lng")
+      coords = {lat: params["coords"]["lat"], lng: params["coords"]["lng"]}
       address = convert_coords_to_address(coords)
     end
     civic_info = fetch_civic_info(address)
@@ -23,32 +23,23 @@ class Api::RepsController < ApplicationController
   private
     def convert_coords_to_address(coords)
       url = 'https://maps.googleapis.com/maps/api/geocode/json'
-      params = {
-        latlng: "#{coords["lat"]},#{coords["lng"]}",
-        key: ENV["GOOGLE_MAPS_API_KEY"]
+      query = {
+        "latlng": "#{coords[:lat]},#{coords[:lng]}",
+        "key": ENV["GOOGLE_MAPS_API_KEY"]
       }
-      HTTParty.get(url, params: params)["results"].first["formatted_address"]
+      HTTParty.get(url, query: query)["results"].first["formatted_address"]
     end
 
     def fetch_civic_info(address)
-      # TODO: HTTParty not working?
-      # url = "https://www.googleapis.com/civicinfo/v2/representatives"
-      # params = {
-      #   address: address,
-      #   key: ENV['GOOGLE_CIVIC_API_KEY'],
-      #   levels: "country",
-      #   includeOffices: false,
-      #   roles: "legislatorLowerBody"
-      # }
-      # response = HTTParty.get(url, params: params, format: :plain)
-      api_url = "https://www.googleapis.com/civicinfo/v2/representatives?"
-      address = "address=#{address}"
-      api_key = "key=#{ENV['GOOGLE_CIVIC_API_KEY']}"
-      levels = "levels=country"
-      offices = "includeOffices=false"
-      roles = "roles=legislatorLowerBody"
-      request = "#{api_url}#{address}&#{api_key}&#{levels}&#{offices}&#{roles}"
-      response = HTTParty.get(request, format: :plain)
+      url = "https://www.googleapis.com/civicinfo/v2/representatives"
+      query = {
+        "address": address,
+        "key": ENV['GOOGLE_CIVIC_API_KEY'],
+        "levels": "country",
+        "includeOffices": false,
+        "roles": "legislatorLowerBody"
+      }
+      response = HTTParty.get(url, query: query, format: :plain)
       JSON.parse response, symbolize_names: true
     end
 
@@ -61,5 +52,5 @@ class Api::RepsController < ApplicationController
       [*senators, representative]
     end
 
- 
+
 end

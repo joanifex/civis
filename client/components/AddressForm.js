@@ -26,7 +26,7 @@ class AddressForm extends React.Component {
     }
   }
 
-  findReps = ({ address = "", coords = "" }) => {
+  findReps = ({ address = "", coords = {} }) => {
     $.ajax({
       type: 'GET',
       url: `/api/reps`,
