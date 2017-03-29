@@ -34,11 +34,7 @@ class AddressForm extends React.Component {
       data: { address, coords }
     }).done(data => {
       this.props.dispatch(updateReps(data.reps));
-      // TODO: refactor this. This component is being used in two different places
-      if (this.props.enteredAddress)
-        this.props.enteredAddress();
-      else
-        browserHistory.push('/');
+      this.props.enteredAddress();
     }).fail( err => {
       let message = "Could not find address. Try another one."
       if ( err.responseText === "Requires More Specific Address")

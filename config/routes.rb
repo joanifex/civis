@@ -12,11 +12,11 @@ Rails.application.routes.draw do
     get 'logged_in_user', to: 'users#logged_in_user'
     get 'user', to: 'users#show'
     get 'reps', to: 'reps#index'
+
     put 'user', to: 'users#update'
+    put 'ties/:id', to: 'ties#update'
+
     delete 'user/:id', to: 'users#destroy'
-    # TODO: make names consistent
-    put 'user_update', to: 'users#update'
-    delete 'delete_user/:id', to: 'users#destroy'
   end
 
   # NO ROUTES BELOW THIS LINE -- React Router

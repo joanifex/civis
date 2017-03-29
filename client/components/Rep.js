@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
+// Actions
+import { resetArticles } from '../actions/reps';
+
 // Components
 import RepContact from './RepContact';
 import RepInfo from './RepInfo';
@@ -13,15 +16,26 @@ class Rep extends React.Component {
   state = { loading: true }
 
   componentDidMount() {
-    let rep = this.props.rep;
-    if (rep) {
+    if (this.props.rep)
       this.setState({ loading: false });
-    }
   }
 
   componentDidUpdate() {
-    if (this.state.loading && this.props.rep.first_name)
+    let { loading } = this.state
+    let { rep, auth } = this.props
+    if ( loading && rep )
       this.setState({ loading: false });
+    if ( auth.isAuthenticated && rep && rep.new_articles > 0 ) {
+      $.ajax({
+        url: `../api/ties/${rep.id}`,
+        type: 'PUT',
+        dataType: 'JSON'
+      }).done( data => {
+        this.props.dispatch(resetArticles(rep.id));
+      }).fail( err => {
+        console.log(data);
+      });
+    }
   }
 
   // TODO: Refactor with JavaScript named variables in the object destructure.
@@ -70,10 +84,11 @@ class Rep extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  if(!state.auth.isAuthenticated && state.reps.length === 0)
-    browserHistory.push('/')
+  let { auth } = state
+  if (!auth.isAuthenticated && state.reps.length === 0)
+     browserHistory.push('/')
   else
-    return { rep: state.reps.find( r => r.id == props.params.id ) }
+    return { rep: state.reps.find( r => r.id == props.params.id ), auth }
 }
 
 export default connect(mapStateToProps)(Rep);

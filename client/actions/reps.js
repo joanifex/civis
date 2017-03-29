@@ -5,3 +5,7 @@ export const updateReps = (reps) => {
 export const resetReps = () => {
   return ({ type: 'RESET_REPS'});
 }
+
+export const resetArticles = (id) => {
+  return ({ type: 'RESET_ARTICLES', id})
+}
