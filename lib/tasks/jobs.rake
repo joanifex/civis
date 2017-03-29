@@ -7,19 +7,16 @@ namespace :jobs do
       rep.update(new_articles: 0 )
       url = "https://api.nytimes.com/svc/search/v2/articlesearch.json"
       # TODO: Improve this query. Gets back any article with a matching name.
-      params = {
+      query = {
         "api-key" => ENV["NYT_API_KEY"],
         "q" => "\"#{rep.full_name}\"",
         "sort" => "newest",
         "fl" => "web_url,pub_date,headline,lead_paragraph",
         "hl" => "true"
       }
-      # TODO: refactor with HTTParty
       begin
         retries ||= 0
-        response = HTTP.get(url, params: params).to_s
-        parsed = JSON.parse(response)
-        articles = parsed["response"]["docs"]
+        articles = HTTParty.get(url, query: query)["response"]["docs"]
         articles.each do |article|
           unless rep.articles.where(headline: article["headline"]["main"]).count > 0
             new_article = rep.articles.create(

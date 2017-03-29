@@ -278,7 +278,6 @@ DEPENDENCIES
   factory_girl_rails
   faker (~> 1.7.3)
   font-awesome-rails (~> 4.7.0.1)
-  http (~> 2.2.1)
   httparty (~> 0.14.0)
   jbuilder (~> 2.5)
   jquery-rails
