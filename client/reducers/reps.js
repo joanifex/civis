@@ -6,7 +6,6 @@ const reps = (state = ['loading'], action) => {
       return [];
     case 'RESET_ARTICLES':
       return state.map ( rep => {
-        debugger
         if ( rep.id === action.id ) {
           return Object.assign(...Object.keys(rep).map( key => {
             if ( key === "new_articles" )

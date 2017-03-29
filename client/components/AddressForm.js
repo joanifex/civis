@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { updateReps } from '../actions/reps';
 
 class AddressForm extends React.Component {
-  state = { address: "" }
+  state = { address: "", loading: false }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -14,15 +14,17 @@ class AddressForm extends React.Component {
 
   geolocate = () => {
     if (navigator.geolocation) {
+      this.setState({ loading: true });
       navigator.geolocation.getCurrentPosition( position => {
         let coords = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        this.findReps({ coords })
+        this.findReps({ coords });
       });
     } else {
-      Materialize.toast("Can't Geolocate.")
+      this.setState({ loading: false });
+      Materialize.toast("Can't Geolocate.");
     }
   }
 
@@ -36,6 +38,7 @@ class AddressForm extends React.Component {
       this.props.dispatch(updateReps(data.reps));
       this.props.enteredAddress();
     }).fail( err => {
+      this.setState({ loading: false });
       let message = "Could not find address. Try another one."
       if ( err.responseText === "Requires More Specific Address")
         message = "That address includes multiple districts. Try searching for a full address.";
@@ -48,7 +51,12 @@ class AddressForm extends React.Component {
     this.setState({ address: value });
   }
 
-  render() {
+  displayLoading() {
+    //TODO: style this loading state
+    return <div>Loading</div>
+  }
+
+  displayContent = () => {
     let { address } = this.state
     return(
       <div>
@@ -72,6 +80,14 @@ class AddressForm extends React.Component {
          <div className=''>
           <button className="btn center" onClick={this.geolocate}>Geolocate</button>
         </div>
+      </div>
+    );
+  }
+
+  render() {
+    return(
+      <div>
+        { this.state.loading ? this.displayLoading() : this.displayContent() }
       </div>
     );
   }

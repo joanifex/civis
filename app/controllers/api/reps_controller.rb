@@ -3,7 +3,7 @@ class Api::RepsController < ApplicationController
 
   def index
     address = params["address"]
-    if !params["coords"] == nil && params["coords"].has_key?("lat") && params["coords"].has_key?("lng")
+    if !params["coords"].nil? && ["lat","lng"].all? { |key| params["coords"].has_key?(key) }
       coords = {lat: params["coords"]["lat"], lng: params["coords"]["lng"]}
       address = convert_coords_to_address(coords)
     end
