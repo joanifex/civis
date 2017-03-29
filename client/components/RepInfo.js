@@ -6,7 +6,6 @@ const RepInfo = ({
     state,
     next_election,
     district,
-    bio
   }) => (
   <div>
     <h5>Official Info:</h5>
@@ -25,10 +24,6 @@ const RepInfo = ({
         :
         null
       }
-      {/* TODO: if there is a bio, show bio, if not do not */}
-      <li className="collection-item">
-        Bio: {`${bio}`} <br/>
-      </li>
     </ul>
   </div>
 );

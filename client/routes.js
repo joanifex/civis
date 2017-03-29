@@ -19,6 +19,7 @@ const UserIsAuthenticated = UserAuthWrapper({
   predicate: auth => auth.isAuthenticated,
 });
 
+// TODO: should login route authenticate that a user is not signed in?
 export default (
   <Route>
     <Route path="/" component={App}>

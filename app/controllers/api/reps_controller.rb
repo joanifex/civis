@@ -51,6 +51,4 @@ class Api::RepsController < ApplicationController
       senators = Rep.where(state: state, title: 'Senator')
       [*senators, representative]
     end
-
-
 end

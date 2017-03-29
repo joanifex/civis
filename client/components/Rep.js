@@ -6,17 +6,20 @@ import { browserHistory } from 'react-router';
 import { resetArticles } from '../actions/reps';
 
 // Components
+import RepHeader from './RepHeader';
 import RepContact from './RepContact';
 import RepInfo from './RepInfo';
-import RepHeader from './RepHeader';
+import RepBio from './RepBio';
 import Articles from './Articles';
 
-// TODO: Redirect to home on refresh if no current session
+// TODO: Logout from Rep Component takes over a second
 class Rep extends React.Component {
   state = { loading: true }
 
   componentDidMount() {
-    if (this.props.rep)
+    let { loading } = this.state
+    let { rep } = this.props
+    if ( loading && rep )
       this.setState({ loading: false });
   }
 
@@ -26,16 +29,20 @@ class Rep extends React.Component {
     if ( loading && rep )
       this.setState({ loading: false });
     if ( auth.isAuthenticated && rep && rep.new_articles > 0 ) {
-      $.ajax({
-        url: `../api/ties/${rep.id}`,
-        type: 'PUT',
-        dataType: 'JSON'
-      }).done( data => {
-        this.props.dispatch(resetArticles(rep.id));
-      }).fail( err => {
-        console.log(data);
-      });
+      this.resetArticles(rep.id);
     }
+  }
+
+  resetArticles(id) {
+    $.ajax({
+      url: `../api/ties/${id}`,
+      type: 'PUT',
+      dataType: 'JSON'
+    }).done( data => {
+      this.props.dispatch(resetArticles(id));
+    }).fail( err => {
+      console.log(err);
+    });
   }
 
   // TODO: Refactor with JavaScript named variables in the object destructure.
@@ -62,9 +69,11 @@ class Rep extends React.Component {
               twitter_account={rep.twitter_account}
               url={rep.url}
               contact_url={rep.contact_url}
+              full_name={rep.full_name}
             />
           </div>
           <div className="col s12 l8">
+            <RepBio bio={rep.bio}/>
             <Articles
               fullName={rep.full_name}
               articles={rep.articles}
@@ -85,7 +94,7 @@ class Rep extends React.Component {
 
 const mapStateToProps = (state, props) => {
   let { auth } = state
-  if (!auth.isAuthenticated && state.reps.length === 0)
+  if (!auth.isAuthenticated && state.reps.length === 0 )
      browserHistory.push('/')
   else
     return { rep: state.reps.find( r => r.id == props.params.id ), auth }

@@ -35,7 +35,12 @@ class User < ApplicationRecord
 
   def create_ties(reps)
     self.ties.delete_all
-    reps.each { |rep| self.ties.create(rep_id: rep.id) }
+    reps.each do |rep|
+      self.ties.create(
+        rep_id: rep.id,
+        new_articles: rep.new_articles
+      )
+    end
   end
 
 end

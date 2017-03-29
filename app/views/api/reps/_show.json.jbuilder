@@ -17,3 +17,6 @@ json.contact_url rep.contact_url
 json.articles rep.articles do |article|
   json.partial! 'api/articles/show/', article: article
 end
+if current_user
+  json.new_articles current_user.ties.find_by(rep_id: rep.id).new_articles
+end
