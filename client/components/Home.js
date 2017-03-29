@@ -65,7 +65,7 @@ class Home extends React.Component {
            <div>
             <ul className='collapsible' data-collapsible='accordion'>
               <li>
-              <div className='center collapsible-header'><h2>About Us</h2></div>
+              <div className='center collapsible-header grey lighten-4'><h2>About Us</h2></div>
               <div className='collapsible-body'><About /></div>
              </li>
             </ul>

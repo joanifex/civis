@@ -6,11 +6,8 @@ const Footer = () => (
   <div>
     <footer className='blue-grey white-text'>
       <div className="footer-copyright">
-        <div className="container">
+        <div className="container" style={{ paddingTop: '20px' }}>
           © 2017 Civis
-          <div className= {`${footerText} right`} style={{ verticalAlign: 'middle' }}>
-            <Link to='/about'>About</Link>
-          </div>
         </div>
       </div>
     </footer>
