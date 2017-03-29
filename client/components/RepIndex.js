@@ -12,6 +12,7 @@ const RepIndex = ({ reps, showAddressForm }) => {
           <p>
             {`${rep.title} of ${rep.state}`}
           </p>
+          <span className="new badge">{`${rep.new_articles}`}</span>
           <Link
             to={`/rep/${rep.id}`}
             href="#!"
