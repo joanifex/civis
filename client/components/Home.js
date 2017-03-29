@@ -5,12 +5,17 @@ import HomeCard from './HomeCard';
 import AboutUs from './AboutUs';
 import Footer from './Footer';
 import ParallaxContainer from './ParallaxContainer';
+import vote_360 from '../images/vote_360.png';
+import election_480 from '../images/election_480.png';
+import { aboutpic } from './styles.scss';
+import About from './About';
 
 
 class Home extends React.Component {
 
   componentDidMount() {
     $('.parallax').parallax();
+    $('.collapsible').collapsible();
   }
 
   render() {
@@ -27,21 +32,48 @@ class Home extends React.Component {
           </div>
         </div>
         <ParallaxContainer />
-        <div className='section white'>
+        <div className='section grey lighten-4'>
           <div className="row container">
-            <h3 className="header center">Register To Vote!</h3>
-            <Link className="register to vote" target="_blank" href ="https://www.usvotefoundation.org/vote/voter-registration-absentee-voting.htm?gclid=Cj0KEQjwk-jGBRCbxoPLld_bp-IBEiQAgJaftZKlqzQIhh7SUEz7ELELmRqTowsXkDlVMfo8N90PkbgaAlTo8P8HAQ">Here!</Link>
+            <div className='col s12 m6 l4'>
+            <h5 className="center">Sign Up!</h5>
+            <br />
+            <a className="center" target="_blank"
+                  href ="https://www.usvotefoundation.org/vote/voter-registration-absentee-voting.htm?gclid=Cj0KEQjwk-jGBRCbxoPLld_bp-IBEiQAgJaftZKlqzQIhh7SUEz7ELELmRqTowsXkDlVMfo8N90PkbgaAlTo8P8HAQ"
+                ><img className={aboutpic} src={vote_360}/></a>
           </div>
-        </div>
-        <div className='section white'>
-          <div className="row">
-            <div><AboutUs /></div>
-          </div>
+
+          <div className='col s12 m6 l4'>
+          <h5 className="center">2018 Election</h5>
+          <br />
+          <a className="center" target="_blank"
+                href ="https://ballotpedia.org/United_States_Congress_elections,_2018"
+              ><img className={aboutpic} src={election_480}/></a>
         </div>
 
-       <ParallaxContainer />
+          <div className='col s12 m6 l4'>
+          <h5 className="center">Coming Election</h5>
+          <br />
+          <a className="center" target="_blank"
+                href ="https://ballotpedia.org/United_States_Congress_elections,_2018"
+              ><img className={aboutpic} src={election_480}/></a>
+            </div>
+          </div>
+        </div>
+          <ParallaxContainer />
+        <div className='section grey lighten-4'>
+          <div className="row">
+           <div>
+            <ul className='collapsible' data-collapsible='accordion'>
+              <li>
+              <div className='center collapsible-header'><h2>About Us</h2></div>
+              <div className='collapsible-body'><About /></div>
+             </li>
+            </ul>
+          </div>
+        </div>
+      </div>
        <Footer />
-     </div>
+    </div>
     )
   }
 };

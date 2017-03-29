@@ -5,6 +5,8 @@
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <% if Rails.env.development? %>
     <script src="http://localhost:3808/webpack-dev-server.js"></script>
   <% end %>
