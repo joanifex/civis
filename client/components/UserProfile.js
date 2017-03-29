@@ -13,6 +13,7 @@ class UserProfile extends React.Component {
       this.props.dispatch(deleteUser(this.props.user.id, this.props.history));
   }
 
+  // TODO: Whiteboard and redesign. Looks bad.
   render() {
     let user = this.props.user
     return(

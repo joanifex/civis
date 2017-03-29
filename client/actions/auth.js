@@ -73,6 +73,7 @@ export const handleSignUp = (email, password, confirmPassword, first_name, last_
     }).done( user => {
       dispatch(resetReps());
       dispatch(login(user));
+      // TODO: Make New Articles when User Signs Up
       browserHistory.push('/');
     }).fail(data => {
       dispatch(setFlash('Error Creating Account.', 'error'));
