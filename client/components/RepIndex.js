@@ -3,6 +3,11 @@ import { Link } from 'react-router';
 
 const RepIndex = ({ reps, showAddressForm }) => {
 
+  let displayNewArticles = (new_articles) => {
+    if ( new_articles )
+      return <span className="new badge">{`${new_articles}`}</span>
+  }
+
   let displayReps = () => {
     return reps.map( (rep) => {
       return(
@@ -12,7 +17,7 @@ const RepIndex = ({ reps, showAddressForm }) => {
           <p>
             {`${rep.title} of ${rep.state}`}
           </p>
-          <span className="new badge">{`${rep.new_articles}`}</span>
+          { displayNewArticles(rep.new_articles) }
           <Link
             to={`/rep/${rep.id}`}
             href="#!"
