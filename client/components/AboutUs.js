@@ -1,4 +1,8 @@
 import React from 'react';
+import ianpic from '../images/ianpic.png';
+import valpic from '../images/valpic.jpeg';
+import lindsaypic from '../images/lindsaypic.jpg';
+import { aboutpic } from './styles.scss'
 
 class AboutUs extends React.Component{
 
@@ -10,100 +14,96 @@ class AboutUs extends React.Component{
     return(
       <div className='row'>
         <h1 className='center'>Our Team</h1>
-
         <div className='col s12 m6 l3'>
           <h5 className='center'>Ian Wright</h5>
           <br />
-          <img width='100%' src='https://s-media-cache-ak0.pinimg.com/564x/10/3f/62/103f62d4e3aa8f471b3b512c9361cfe1.jpg' />
-          <p>Hi, I am Ian and I'm the smartest person in the class! </p>
+          <img className={`${aboutpic}`}src={ianpic} />
+          <p className='center'>About Ian</p>
           <br />
-          <a href={'https://github.com/wrightianb'}
-            target="_blank"
-          >
-            <img src='http://res.cloudinary.com/dx6ytyvvg/image/upload/v1489866531/github-logo_vpclpu.png'
-            />
-          </a>
-          <a href={'https://www.linkedin.com/in/wrightianb/'}
-            target="_blank"
-          >
-            <img src='http://res.cloudinary.com/dx6ytyvvg/image/upload/v1489866614/linkedin-icon.png'
-            />
-          </a>
-          <a className='email' href="mailto:ian@test.com?subject=Civis">
-            <img src='http://res.cloudinary.com/dx6ytyvvg/image/upload/v1489866524/email-icon.png'
-            />
-          </a>
+          <div className='center'>
+            <a href={'https://github.com/wrightianb'}
+              target="_blank"
+            >
+              <i className="black-text fa fa-github fa-3x"></i>
+            </a>
+            <a href={'https://www.linkedin.com/in/wrightianb/'}
+              target="_blank"
+            >
+              <i className="black-text fa fa-linkedin-square fa-3x" style={{margin: "auto 15px"}}></i>
+            </a>
+            <a className='email' href="mailto:ian@test.com?subject=Civis">
+              <i className="black-text fa fa-envelope-square fa-3x"></i>
+            </a>
+          </div>
         </div>
 
         <div className='col s12 m6 l3'>
           <h5 className='center'>Jeremy Cram</h5>
           <br />
-          <img width='100%' src='http://scontent.cdninstagram.com/t51.2885-15/s480x480/e35/13531800_1235678766445299_1590304831_n.jpg?ig_cache_key=MTI5MDUzMDU5NjcwNzI0MzQ3Mw%3D%3D.2'/>
-          <p>Hi! I am Jeremy and I'm a lumberjack and I'm ok! </p>
-           <a href={'https://github.com/jeremycram'}
-            target="_blank"
-          >
-            <img src='http://res.cloudinary.com/dx6ytyvvg/image/upload/v1489866531/github-logo_vpclpu.png'
-            />
-          </a>
-          <a href={'https://www.linkedin.com/in/jeremy-cram/'}
-            target="_blank"
-          >
-            <img src='http://res.cloudinary.com/dx6ytyvvg/image/upload/v1489866614/linkedin-icon.png'
-            />
-          </a>
-          <a className='email' href="mailto:jeremy@test.com?subject=Civis">
-            <img src='http://res.cloudinary.com/dx6ytyvvg/image/upload/v1489866524/email-icon.png'
-            />
-          </a>
+          <div className='center'>
+            <img className={`${aboutpic}`}src={ianpic} />
+            <p>About Jeremy</p>
+            <br />
+            <a href={'https://github.com/jeremycram'}
+              target="_blank"
+            >
+              <i className="black-text fa fa-github fa-3x"></i>
+            </a>
+            <a href={'https://www.linkedin.com/in/jeremy-cram/'}
+              target="_blank"
+            >
+              <i className="black-text fa fa-linkedin-square fa-3x" style={{margin: "auto 15px"}}></i>
+            </a>
+            <a className='email' href="mailto:jeremy@test.com?subject=Civis">
+              <i className="black-text fa fa-envelope-square fa-3x"></i>
+            </a>
+          </div>
         </div>
 
         <div className='col s12 m6 l3'>
           <h5 className='center'>Lindsay Larkin</h5>
           <br />
-          <img width='100%' src='https://img.buzzfeed.com/buzzfeed-static/static/enhanced/webdr01/2013/4/18/16/anigif_enhanced-buzz-1786-1366317339-16_preview.gif' />
-          <p>Hi! I'm Lindsay and I like drinks! How much could a banana cost? $10?! </p>
-          <br />
-          <a href={'https://github.com/lilarkin'}
-            target="_blank"
-          >
-            <img src='http://res.cloudinary.com/dx6ytyvvg/image/upload/v1489866531/github-logo_vpclpu.png'
-            />
-          </a>
-          <a href={'https://www.linkedin.com/in/lindsaylarkin/'}
-            target="_blank"
-          >
-            <img src='http://res.cloudinary.com/dx6ytyvvg/image/upload/v1489866614/linkedin-icon.png'
-            />
-          </a>
-          <a className='email' href="mailto:lindsay@test.com?subject=Civis">
-            <img src='http://res.cloudinary.com/dx6ytyvvg/image/upload/v1489866524/email-icon.png'
-            />
-          </a>
+          <div className='center'>
+            <img className={`${aboutpic}`}src={lindsaypic} />
+            <p className='center'>About Lindsay</p>
+            <br />
+            <a href={'https://github.com/lilarkin'}
+              target="_blank"
+            >
+              <i className="black-text fa fa-github fa-3x"></i>
+            </a>
+            <a href={'https://www.linkedin.com/in/lindsaylarkin/'}
+              target="_blank"
+            >
+              <i className="black-text fa fa-linkedin-square fa-3x" style={{margin: "auto 15px"}}></i>
+            </a>
+            <a className='email' href="mailto:lindsay@test.com?subject=Civis">
+              <i className="black-text fa fa-envelope-square fa-3x"></i>
+            </a>
+           </div>
         </div>
 
         <div className='col s12 m6 l3'>
           <h5 className='center'>Valerie Barela</h5>
           <br />
-          <img width='100%' src='http://i.dailymail.co.uk/i/pix/2015/09/04/13/190E8A9100000578-0-image-a-26_1441371211282.jpg'/>
-          <p>Hi! My name is Valerie and I want to look like Liza</p>
+          <img className={`${aboutpic}`} src={valpic} />
+          <p className='center'>About Valerie</p>
           <br />
-          <a href={'https://github.com/vbarela1'}
-            target="_blank"
-          >
-            <img src='http://res.cloudinary.com/dx6ytyvvg/image/upload/v1489866531/github-logo_vpclpu.png'
-            />
-          </a>
-          <a href={'https://www.linkedin.com/in/barelavalerie/'}
-            target="_blank"
-          >
-            <img src='http://res.cloudinary.com/dx6ytyvvg/image/upload/v1489866614/linkedin-icon.png'
-            />
-          </a>
-          <a className='email' href="mailto:valerie@test.com?subject=Civis">
-            <img src='http://res.cloudinary.com/dx6ytyvvg/image/upload/v1489866524/email-icon.png'
-            />
-          </a>
+          <div className='center'>
+            <a href={'https://github.com/vbarela1'}
+              target="_blank"
+            >
+              <i className="black-text fa fa-github fa-3x"></i>
+            </a>
+            <a href={'https://www.linkedin.com/in/barelavalerie/'}
+              target="_blank"
+            >
+              <i className="black-text fa fa-linkedin-square fa-3x" style={{margin: "auto 15px"}}></i>
+            </a>
+            <a className='email' href="mailto:valerie@test.com?subject=Civis">
+              <i className="black-text fa fa-envelope-square fa-3x"></i>
+            </a>
+          </div>
         </div>
       </div>
     );
