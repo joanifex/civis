@@ -9,6 +9,8 @@ respond_to :json
   #   super
   # end
 
+  # TODO: send back user jbuilder on create action
+  
   # POST /resource
   # def create
   #   super

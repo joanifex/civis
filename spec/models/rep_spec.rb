@@ -25,7 +25,7 @@ RSpec.describe Rep, type: :model do
     it { should respond_to(:next_election) }
     it { should respond_to(:twitter_account) }
     it { should respond_to(:profile_url) }
-    it { should respond_to(:contact_url}
+    it { should respond_to(:contact_url) }
   end
 
   describe 'validations' do
@@ -69,7 +69,6 @@ RSpec.describe Rep, type: :model do
     it 'changes state abbreviation to states full name' do
       expect(@rep.full_state).to eq("North Dakota")
     end
-
-    it 'fetches articles for the representatives'do
+    
   end
 end
