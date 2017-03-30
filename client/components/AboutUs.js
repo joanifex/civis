@@ -31,7 +31,7 @@ class AboutUs extends React.Component{
             >
               <i className="black-text fa fa-linkedin-square fa-3x" style={{margin: "auto 15px"}}></i>
             </a>
-            <a className='email' href="mailto:ian@test.com?subject=Civis">
+            <a className='email' href="mailto:wright.ianb@gmail.com?subject=Civis">
               <i className="black-text fa fa-envelope-square fa-3x"></i>
             </a>
           </div>
@@ -54,7 +54,7 @@ class AboutUs extends React.Component{
             >
               <i className="black-text fa fa-linkedin-square fa-3x" style={{margin: "auto 15px"}}></i>
             </a>
-            <a className='email' href="mailto:jeremy@test.com?subject=Civis">
+            <a className='email' href="mailto:Jeremycrams@gmail.com?subject=Civis">
               <i className="black-text fa fa-envelope-square fa-3x"></i>
             </a>
           </div>
@@ -77,7 +77,7 @@ class AboutUs extends React.Component{
             >
               <i className="black-text fa fa-linkedin-square fa-3x" style={{margin: "auto 15px"}}></i>
             </a>
-            <a className='email' href="mailto:lindsay@test.com?subject=Civis">
+            <a className='email' href="mailto:lindsay.larkin@gmail.com?subject=Civis">
               <i className="black-text fa fa-envelope-square fa-3x"></i>
             </a>
            </div>
@@ -100,7 +100,7 @@ class AboutUs extends React.Component{
             >
               <i className="black-text fa fa-linkedin-square fa-3x" style={{margin: "auto 15px"}}></i>
             </a>
-            <a className='email' href="mailto:valerie@test.com?subject=Civis">
+            <a className='email' href="mailto:vbarela1@gmail.com?subject=Civis">
               <i className="black-text fa fa-envelope-square fa-3x"></i>
             </a>
           </div>
