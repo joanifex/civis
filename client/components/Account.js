@@ -9,8 +9,9 @@ class UserProfile extends React.Component {
 
 // TODO: add a change password form
   deleteUser = () => {
+    let { dispatch, user, history } = this.props
     if (confirm('Do you really want to delete your User Profile?'))
-      this.props.dispatch(deleteUser(this.props.user.id, this.props.history));
+      dispatch(deleteUser(user.id, history));
   }
 
   // TODO: Whiteboard and redesign. Looks bad.

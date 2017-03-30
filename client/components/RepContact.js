@@ -1,13 +1,13 @@
 import React from 'react';
 
-const RepContact = ({ phone, twitter_account, url, contact_url, full_name }) => {
+const RepContact = ({ phone, twitterAccount, url, contactUrl, fullName }) => {
   let displayTwitter = () => {
-    if ( twitter_account !== "" ) {
+    if ( twitterAccount !== "" ) {
       return(
         <li className="collection-item">
           <i className="fa fa-twitter"></i>
           <a
-            href={`https://twitter.com/${twitter_account}`}
+            href={`https://twitter.com/${twitterAccount}`}
             target="_blank"
           >
             {`   Twitter`}
@@ -18,15 +18,15 @@ const RepContact = ({ phone, twitter_account, url, contact_url, full_name }) => 
   }
 
   let displayContact = () => {
-    if ( contact_url !== "" ) {
+    if ( contactUrl !== "" ) {
       return(
         <li className='collection-item'>
           <i className="fa fa-external-link"></i>
           <a
-            href={contact_url}
+            href={contactUrl}
             target='_blank'
           >
-            {`  Contact ${full_name}`}
+            {`  Contact ${fullName}`}
           </a>
         </li>
       );

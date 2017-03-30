@@ -8,7 +8,7 @@ class AddressForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let { address } = this.state;
+    let { address } = this.state
     this.findReps({ address });
   }
 
@@ -16,7 +16,7 @@ class AddressForm extends React.Component {
     if (navigator.geolocation) {
       this.setState({ loading: true });
       navigator.geolocation.getCurrentPosition( position => {
-        let coords = {
+        const coords = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
@@ -35,8 +35,9 @@ class AddressForm extends React.Component {
       dataType: 'JSON',
       data: { address, coords }
     }).done(data => {
-      this.props.dispatch(updateReps(data.reps));
-      this.props.enteredAddress();
+      const { dispatch, enteredAddress } = this.props;
+      dispatch(updateReps(data.reps));
+      enteredAddress();
     }).fail( err => {
       this.setState({ loading: false });
       let message = "Could not find address. Try another one."
@@ -77,7 +78,7 @@ class AddressForm extends React.Component {
             <input className='btn' type='submit'/>
           </div>
         </form>
-         <div className=''>
+        <div className=''>
           <button className="btn center" onClick={this.geolocate}>Geolocate</button>
         </div>
       </div>

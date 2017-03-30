@@ -45,39 +45,49 @@ class Rep extends React.Component {
     });
   }
 
-  // TODO: Refactor with JavaScript named variables in the object destructure.
   displayRep = () => {
-    let { rep } = this.props;
+    let {
+      full_name: fullName,
+      state,
+      title,
+      party,
+      phone,
+      url,
+      bio,
+      twitter_account: twitterAccount,
+      next_election: nextElection,
+      profile_url: profileUrl,
+      profile_large_url: profileLargeUrl,
+      district,
+      contact_url: contactUrl,
+      articles
+    } = this.props.rep;
     return (
       <div>
         <RepHeader
-          profile_large_url={rep.profile_large_url}
-          first_name={rep.first_name}
-          last_name={rep.last_name}
+          profileLargeUrl={profileLargeUrl}
+          fullName={fullName}
         />
         <div className="row">
           <div className="col s12 l4">
             <RepInfo
-              party={rep.party}
-              title={rep.title}
-              state={rep.state}
-              bio={rep.bio}
-              next_election={rep.next_election}
+              party={party}
+              title={title}
+              state={state}
+              bio={bio}
+              nextElection={nextElection}
             />
             <RepContact
-              phone={rep.phone}
-              twitter_account={rep.twitter_account}
-              url={rep.url}
-              contact_url={rep.contact_url}
-              full_name={rep.full_name}
+              phone={phone}
+              twitterAccount={twitterAccount}
+              url={url}
+              contactUrl={contactUrl}
+              fullName={fullName}
             />
           </div>
           <div className="col s12 l8">
-            <RepBio bio={rep.bio}/>
-            <Articles
-              fullName={rep.full_name}
-              articles={rep.articles}
-            />
+            <RepBio bio={bio}/>
+            <Articles articles={articles} />
           </div>
         </div>
       </div>

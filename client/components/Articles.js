@@ -4,14 +4,21 @@ const Articles = ({ articles }) => {
 
   let displayArticles = (articles) => {
     return articles.map( (article, i) => {
-      return(
+      let {
+        headline,
+        web_url: webUrl,
+        lead_paragraph: leadParagraph,
+        snippet,
+        pub_date: pubDate
+      } = article
+      return (
         <li key={i} className="collection-item">
-          <a href={article.web_url} target="_blank">
-            {article.headline}
+          <a href={webUrl} target="_blank">
+            {headline}
           </a>
-          <p>{article.lead_paragraph}</p>
-          <p>{article.snippet}</p>
-          <p>{article.pub_date}</p>
+          <p>{leadParagraph}</p>
+          <p>{snippet}</p>
+          <p>{pubDate}</p>
         </li>
       );
     });

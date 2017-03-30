@@ -1,6 +1,7 @@
 import React from 'react';
 import AboutUs from './AboutUs';
 
+// TODO: add a "Find on appstore link to civisNative github page"
 const About = () => (
   <div>
     <h1 className='center'>About Civis</h1>
