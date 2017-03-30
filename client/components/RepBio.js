@@ -3,7 +3,7 @@ import React from 'react'
 const RepBio = ({ bio }) => (
   <div>
     {
-      bio ?
+      bio == "" ?
         <div>
           <h5>Bio</h5>
           <p>{bio}</p>
