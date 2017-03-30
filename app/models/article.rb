@@ -3,7 +3,7 @@ class Article < ApplicationRecord
   belongs_to :rep
 
   def formatted_pub_date
-    Date.strptime(self.pub_date.to_s.split[0], "%Y-%m-%d").to_s
+    Date.strptime(self.pub_date.to_s.split[0], "%Y-%m-%d").strftime("%B %d, %Y")
   end
 
   # TODO: Improve the filter here. Comes back with weird stuff
