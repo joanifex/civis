@@ -7,7 +7,6 @@ import { updateUser, deleteUser } from '../actions/user';
 
 class UserProfile extends React.Component {
 
-// TODO: add a change password form
   deleteUser = () => {
     const { dispatch, user, history } = this.props
     if (confirm('Do you really want to delete your User Profile?'))
