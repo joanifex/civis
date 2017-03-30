@@ -1,16 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import { handleLogout } from '../actions/auth';
 import { resetReps } from '../actions/reps';
 
 class Navbar extends React.Component {
   logout = (e) => {
     e.preventDefault();
-    this.props.dispatch(resetReps());
+    browserHistory.push('login');
     this.props.dispatch(handleLogout());
-    this.props.dispatch({ type: "USER_LOGOUT" });
-    // TODO: this duplication is intentional. Probably a better way to do it
     this.props.dispatch(resetReps());
   }
 

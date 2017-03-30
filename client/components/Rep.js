@@ -12,7 +12,6 @@ import RepInfo from './RepInfo';
 import RepBio from './RepBio';
 import Articles from './Articles';
 
-// TODO: Logout from Rep Component takes over a second
 class Rep extends React.Component {
   state = { loading: true }
 

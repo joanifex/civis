@@ -35,7 +35,6 @@ export const handleLogout = () => {
       dataType: 'JSON'
     }).done( data => {
       dispatch(logout());
-      browserHistory.push('login');
     }).fail( data => {
       dispatch(setFlash('Error Logging Out.', 'error'));
     });
