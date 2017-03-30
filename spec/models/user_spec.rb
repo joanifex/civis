@@ -26,7 +26,6 @@ RSpec.describe User, type: :model do
 
   describe 'attributes' do
     it { should respond_to(:first_name) }
-    it { should respond_to(:last_name) }
   end
 
   describe 'association' do
@@ -41,19 +40,6 @@ RSpec.describe User, type: :model do
 
     it 'gives full name' do
       expect(@user.full_name).to eq("Lindsay Larkin")
-    end
-
-    it 'sets the rep profile picture' do
-      rep = @user.reps.create(
-        title: 'Senator',
-        first_name: 'Your',
-        last_name: 'face',
-        state: 'Utah',
-        twitter_account: 'SenOrrinHatch'
-        )
-      profile_picture = "http://pbs.twimg.com/profile_images/1265985804/09232010_master_copy_normal.jpg"
-      @user.set_reps_pictures
-      expect(@user.reps.last.profile_url).to eq(profile_picture)
     end
 
     context "@user.create_ties" do
