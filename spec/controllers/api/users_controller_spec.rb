@@ -26,12 +26,25 @@ RSpec.describe Api::UsersController, type: :controller do
     end
   end
 
-  describe 'PATCH #update_user' do
+  describe 'PUT #show' do
+    context 'logged in user' do
+      login_user
+
+      it 'render the show json' do
+        get :show
+        user = JSON.parse(response.body)
+        expect(user['id']).to eq(@user.id)
+        expect(user['full_name']).to eq(@user.full_name)
+      end
+    end
+  end
+
+  describe 'PUT #update' do
     context 'logged in user' do
       login_user
 
       it 'updates user with valid params' do
-        patch :update_user, {user: {first_name: 'Jeremy', last_name: 'Cram' } }
+        put :update, {user: {first_name: 'Jeremy', last_name: 'Cram' } }
         current_user = JSON.parse(response.body)
         @user.reload
         expect(current_user['first_name']).to eq(@user.first_name)
@@ -39,7 +52,7 @@ RSpec.describe Api::UsersController, type: :controller do
       end
 
       it 'fails to update user with invalid params' do
-        patch :update_user, { user: {first_name: '', last_name: 'Cram' } }
+        put :update, { user: {first_name: '', last_name: 'Cram' } }
         current_user = JSON.parse(response.body)
         expect(current_user.keys).to eq(['errors'])
         expect(current_user['errors']).to include("Could Not Save Updates")
