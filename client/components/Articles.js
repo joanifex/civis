@@ -2,9 +2,9 @@ import React from 'react'
 
 const Articles = ({ articles }) => {
 
-  let displayArticles = (articles) => {
+  const displayArticles = (articles) => {
     return articles.map( (article, i) => {
-      let {
+      const {
         headline,
         web_url: webUrl,
         lead_paragraph: leadParagraph,

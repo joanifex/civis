@@ -39,10 +39,9 @@ class AddressForm extends React.Component {
       dispatch(updateReps(data.reps));
       enteredAddress();
     }).fail( err => {
-      this.setState({ loading: false });
-      let message = "Could not find address. Try another one."
-      if ( err.responseText === "Requires More Specific Address")
-        message = "That address includes multiple districts. Try searching for a full address.";
+      const message = err.responseText === "Requires More Specific Address" ?
+        "That address includes multiple districts. Try searching for a full address."
+        : "Could not find address. Try another one.";
       Materialize.toast(message, 3000);
     });
   }

@@ -31,45 +31,46 @@ class UserNameForm extends React.Component {
   displayForm = () => {
     let { firstName, lastName } = this.state;
     return(
-          <div>
-          <span className='card-title center'>
-            Update user
-          </span>
-            <form className='center' onSubmit={this.handleSubmit} >
-              <div className="row">
-                <div className='input-field'>
-                  <i className='fa fa-user-circle-o prefix'></i>
-                  <label className='input-label'>First Name</label>
-                  <input
-                    id="firstName"
-                    onChange={this.handleChange}
-                    className="icon_prefix"
-                    type='text'
-                    value={firstName}
-                    required
-                    autoFocus
-                  />
-                </div>
-                <div className='input-field'>
-                  <i className='fa fa-user-circle-o prefix'></i>
-                  <label className='input-label'>Last Name</label>
-                  <input
-                    id="lastName"
-                    onChange={this.handleChange}
-                    className="icon_prefix"
-                    type='text'
-                    value={lastName}
-                    required
-                  />
-                  <input className='btn ' type='submit'/>
-                </div>
-              </div>
-            </form>
+      <div>
+      <span className='card-title center'>
+        Update user
+      </span>
+        <form className='center' onSubmit={this.handleSubmit} >
+          <div className="row">
+            <div className='input-field'>
+              <i className='fa fa-user-circle-o prefix'></i>
+              <label className='input-label'>First Name</label>
+              <input
+                id="firstName"
+                onChange={this.handleChange}
+                className="icon_prefix"
+                type='text'
+                value={firstName}
+                required
+                autoFocus
+              />
+            </div>
+            <div className='input-field'>
+              <i className='fa fa-user-circle-o prefix'></i>
+              <label className='input-label'>Last Name</label>
+              <input
+                id="lastName"
+                onChange={this.handleChange}
+                className="icon_prefix"
+                type='text'
+                value={lastName}
+                required
+              />
+              <input className='btn ' type='submit'/>
+            </div>
           </div>
-        )
-      }
+        </form>
+      </div>
+    );
+  }
+
   render() {
-    let { loading } = this.state;
+    const { loading } = this.state;
     return(
       <div>
         { loading ? this.displayLoading() : this.displayForm() }

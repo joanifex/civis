@@ -1,7 +1,7 @@
 import React from 'react';
 
 const RepContact = ({ phone, twitterAccount, url, contactUrl, fullName }) => {
-  let displayTwitter = () => {
+  const displayTwitter = () => {
     if ( twitterAccount !== "" ) {
       return(
         <li className="collection-item">
@@ -17,7 +17,7 @@ const RepContact = ({ phone, twitterAccount, url, contactUrl, fullName }) => {
     }
   }
 
-  let displayContact = () => {
+  const displayContact = () => {
     if ( contactUrl !== "" ) {
       return(
         <li className='collection-item'>

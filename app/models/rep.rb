@@ -17,8 +17,6 @@ class Rep < ApplicationRecord
   has_many :users, through: :ties
   has_many :articles, dependent: :destroy
 
-  # TODO: some web_urls from the NYT are not valid. Need to figure out.
-
   def full_name
     "#{first_name} #{last_name}"
   end

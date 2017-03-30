@@ -9,14 +9,14 @@ class UserProfile extends React.Component {
 
 // TODO: add a change password form
   deleteUser = () => {
-    let { dispatch, user, history } = this.props
+    const { dispatch, user, history } = this.props
     if (confirm('Do you really want to delete your User Profile?'))
       dispatch(deleteUser(user.id, history));
   }
 
   // TODO: Whiteboard and redesign. Looks bad.
   render() {
-    let user = this.props.user
+    const { user } = this.props
     return(
       <div>
         <div className="row">

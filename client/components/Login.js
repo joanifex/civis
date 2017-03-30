@@ -4,12 +4,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 class Login extends React.Component {
-  // TODO: rewrite with controller inputs: refactor refs
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let email = this.refs.email.value;
-    let password = this.refs.password.value;
+    const email = this.refs.email.value;
+    const password = this.refs.password.value;
     this.props.dispatch(handleLogin(email, password));
   }
 

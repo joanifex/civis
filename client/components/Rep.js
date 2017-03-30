@@ -17,15 +17,15 @@ class Rep extends React.Component {
   state = { loading: true }
 
   componentDidMount() {
-    let { loading } = this.state
-    let { rep } = this.props
+    const { loading } = this.state
+    const { rep } = this.props
     if ( loading && rep )
       this.setState({ loading: false });
   }
 
   componentDidUpdate() {
-    let { loading } = this.state
-    let { rep, auth } = this.props
+    const { loading } = this.state
+    const { rep, auth } = this.props
     if ( loading && rep )
       this.setState({ loading: false });
     if ( auth.isAuthenticated && rep && rep.new_articles > 0 ) {
@@ -46,7 +46,7 @@ class Rep extends React.Component {
   }
 
   displayRep = () => {
-    let {
+    const {
       full_name: fullName,
       state,
       title,
@@ -103,8 +103,8 @@ class Rep extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  let { auth } = state
-  if (!auth.isAuthenticated && state.reps.length === 0 )
+  const { auth } = state
+  if ( !auth.isAuthenticated && state.reps.length === 0 )
      browserHistory.push('/')
   else
     return { rep: state.reps.find( r => r.id == props.params.id ), auth }

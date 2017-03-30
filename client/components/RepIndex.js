@@ -3,12 +3,12 @@ import { Link } from 'react-router';
 
 const RepIndex = ({ reps, showAddressForm }) => {
 
-  let displayNewArticles = (new_articles) => {
+  const displayNewArticles = (new_articles) => {
     if ( new_articles )
       return <span className="new badge">{`${new_articles}`}</span>
   }
 
-  let displayReps = () => {
+  const displayReps = () => {
     return reps.map( (rep) => {
       return(
         <li key={rep.id} className="collection-item avatar">
@@ -32,7 +32,7 @@ const RepIndex = ({ reps, showAddressForm }) => {
   return(
     <div>
       <ul className="collection">
-        {displayReps()}
+        { displayReps() }
       </ul>
       <button className="btn" onClick={showAddressForm}>Update Adress</button>
     </div>

@@ -4,15 +4,14 @@ import { handleSignUp } from '../actions/auth';
 import { connect } from 'react-redux';
 
 class SignUp extends React.Component {
-  // TODO: rewrite with controller inputs: refactor refs
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let email = this.refs.email.value;
-    let password = this.refs.password.value;
-    let confirmPassword = this.refs.confirmPassword.value;
-    let firstName = this.refs.firstName.value;
-    let lastName = this.refs.lastName.value;
+    const email = this.refs.email.value;
+    const password = this.refs.password.value;
+    const confirmPassword = this.refs.confirmPassword.value;
+    const firstName = this.refs.firstName.value;
+    const lastName = this.refs.lastName.value;
     if ( password === confirmPassword )  {
       this.props.dispatch(handleSignUp(email, password, confirmPassword, firstName, lastName));
     } else {

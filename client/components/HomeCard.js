@@ -15,7 +15,7 @@ class HomeCard extends React.Component {
   }
 
   componentDidUpdate() {
-    let { loading, showingReps, changingReps } = this.state;
+    const { loading, showingReps, changingReps } = this.state;
     if ( loading && this.hasLoaded() )
       this.setNotLoading();
     if ( showingReps && changingReps )
@@ -57,25 +57,25 @@ class HomeCard extends React.Component {
   }
 
   displayContent = () => {
-    let { showingReps, changingReps } = this.state
-    if (this.state.showingReps) {
+    const { showingReps, changingReps } = this.state
+    if ( showingReps ) {
       return <RepIndex reps={this.props.reps} showAddressForm={this.setChangingReps}/>;
     }
-    else if ( changingReps ) {
+    else {
       return (
         <div className='center'>
           <AddressForm enteredAddress={this.setShowingReps} />
-          <button className="btn blue-grey" onClick={this.setShowingReps}>Back</button>
+          { changingReps ?
+            <button className="btn blue-grey" onClick={this.setShowingReps}>Back</button>
+            : null
+          }
         </div>
       );
-    }
-    else {
-      return <AddressForm enteredAddress={this.setShowingReps} />
     }
   }
 
   render() {
-    let { loading } = this.state;
+    const { loading } = this.state;
     return(
       <div>
         { loading ? this.displayLoading() : this.displayContent() }

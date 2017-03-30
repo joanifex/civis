@@ -21,8 +21,8 @@ class Navbar extends React.Component {
   }
 
   authLinks = () =>{
-    let { auth } = this.props;
-    if(auth && auth.isAuthenticated) {
+    const { auth } = this.props;
+    if( auth && auth.isAuthenticated ) {
       return(
         <div>
           <li><Link to='/account'>Account</Link></li>
