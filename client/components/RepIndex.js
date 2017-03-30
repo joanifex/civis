@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 const RepIndex = ({ reps, showAddressForm }) => {
 
@@ -8,23 +8,29 @@ const RepIndex = ({ reps, showAddressForm }) => {
       return <span className="new badge">{`${new_articles}`}</span>
   }
 
+  const linkToRep = (rep) => {
+    browserHistory.push(`/rep/${rep.id}`);
+  }
+
   const displayReps = () => {
     return reps.map( (rep) => {
       return(
-        <li key={rep.id} className="collection-item avatar">
-          <img src={rep.profile_url} alt="" className="circle" />
-          <span className="title">{`${rep.first_name} ${rep.last_name}`}</span>
-          <p>
-            {`${rep.title} of ${rep.state}`}
-          </p>
-          { displayNewArticles(rep.new_articles) }
-          <Link
-            to={`/rep/${rep.id}`}
-            href="#!"
-            className="secondary-content">
-            <i className="fa fa-institution fa-2x"></i>
-          </Link>
-        </li>
+          <li 
+            style={{ cursor: 'pointer', margin: '5px' }} 
+            key={rep.id} className="collection-item avatar hoverable" 
+            onClick={ () => linkToRep(rep) }
+          >
+            <img src={rep.profile_url} alt="" className="circle left" />
+            <br />
+            <span className="title">{`${rep.first_name} ${rep.last_name}`}</span>
+            <p>
+              {`${rep.title} of ${rep.state}`}
+            </p>
+            { displayNewArticles(rep.new_articles) }
+            <div className='secondary-content'>
+              <i className="fa fa-institution fa-2x"></i>
+            </div>
+          </li>
       );
     });
   }
