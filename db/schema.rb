@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170328175435) do
     t.integer  "new_articles",    default: 0,  null: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
-    t.text     "bio"
+    t.text     "bio",             default: ""
   end
 
   create_table "ties", force: :cascade do |t|
