@@ -22,16 +22,19 @@ FactoryGirl.define do
     bio "bio"
 
     factory :senator_from_utah do
+      id '1'
       state "UT"
       title "Senator"
     end
 
     factory :senator2_from_utah do
+      id '2'
       state "UT"
       title "Senator"
     end
 
     factory :representative_from_utah do
+      id '3'
       state "UT"
       title "Representative"
       district "2"

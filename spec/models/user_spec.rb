@@ -34,24 +34,24 @@ RSpec.describe User, type: :model do
   end
 
   describe 'instance methods' do
-    before(:each) do
-      @user = FactoryGirl.create(:user_with_reps)
-    end
-
     it 'gives full name' do
+      @user = FactoryGirl.create(:user_with_reps)
       expect(@user.full_name).to eq("Lindsay Larkin")
     end
+  end
 
-    context "@user.create_ties" do
-      it "sets the address parameter with the address argument" do
-        expect(@user.reps.first.first_name).to eq("Ian")
-        FactoryGirl.create(:senator_from_utah)
-        FactoryGirl.create(:senator2_from_utah)
-        FactoryGirl.create(:representative_from_utah)
-        @user.create_ties("84103")
+  describe 'class methods' do
+    context '@user.create_ties' do
+      it 'creates ties between the user and its reps' do
+        @user = FactoryGirl.create(:user)
+        @sen = FactoryGirl.create(:senator_from_utah)
+        @sen2 = FactoryGirl.create(:senator2_from_utah)
+        @rep = FactoryGirl.create(:representative_from_utah)
+        @user.create_ties([@sen, @sen2, @rep])
+        expect(@user.ties[0].rep_id).to eq(@sen.id)
+        expect(@user.ties[1].rep_id).to eq(@sen2.id)
+        expect(@user.ties[2].rep_id).to eq(@rep.id)
       end
     end
-
-    it 'fails to set the address parameter with the address argument'
   end
 end
