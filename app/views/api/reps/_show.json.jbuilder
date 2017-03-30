@@ -7,7 +7,7 @@ json.id rep.id
 json.party rep.full_party
 json.phone rep.phone
 json.url rep.url
-json.bio rep.bio
+json.bio rep.formatted_bio 
 json.twitter_account rep.twitter_account
 json.next_election rep.next_election
 json.profile_url rep.profile_url

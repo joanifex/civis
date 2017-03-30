@@ -25,7 +25,7 @@ RSpec.describe Rep, type: :model do
     it { should respond_to(:next_election) }
     it { should respond_to(:twitter_account) }
     it { should respond_to(:profile_url) }
-    it { should respond_to(:contact_url}
+    it { should respond_to(:contact_url) }
   end
 
   describe 'validations' do
@@ -63,13 +63,14 @@ RSpec.describe Rep, type: :model do
       expect(rep2.full_party).to eq("Republican")
       rep3 = FactoryGirl.create(:rep, party: "I")
       expect(rep3.full_party).to eq("Independent")
+    end
 
+    it 'formats bio' do
+      expect(@rep.formatted_bio).to eq("bio")
     end
 
     it 'changes state abbreviation to states full name' do
       expect(@rep.full_state).to eq("North Dakota")
     end
-
-    it 'fetches articles for the representatives'do
   end
 end

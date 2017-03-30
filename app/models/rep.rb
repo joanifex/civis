@@ -35,7 +35,9 @@ class Rep < ApplicationRecord
     end
   end
 
-  # TODO: FORMATTED BIO METHOD
+  def formatted_bio
+    self.bio.gsub("7009126964800000000♠", "")
+  end
 
   def full_state
     state_hash = {
