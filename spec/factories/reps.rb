@@ -21,16 +21,19 @@ FactoryGirl.define do
     profile_url "http://pbs.twimg.com/profile_images/2284174872/7df3h38zabcvjylnyfe3_normal.png"
 
     factory :senator_from_utah do
+      id '1'
       state "UT"
       title "Senator"
     end
 
     factory :senator2_from_utah do
+      id '2'
       state "UT"
       title "Senator"
     end
 
     factory :representative_from_utah do
+      id '3'
       state "UT"
       title "Representative"
       district "2"
