@@ -38,7 +38,6 @@ class UserNameForm extends React.Component {
         <form className='center' onSubmit={this.handleSubmit} >
           <div className="row">
             <div className='input-field'>
-              <i className='fa fa-user-circle-o prefix'></i>
               <label className='input-label'>First Name</label>
               <input
                 id="firstName"
@@ -51,7 +50,6 @@ class UserNameForm extends React.Component {
               />
             </div>
             <div className='input-field'>
-              <i className='fa fa-user-circle-o prefix'></i>
               <label className='input-label'>Last Name</label>
               <input
                 id="lastName"
@@ -61,7 +59,8 @@ class UserNameForm extends React.Component {
                 value={lastName}
                 required
               />
-              <input className='btn ' type='submit'/>
+              <br />
+              <input className='btn blue-grey' type='submit'/>
             </div>
           </div>
         </form>
