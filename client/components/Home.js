@@ -8,7 +8,6 @@ import ParallaxContainer from './ParallaxContainer';
 import About from './About';
 import HomeLinks from './HomeLinks';
 import civis from '../images/civis.svg';
-import { homeCardStyle } from './styles.scss';
 
 class Home extends React.Component {
 
@@ -21,13 +20,9 @@ class Home extends React.Component {
     return(
       <div>
         <img src={civis} style={{height: "120px", margin: "0 auto", display: "block"}} />
-        <div className="row">
+        <div className = "row">
           <div className="col s12 m10 offset-m1 l8 offset-l2">
-            <div className={`card grey lighten-4 ${homeCardStyle}`}>
-              <div className="card-content">
-                <HomeCard />
-              </div>
-            </div>
+            <HomeCard />
           </div>
         </div>
         <ParallaxContainer />

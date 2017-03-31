@@ -28,13 +28,9 @@ const Articles = ({ articles }) => {
   return(
     <div>
       <h5>Articles</h5>
-      <div className="row">
-        <div className="col s12 m8">
-          <ul className="collection">
-            { displayArticles(articles) }
-          </ul>
-        </div>
-      </div>
+        <ul className="collection">
+          { displayArticles(articles) }
+        </ul>
     </div>
   );
 }

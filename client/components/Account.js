@@ -19,11 +19,10 @@ class UserProfile extends React.Component {
     return(
       <div>
         <div className="row">
-          <div className="col s12 m10 offset-m1 l8 offset-l2">
+          <div className="col s12 l4">
             <div className="card grey lighten-4">
               <div className="card-content black-text">
                 <h3 className="center">{`${user.first_name} ${user.last_name}`} </h3>
-                <HomeCard />
                 <br />
                 <UserNameForm user={user} />
                 <div className="center">
@@ -35,6 +34,9 @@ class UserProfile extends React.Component {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="col s12 l8">
+            <HomeCard />
           </div>
         </div>
       </div>

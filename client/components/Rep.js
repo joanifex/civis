@@ -71,28 +71,36 @@ class Rep extends React.Component {
       <div>
         <div className="row">
           <div className="col s12 l4">
-            <RepHeader
-              profileLargeUrl={profileLargeUrl}
-              fullName={fullName}
-            />
-            <RepInfo
-              party={party}
-              title={title}
-              state={state}
-              bio={bio}
-              nextElection={nextElection}
-            />
-            <RepContact
-              phone={phone}
-              twitterAccount={twitterAccount}
-              url={url}
-              contactUrl={contactUrl}
-              fullName={fullName}
-            />
+            <div className="card grey lighten-4">
+              <div className="card-content">
+                <RepHeader
+                  profileLargeUrl={profileLargeUrl}
+                  fullName={fullName}
+                />
+                <RepInfo
+                  party={party}
+                  title={title}
+                  state={state}
+                  bio={bio}
+                  nextElection={nextElection}
+                />
+                <RepContact
+                  phone={phone}
+                  twitterAccount={twitterAccount}
+                  url={url}
+                  contactUrl={contactUrl}
+                  fullName={fullName}
+                />
+              </div>
+            </div>
           </div>
           <div className="col s12 l8">
-            <RepBio bio={bio}/>
-            <Articles articles={articles} />
+            <div className="card grey lighten-4">
+              <div className="card-content" >
+                <RepBio bio={bio}/>
+                <Articles articles={articles} />
+              </div>
+            </div>
           </div>
         </div>
       </div>

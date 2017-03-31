@@ -4,6 +4,7 @@ import { updateReps, resetReps } from '../actions/reps'
 import AddressForm from './AddressForm';
 import RepIndex from './RepIndex';
 import Loading from './Loading';
+import {homeCardStyle} from './styles.scss';
 
 class HomeCard extends React.Component {
   state = { loading: true, showingReps: false, changingReps: false };
@@ -74,8 +75,10 @@ class HomeCard extends React.Component {
   render() {
     const { loading } = this.state;
     return(
-      <div>
-        { loading ? <Loading /> : this.displayContent() }
+      <div className={`card grey lighten-4 ${homeCardStyle}`}>
+        <div className="card-content">
+          { loading ? <Loading /> : this.displayContent() }
+        </div>
       </div>
     );
   }
