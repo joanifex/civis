@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link, browserHistory } from 'react-router';
 import { civisBlueColor } from './styles.scss'
-import { civisRed } from './styles.scss'
+import { civisRed, badge } from './styles.scss'
 
 const RepIndex = ({ reps, showAddressForm }) => {
 
   const displayNewArticles = (new_articles) => {
     if ( new_articles )
-      return <span className={`new badge ${civisRed}`}>{`${new_articles}`}</span>
+      return <span className={`new badge ${civisRed} ${badge}`}>{`${new_articles}`}</span>
   }
 
   const linkToRep = (rep) => {
