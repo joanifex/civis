@@ -2,6 +2,7 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { updateReps } from '../actions/reps';
+import { civisBlue } from './styles.scss'
 
 import Loading from './Loading';
 
@@ -71,11 +72,11 @@ class AddressForm extends React.Component {
               required
               autoFocus
             />
-            <input className='btn' type='submit'/>
+            <input className={`btn ${civisBlue}`} type='submit'/>
           </div>
         </form>
         <div className=''>
-          <button className="btn center" onClick={this.geolocate}>Geolocate</button>
+          <button className={`btn center ${civisBlue}`}  onClick={this.geolocate}>Geolocate</button>
         </div>
       </div>
     );

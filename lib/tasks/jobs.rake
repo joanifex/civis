@@ -4,6 +4,7 @@ namespace :jobs do
   desc "Fetch All News Articles For Reps"
   task fetch_articles: :environment do
     Rep.find_each do |rep|
+      sleep(1)
       rep.update(new_articles: 0 )
       url = "https://api.nytimes.com/svc/search/v2/articlesearch.json"
       # TODO: Improve this query. Gets back any article with a matching name.
@@ -41,7 +42,7 @@ namespace :jobs do
   end
 
   desc "Grab Rep Bios From Wiki"
-  task fetch_rep_wiki: :environment do
+  task fetch_bio: :environment do
     def get_summary(rep)
       summary = "https://en.wikipedia.org/w/index.php?search=#{rep.first_name}+#{rep.last_name}"
       ['', '_(politician)', '_(U.S._politician)'].each do |term|
