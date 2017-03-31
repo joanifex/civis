@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link, browserHistory } from 'react-router';
+import { civisBlueColor } from './styles.scss'
+import { civisRed } from './styles.scss'
 
 const RepIndex = ({ reps, showAddressForm }) => {
 
   const displayNewArticles = (new_articles) => {
     if ( new_articles )
-      return <span className="new badge">{`${new_articles}`}</span>
+      return <span className={`new badge ${civisRed}`}>{`${new_articles}`}</span>
   }
 
   const linkToRep = (rep) => {
@@ -15,9 +17,9 @@ const RepIndex = ({ reps, showAddressForm }) => {
   const displayReps = () => {
     return reps.map( (rep) => {
       return(
-          <li 
-            style={{ cursor: 'pointer', margin: '5px' }} 
-            key={rep.id} className="collection-item avatar hoverable" 
+          <li
+            style={{ cursor: 'pointer', margin: '5px' }}
+            key={rep.id} className="collection-item avatar hoverable"
             onClick={ () => linkToRep(rep) }
           >
             <img src={rep.profile_url} alt="" className="circle left" />
@@ -28,7 +30,7 @@ const RepIndex = ({ reps, showAddressForm }) => {
             </p>
             { displayNewArticles(rep.new_articles) }
             <div className='secondary-content'>
-              <i className="fa fa-institution fa-2x"></i>
+              <i className={`fa fa-institution fa-2x ${civisBlueColor}`}></i>
             </div>
           </li>
       );
@@ -40,7 +42,7 @@ const RepIndex = ({ reps, showAddressForm }) => {
       <ul className="collection">
         { displayReps() }
       </ul>
-      <button className="btn" onClick={showAddressForm}>Update Adress</button>
+      <a onClick={showAddressForm}>Update Address</a>
     </div>
   );
 }

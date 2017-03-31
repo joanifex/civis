@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { handleLogout } from '../actions/auth';
 import { resetReps } from '../actions/reps';
+import civis from '../images/civis-bw.svg';
+import { civisBlue } from './styles.scss';
 
 class Navbar extends React.Component {
   logout = (e) => {
@@ -35,13 +37,14 @@ class Navbar extends React.Component {
 
   render() {
     return(
-      <nav className='blue-grey'>
+      <nav className={civisBlue}>
         <div className='nav-wrapper' style={{ margin: '0 30px'}}>
           <Link to='/' className='brand-logo'>
-            <img src='https://res.cloudinary.com/dx6ytyvvg/image/upload/c_scale,h_44/v1490061952/civis_logo_white_myb2hu.png'
+            {/* <img src='https://res.cloudinary.com/dx6ytyvvg/image/upload/c_scale,h_44/v1490061952/civis_logo_white_myb2hu.png'
             style={{ marginTop: '10px'}}
-            />
-            </Link>
+            /> */}
+            <img src={civis} style={{height: "50px", marginTop: "5px"}}/>
+          </Link>
           <a data-activates='mobile' className='button-collapse'>
             <i className='fa fa-bars'/>
           </a>
