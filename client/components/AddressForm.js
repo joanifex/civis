@@ -54,6 +54,10 @@ class AddressForm extends React.Component {
     this.setState({ address: value });
   }
 
+  // TODO: Geolocation does not work on HTTP connection
+  // Geolocation can be stopped by adblocker
+  // Gracefully handle geolocation problems with timeout
+
   displayContent = () => {
     let { address } = this.state
     return(

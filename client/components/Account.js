@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import UserProfile from './UserProfile';
 import HomeCard from './HomeCard';
-import UserNameForm from './UserNameForm';
 import { updateUser, deleteUser } from '../actions/user';
 
-class UserProfile extends React.Component {
+class Account extends React.Component {
 
   deleteUser = () => {
     const { dispatch, user, history } = this.props
@@ -13,27 +12,13 @@ class UserProfile extends React.Component {
       dispatch(deleteUser(user.id, history));
   }
 
-  // TODO: Whiteboard and redesign. Looks bad.
   render() {
     const { user } = this.props
     return(
       <div>
         <div className="row">
           <div className="col s12 l4">
-            <div className="card grey lighten-4">
-              <div className="card-content black-text">
-                <h3 className="center">{`${user.first_name} ${user.last_name}`} </h3>
-                <br />
-                <UserNameForm user={user} />
-                <div className="center">
-                  <button className='btn blue-grey ' onClick={this.deleteUser} >
-                    Delete User Profile
-                  </button>
-                    &nbsp;
-                  <Link to={'/'} className='btn blue-grey'>Home</Link>
-                </div>
-              </div>
-            </div>
+            <UserProfile user={user}/>
           </div>
           <div className="col s12 l8">
             <HomeCard />
@@ -48,4 +33,4 @@ const mapStateToProps = (state) => {
   return { user: state.auth }
 }
 
-export default connect(mapStateToProps)(UserProfile);
+export default connect(mapStateToProps)(Account);
