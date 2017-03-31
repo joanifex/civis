@@ -5,7 +5,9 @@ namespace :subscriptions do
       new_articles = tie.rep.new_articles
       if new_articles > 0
         unread_articles = tie.new_articles
-        tie.update( new_articles: unread_articles + new_articles )
+        articles = unread_articles + new_articles
+        articles = 10 if articles > 10
+        tie.update( new_articles: articles )
       end
       user = tie.user
       rep = tie.rep
