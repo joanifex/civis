@@ -4,10 +4,10 @@ import { browserHistory, Link } from 'react-router';
 import HomeCard from './HomeCard';
 import AboutUs from './AboutUs';
 import Footer from './Footer';
-import ParallaxContainer from './ParallaxContainer';
 import About from './About';
 import HomeLinks from './HomeLinks';
 import civis from '../images/civis.svg';
+import { homeCardStyle, accordian } from './styles.scss';
 
 class Home extends React.Component {
 
@@ -25,23 +25,19 @@ class Home extends React.Component {
             <HomeCard />
           </div>
         </div>
-        <ParallaxContainer />
           <HomeLinks />
-        <ParallaxContainer />
-        <div className='section grey lighten-4'>
-          <div className="row">
-            <ul className='collapsible' data-collapsible='accordion'>
-              <li>
-                <div className='center collapsible-header grey lighten-4'><h2>About Us</h2></div>
-                <div className='collapsible-body'><About /></div>
-              </li>
-            </ul>
-          </div>
+          <ul className='collapsible' data-collapsible='accordion'>
+            <li>
+              <div className='center collapsible-header grey lighten-3'>
+                <h3 className={accordian}>Click to Learn More</h3>
+              </div>
+              <div className='collapsible-body'><About /></div>
+            </li>
+          </ul>
+          <Footer />
         </div>
-       <Footer />
-    </div>
-    )
-  }
-};
+      )
+    }
+  };
 
 export default connect()(Home);

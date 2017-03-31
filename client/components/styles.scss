@@ -6,9 +6,26 @@
 
 footer {
   height: 64px;
+  color: #1D4350;
 }
 
 .aboutpic {
+  height: auto;
+  width: 100%;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.infopic {
+  height: auto;
+  width: 90%;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.capitalpic {
   height: auto;
   width: 100%;
   border-radius: 50%;
@@ -39,4 +56,8 @@ footer {
 
 .civisRedColor {
   color: #A43931 !important;
+}
+
+.accordian {
+  padding: 20px;
 }
