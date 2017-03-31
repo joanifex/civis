@@ -68,12 +68,12 @@ class Rep extends React.Component {
     } = this.props.rep;
     return (
       <div>
-        <RepHeader
-          profileLargeUrl={profileLargeUrl}
-          fullName={fullName}
-        />
         <div className="row">
           <div className="col s12 l4">
+            <RepHeader
+              profileLargeUrl={profileLargeUrl}
+              fullName={fullName}
+            />
             <RepInfo
               party={party}
               title={title}
@@ -107,8 +107,8 @@ class Rep extends React.Component {
 }
 
 const mapStateToProps = (state, props) => {
-  const { auth } = state;
-  return { rep: state.reps.find( r => r.id == props.params.id ), auth }
+  const { auth, reps } = state;
+  return { rep: reps.find( r => r.id == props.params.id ), auth }
 }
 
 export default connect(mapStateToProps)(Rep);

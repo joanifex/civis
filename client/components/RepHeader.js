@@ -4,7 +4,11 @@ const RepHeader = ({ profileLargeUrl, fullName }) => (
   <div className="center">
     <img
       src={profileLargeUrl}
-      style={{height: "250px", height: "250px"}}
+      style={{
+        width: "200px",
+        borderRadius: "8px",
+        border: "5px black solid"
+      }}
       className="center"
     />
     <h4>{`${fullName}`}</h4>

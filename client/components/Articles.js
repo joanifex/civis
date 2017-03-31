@@ -14,11 +14,11 @@ const Articles = ({ articles }) => {
       return (
         <li key={i} className="collection-item">
           <a href={webUrl} target="_blank">
-            {headline}
+            <strong>{headline}</strong>
           </a>
-          <p>{leadParagraph}</p>
-          <p>{snippet}</p>
-          <p>{pubDate}</p>
+          <small className="right">{pubDate}</small>
+          <p>{leadParagraph}..</p>
+          <p><em>...{snippet}...</em></p>
         </li>
       );
     });

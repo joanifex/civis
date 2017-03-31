@@ -8,7 +8,6 @@ const RepInfo = ({
     district,
   }) => (
   <div>
-    <h5>Official Info:</h5>
     <ul className="collection">
       <li className="collection-item">
         {`${party} ${title} of ${state}`}
