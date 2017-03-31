@@ -4,11 +4,10 @@ import { browserHistory, Link } from 'react-router';
 import HomeCard from './HomeCard';
 import AboutUs from './AboutUs';
 import Footer from './Footer';
-import ParallaxContainer from './ParallaxContainer';
 import About from './About';
 import HomeLinks from './HomeLinks';
 import civis from '../images/civis.svg';
-import { homeCardStyle } from './styles.scss';
+import { homeCardStyle, accordian } from './styles.scss';
 
 class Home extends React.Component {
 
@@ -23,30 +22,26 @@ class Home extends React.Component {
         <img src={civis} style={{height: "120px", margin: "0 auto", display: "block"}} />
         <div className="row">
           <div className="col s12 m10 offset-m1 l8 offset-l2">
-            <div className={`card grey lighten-4 ${homeCardStyle}`}>
+            <div className={`card grey lighten-3 ${homeCardStyle}`}>
               <div className="card-content">
                 <HomeCard />
               </div>
             </div>
           </div>
         </div>
-
           <HomeLinks />
-
-
-            <ul className='collapsible' data-collapsible='accordion'>
-              <li>
-                <div className='center collapsible-header dark grey'>
-                  <h5>Click to Learn More About Us</h5>
-                </div>
-                <div className='collapsible-body'><About /></div>
-              </li>
-            </ul>
-
-       <Footer />
-    </div>
-    )
-  }
-};
+          <ul className='collapsible' data-collapsible='accordion'>
+            <li>
+              <div className='center collapsible-header grey lighten-3'>
+                <h3 className={accordian}>Click to Learn More</h3>
+              </div>
+              <div className='collapsible-body'><About /></div>
+            </li>
+          </ul>
+          <Footer />
+        </div>
+      )
+    }
+  };
 
 export default connect()(Home);

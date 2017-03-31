@@ -6,7 +6,7 @@ import { aboutpic, infopic, capitalpic } from './styles.scss';
 
 const HomeLinks = () => (
     <div>
-      <div className='section grey lighten-4'>
+      <div className='section grey lighten-3'>
         <div className="row container">
           <div className='col s12 m6 l4'>
           <h5 className="center">Sign Up Now</h5>
