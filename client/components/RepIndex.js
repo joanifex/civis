@@ -42,7 +42,11 @@ const RepIndex = ({ reps, showAddressForm }) => {
       <ul className="collection">
         { displayReps() }
       </ul>
-      <a onClick={showAddressForm}>Update Address</a>
+      <a
+        className="waves-effect waves-teal btn-flat right"
+        onClick={showAddressForm}>
+        Update Address
+      </a>
     </div>
   );
 }

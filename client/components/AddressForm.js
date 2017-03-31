@@ -2,7 +2,7 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { updateReps } from '../actions/reps';
-import { civisBlue } from './styles.scss'
+import { civisBlue, addressForm, addressFormLabel } from './styles.scss'
 
 import Loading from './Loading';
 
@@ -66,22 +66,29 @@ class AddressForm extends React.Component {
           Find your legislators by zip code or address
         </span>
         <form className='center' onSubmit={this.handleSubmit}>
-          <div className="row">
-            <input
-              id="address"
-              value={address}
-              onChange={this.handleChange}
-              className="col s12 m8 offset-m1"
-              placeholder='Zip code or Address'
-              required
-              autoFocus
-            />
-            <input className={`btn ${civisBlue}`} type='submit'/>
+          <div className="row" style={{marginTop: "50px"}}>
+            <div className="input-field col s12 m8 offset-m1">
+              <input
+                id="address"
+                className={addressForm}
+                value={address}
+                onChange={this.handleChange}
+                type="text"
+                required
+                autoFocus
+              />
+              <label htmlFor="address" className={addressFormLabel}>
+                Zip code or Address
+              </label>
+            </div>
+            <input className={`waves-effect waves-light btn ${civisBlue}`} type='submit'/>
           </div>
         </form>
-        <div className=''>
-          <button className={`btn center ${civisBlue}`}  onClick={this.geolocate}>Geolocate</button>
-        </div>
+        <button
+          className={`waves-effect waves-teal btn-flat center`}
+          onClick={this.geolocate}
+          > Geolocate
+        </button>
       </div>
     );
   }

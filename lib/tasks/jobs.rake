@@ -38,6 +38,12 @@ namespace :jobs do
         retry if (retries += 1) < 5
         puts "Could Not Make New Articles for #{rep.full_name}"
       end
+      total_articles = rep.articles.count
+      rep.articles.order('created_at desc').offset(10).destroy_all
+      destroyed_articles = total_articles - rep.articles.count
+      if destroyed_articles > 0
+        puts "Removed #{destroyed_articles} articles."
+      end
     end
   end
 
@@ -74,7 +80,8 @@ namespace :jobs do
     Rep.find_each do |rep|
       begin
         profile_url = @client.user(rep.twitter_account).profile_image_url.to_s
-        rep.update(profile_url: profile_url)
+        https_url = profile_url.gsub("http", "https")
+        rep.update(profile_url: https_url)
         puts "Found picture for #{rep.full_name}."
       rescue => e
         puts "Could not find picture for #{rep.full_name}."

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { handleSignUp } from '../actions/auth';
 import { connect } from 'react-redux';
+import { civisBlue } from './styles.scss';
 
 class SignUp extends React.Component {
 
@@ -56,8 +57,14 @@ class SignUp extends React.Component {
                        <input ref='confirmPassword' className="icon_prefix" type='password' required placeholder='confirm Password' />
                      </div>
 
-                     <input type='submit' className='btn' value='Sign Up' />
-                     <Link to='/login' className='btn grey'>Cancel</Link>
+                     <input
+                       type='submit'
+                       className={` waves-effect waves-light btn ${civisBlue}`}
+                       value='Sign Up'
+                     />
+                     <Link to='/login' className='waves-effect waves-teal btn-flat right'>
+                      Cancel
+                    </Link>
                    </div>
                  </div>
                </form>

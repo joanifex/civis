@@ -4,7 +4,7 @@ import { updateReps, resetReps } from '../actions/reps'
 import AddressForm from './AddressForm';
 import RepIndex from './RepIndex';
 import Loading from './Loading';
-import {homeCardStyle} from './styles.scss';
+import { homeCardStyle, backButton } from './styles.scss';
 
 class HomeCard extends React.Component {
   state = { loading: true, showingReps: false, changingReps: false };
@@ -64,7 +64,11 @@ class HomeCard extends React.Component {
         <div className='center'>
           <AddressForm enteredAddress={this.setShowingReps} />
           { changingReps ?
-            <button className="btn blue-grey" onClick={this.setShowingReps}>Back</button>
+            <button className={`waves-effect waves-teal btn-flat ${backButton}`}
+              onClick={this.setShowingReps}
+            >
+              Back
+            </button>
             : null
           }
         </div>
@@ -75,8 +79,8 @@ class HomeCard extends React.Component {
   render() {
     const { loading } = this.state;
     return(
-      <div className={`card grey lighten-4 ${homeCardStyle}`}>
-        <div className="card-content">
+      <div className={`card grey lighten-4`}>
+        <div className={`card-content ${homeCardStyle}`}>
           { loading ? <Loading /> : this.displayContent() }
         </div>
       </div>

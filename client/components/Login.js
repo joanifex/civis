@@ -2,6 +2,7 @@ import React from 'react';
 import { handleLogin } from '../actions/auth';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { civisBlue } from './styles.scss';
 
 class Login extends React.Component {
 
@@ -28,8 +29,10 @@ class Login extends React.Component {
                     <i className="fa fa-unlock-alt prefix"></i>
                     <input ref='password' className="icon_prefix" type='password' required placeholder='Password' />
                   </div>
-                  <input type='submit' className='btn' />
-                  <Link to='/sign_up'className='btn grey'>Sign Up</Link>
+                  <input type='submit' className={` waves-effect waves-light btn ${civisBlue}`} />
+                  <Link to='/sign_up' className='waves-effect waves-teal btn-flat right'>
+                    Sign Up
+                  </Link>
                 </form>
             </div>
           </div>
