@@ -9,7 +9,7 @@ const HomeLinks = () => (
       <div className='section grey lighten-3'>
         <div className="row container">
           <div className='col s12 m6 l4'>
-          <h5 className="center">Sign Up Now</h5>
+          <h5 className="center">Vote</h5>
           <br />
           <a className="center" target="_blank"
                 href ="https://www.usvotefoundation.org/vote/voter-registration-absentee-voting.htm?gclid=Cj0KEQjwk-jGBRCbxoPLld_bp-IBEiQAgJaftZKlqzQIhh7SUEz7ELELmRqTowsXkDlVMfo8N90PkbgaAlTo8P8HAQ"
