@@ -30,19 +30,19 @@ class Home extends React.Component {
             </div>
           </div>
         </div>
-        <ParallaxContainer />
+
           <HomeLinks />
-        <ParallaxContainer />
-        <div className='section grey lighten-4'>
-          <div className="row">
+
+
             <ul className='collapsible' data-collapsible='accordion'>
               <li>
-                <div className='center collapsible-header grey lighten-4'><h2>About Us</h2></div>
+                <div className='center collapsible-header dark grey'>
+                  <h5>Click to Learn More About Us</h5>
+                </div>
                 <div className='collapsible-body'><About /></div>
               </li>
             </ul>
-          </div>
-        </div>
+
        <Footer />
     </div>
     )

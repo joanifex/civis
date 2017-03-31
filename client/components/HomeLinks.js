@@ -1,8 +1,8 @@
 import React from 'react';
 import vote_360 from '../images/vote_360.png';
 import election_480 from '../images/election_480.png';
-import info from '../images/info.png'
-import { aboutpic } from './styles.scss';
+import capital from '../images/capital.png'
+import { aboutpic, infopic, capitalpic } from './styles.scss';
 
 const HomeLinks = () => (
     <div>
@@ -21,7 +21,7 @@ const HomeLinks = () => (
         <br />
         <a className="center" target="_blank"
               href ="https://www.youtube.com/watch?v=Otbml6WIQPo"
-            ><img className={aboutpic} src={info}/></a>
+            ><img className={capitalpic} src={capital}/></a>
         </div>
 
         <div className='col s12 m6 l4'>
@@ -29,7 +29,7 @@ const HomeLinks = () => (
         <br />
         <a className="center" target="_blank"
               href ="https://ballotpedia.org/United_States_Congress_elections,_2018"
-            ><img className={aboutpic} src={election_480}/></a>
+            ><img className={infopic} src={election_480}/></a>
         </div>
         </div>
       </div>
