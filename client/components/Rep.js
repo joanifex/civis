@@ -11,6 +11,7 @@ import RepContact from './RepContact';
 import RepInfo from './RepInfo';
 import RepBio from './RepBio';
 import Articles from './Articles';
+import Loading from './Loading';
 
 class Rep extends React.Component {
   state = { loading: true }
@@ -99,10 +100,11 @@ class Rep extends React.Component {
   }
 
   render = () => {
-    if ( this.state.loading )
-      return( <div><i className="fa fa-spinner fa-lg"></i></div> );
-    else
-      return ( this.displayRep() );
+    return(
+      <div>
+        { this.state.loading ? <Loading /> : this.displayRep()}
+      </div>
+    );
   }
 }
 

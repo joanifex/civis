@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { updateReps, resetReps } from '../actions/reps'
 import AddressForm from './AddressForm';
 import RepIndex from './RepIndex';
+import Loading from './Loading';
 
 class HomeCard extends React.Component {
   state = { loading: true, showingReps: false, changingReps: false };
@@ -52,10 +53,6 @@ class HomeCard extends React.Component {
     this.setState({ changingReps: true });
   }
 
-  displayLoading() {
-    return( <div><i className="fa fa-spinner fa-lg"></i></div> );
-  }
-
   displayContent = () => {
     const { showingReps, changingReps } = this.state
     if ( showingReps ) {
@@ -78,7 +75,7 @@ class HomeCard extends React.Component {
     const { loading } = this.state;
     return(
       <div>
-        { loading ? this.displayLoading() : this.displayContent() }
+        { loading ? <Loading /> : this.displayContent() }
       </div>
     );
   }

@@ -3,6 +3,8 @@ import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { updateReps } from '../actions/reps';
 
+import Loading from './Loading';
+
 class AddressForm extends React.Component {
   state = { address: "", loading: false }
 
@@ -51,11 +53,6 @@ class AddressForm extends React.Component {
     this.setState({ address: value });
   }
 
-  displayLoading() {
-    //TODO: style this loading state
-    return <div>Loading</div>
-  }
-
   displayContent = () => {
     let { address } = this.state
     return(
@@ -87,7 +84,7 @@ class AddressForm extends React.Component {
   render() {
     return(
       <div>
-        { this.state.loading ? this.displayLoading() : this.displayContent() }
+        { this.state.loading ? <Loading /> : this.displayContent() }
       </div>
     );
   }

@@ -3,6 +3,7 @@ import React from 'react'
 const Articles = ({ articles }) => {
 
   const displayArticles = (articles) => {
+    // TODO: refactor into new component
     return articles.map( (article, i) => {
       const {
         headline,
