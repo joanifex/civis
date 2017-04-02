@@ -14,7 +14,8 @@ const Articles = ({ articles }) => {
       } = article
       return (
         <li key={i} className="collection-item">
-          <a href={webUrl} target="_blank">
+          <a className='btn-flat' href={webUrl} target="_blank">
+            <i className='fa fa-newspaper-o' style={{marginRight: '10px'}}></i>
             <strong>{headline}</strong>
           </a>
           <small className="right">{pubDate}</small>

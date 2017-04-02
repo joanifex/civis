@@ -24,11 +24,9 @@ class UserProfile extends React.Component {
               <div className="collapsible-body">
                 <UserNameForm user={user} />
                 <div className="center">
-                  <button className='btn blue-grey ' onClick={this.deleteUser} >
+                  <button className='btn-flat' onClick={this.deleteUser} >
                     Delete Account
                   </button>
-                    &nbsp;
-                  <Link to={'/'} className='btn blue-grey'>Home</Link>
                 </div>
               </div>
             </li>

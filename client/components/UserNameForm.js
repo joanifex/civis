@@ -60,7 +60,7 @@ class UserNameForm extends React.Component {
                 required
               />
               <br />
-              <input className='btn blue-grey' type='submit'/>
+              <input className='btn-flat' type='submit'/>
             </div>
           </div>
         </form>
