@@ -4,11 +4,12 @@ const displayTwitter = (twitterAccount) => {
   if ( twitterAccount !== "" ) {
     return(
       <li className="collection-item">
-        <i className="fa fa-twitter"></i>
         <a
           href={`https://twitter.com/${twitterAccount}`}
           target="_blank"
+          className="btn-flat" style={{width: "100%"}}
         >
+          <i className="fa fa-twitter"></i>
           {`   Twitter`}
         </a>
       </li>
@@ -20,12 +21,13 @@ const displayContact = (contactUrl) => {
   if ( contactUrl !== "" ) {
     return(
       <li className='collection-item'>
-        <i className="fa fa-envelope-o"></i>
         <a
           href={contactUrl}
           target='_blank'
+          className="btn-flat" style={{width: "100%"}}
         >
-          {`  Contact`}
+          <i className="fa fa-envelope-o"></i>
+            {`  Contact`}
         </a>
       </li>
     );
@@ -34,22 +36,23 @@ const displayContact = (contactUrl) => {
 
 const RepContact = ({ phone, twitterAccount, url, contactUrl, fullName }) => (
   <div>
-    <h5>Contact Info:</h5>
+    <h5>Contact Info</h5>
     <ul className="collection">
       <li className="collection-item">
-        <i className="fa fa-phone"></i>
-        <a href={`tel:${phone}`} >
+        <a href={`tel:${phone}`} className="btn-flat" style={{width: "100%"}}>
+          <i className="fa fa-phone"></i>
           {`   ${phone}`}
         </a>
       </li>
       { displayTwitter(twitterAccount) }
       <li className="collection-item">
-        <i className="fa fa-external-link"></i>
         <a
           href={url}
           target="_blank"
+          className="btn-flat" style={{width: "100%"}}
         >
-        {`   Website`}
+          <i className="fa fa-external-link"></i>
+          {`   Website`}
         </a>
       </li>
       { displayContact(contactUrl) }

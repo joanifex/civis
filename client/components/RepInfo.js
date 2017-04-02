@@ -10,7 +10,7 @@ const RepInfo = ({
   <div>
     <ul className="collection">
       <li className="collection-item">
-        {`${party} ${title} of ${state}`}
+        {`${party} U.S. ${title} of ${state}`}
       </li>
       <li className="collection-item">
         Next Election: {`${nextElection}`} <br />

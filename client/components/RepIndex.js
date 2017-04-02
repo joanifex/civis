@@ -26,7 +26,7 @@ const RepIndex = ({ reps, isAuthenticated, showAddressForm }) => {
             <br />
             <span className="title">{`${rep.first_name} ${rep.last_name}`}</span>
             <p>
-              {`${rep.title} of ${rep.state}`}
+              {`U.S. ${rep.title} of ${rep.state}`}
             </p>
             { displayNewArticles(rep.new_articles) }
             <div className='secondary-content'>
