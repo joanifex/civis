@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { handleLogout } from '../actions/auth';
 import { resetReps } from '../actions/reps';
-import civis from '../images/civis-bw.svg';
+// import civis from '../images/civis-bw.svg';
 import { civisBlue } from './styles.scss';
+import civis from '../images/civis.svg';
+
 
 class Navbar extends React.Component {
   logout = (e) => {
