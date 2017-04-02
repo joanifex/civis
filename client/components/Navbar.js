@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { handleLogout } from '../actions/auth';
 import { resetReps } from '../actions/reps';
-// import civis from '../images/civis-bw.svg';
 import { civisBlue } from './styles.scss';
 import civis from '../images/civis.svg';
 
@@ -30,10 +29,17 @@ class Navbar extends React.Component {
         <div>
           <li><Link to='/account'>Account</Link></li>
           <li> <a href='#' onClick={this.logout}>Logout</a> </li>
+          <li> <Link to="/">Home</Link> </li>
         </div>
       );
     } else {
-      return(<li> <Link to='/login'>Login</Link> </li>);
+      return(
+        <div>
+          <li> <Link to='/sign_up'>Sign Up</Link> </li>
+          <li> <Link to='/login'>Login</Link> </li>
+          <li> <Link to="/">Home</Link> </li>
+        </div>
+      );
     }
   }
 
@@ -42,9 +48,6 @@ class Navbar extends React.Component {
       <nav className={civisBlue}>
         <div className='nav-wrapper' style={{ margin: '0 30px'}}>
           <Link to='/' className='brand-logo'>
-            {/* <img src='https://res.cloudinary.com/dx6ytyvvg/image/upload/c_scale,h_44/v1490061952/civis_logo_white_myb2hu.png'
-            style={{ marginTop: '10px'}}
-            /> */}
             <img src={civis} style={{height: "50px", marginTop: "5px"}}/>
           </Link>
           <a data-activates='mobile' className='button-collapse'>
