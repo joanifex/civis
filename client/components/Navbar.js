@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { handleLogout } from '../actions/auth';
 import { resetReps } from '../actions/reps';
-import { civisBlue } from './styles.scss';
-import civis from '../images/civis.svg';
-
+import { civisGradient } from './styles.scss';
+import civis from '../images/civis-white.svg';
 
 class Navbar extends React.Component {
   logout = (e) => {
@@ -45,7 +44,7 @@ class Navbar extends React.Component {
 
   render() {
     return(
-      <nav className={civisBlue}>
+      <nav className={civisGradient}>
         <div className='nav-wrapper' style={{ margin: '0 30px'}}>
           <Link to='/' className='brand-logo'>
             <img src={civis} style={{height: "50px", marginTop: "5px"}}/>
