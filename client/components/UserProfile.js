@@ -1,11 +1,14 @@
 import React from 'react'
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import UserNameForm from './UserNameForm';
+import { deleteUser } from '../actions/user';
 
 
 class UserProfile extends React.Component {
   componentDidMount() {
     $('.collapsible').collapsible();
+    $('.modal').modal();
   }
 
   render(){
@@ -23,19 +26,32 @@ class UserProfile extends React.Component {
               </div>
               <div className="collapsible-body">
                 <UserNameForm user={user} />
-                <div className="center">
-                  <button className='btn-flat' onClick={this.deleteUser} >
+                  {/* <button className='btn-flat' onClick={this.deleteUser} >
                     Delete Account
-                  </button>
+                  </button> */}
+              <div className="center">
+                <a className="waves-effect waves-light btn-flat" href="#modal1">Delete Account</a>
+                <div id="modal1" className="modal">
+                  <div className="modal-content">
+                    <h4>Delete Account</h4>
+                    <p>Are you sure you want to delete your account with Civis?</p>
+                  </div>
+                  <div className="modal-footer">
+                    <a onClick={ () => this.props.dispatch(deleteUser(user.id)) }
+                      className="modal-action modal-close waves-effect waves-blue btn-flat">Yes</a>
+                    <a href="#!"
+                      onClick={() => $('#modal1').modal('close') }
+                      className="modal-action .modal-close waves-effect waves-blue btn-flat">No</a>
+                  </div>
                 </div>
               </div>
+            </div>
             </li>
           </ul>
-
-        </div>
       </div>
+    </div>
     );
   }
 }
 
-export default UserProfile
+export default connect()(UserProfile);

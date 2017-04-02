@@ -14,7 +14,7 @@ export const updateUser = (first_name, last_name) => {
   }
 }
 
-export const deleteUser = (id, history) => {
+export const deleteUser = (id) => {
   return (dispatch) => {
     $.ajax({
       type: 'DELETE',
@@ -23,7 +23,6 @@ export const deleteUser = (id, history) => {
     }).done (user => {
       dispatch({ type: 'RESET_REPS'})
       dispatch({ type: 'DELETE_USER', id })
-      history.push('/');
     }).fail (data => {
       console.log(data);
     });
