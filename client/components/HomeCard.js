@@ -55,9 +55,16 @@ class HomeCard extends React.Component {
   }
 
   displayContent = () => {
-    const { showingReps, changingReps } = this.state
+    const { showingReps, changingReps } = this.state;
+    const { reps, isAuthenticated } = this.props;
     if ( showingReps ) {
-      return <RepIndex reps={this.props.reps} showAddressForm={this.setChangingReps}/>;
+      return(
+        <RepIndex
+          reps={reps}
+          isAuthenticated={isAuthenticated}
+          showAddressForm={this.setChangingReps}
+        />
+      );
     }
     else {
       return (
@@ -89,7 +96,9 @@ class HomeCard extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { reps: state.reps };
+  const { reps, auth } = state;
+  const isAuthenticated = auth.isAuthenticated ? true : false;
+  return { reps, isAuthenticated };
 }
 
 export default connect(mapStateToProps)(HomeCard);

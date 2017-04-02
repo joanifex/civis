@@ -11,7 +11,6 @@ import { homeCardStyle, accordian } from './styles.scss';
 class Home extends React.Component {
 
   componentDidMount() {
-    $('.parallax').parallax();
     $('.collapsible').collapsible();
   }
 

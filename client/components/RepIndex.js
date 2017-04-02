@@ -3,7 +3,7 @@ import { Link, browserHistory } from 'react-router';
 import { civisBlueColor } from './styles.scss'
 import { civisRed, badge } from './styles.scss'
 
-const RepIndex = ({ reps, showAddressForm }) => {
+const RepIndex = ({ reps, isAuthenticated, showAddressForm }) => {
 
   const displayNewArticles = (new_articles) => {
     if ( new_articles )
@@ -37,11 +37,23 @@ const RepIndex = ({ reps, showAddressForm }) => {
     });
   }
 
+  const displaySignUp = () => {
+    return(
+      <Link
+        to="sign_up"
+        className="waves-effect waves-teal btn-flat left"
+      >
+        Sign Up for News Alerts
+      </Link>
+    );
+  }
+
   return(
     <div>
       <ul className="collection">
         { displayReps() }
       </ul>
+      { isAuthenticated ? null : displaySignUp() }
       <a
         className="waves-effect waves-teal btn-flat right"
         onClick={showAddressForm}>
