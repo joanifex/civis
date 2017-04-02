@@ -87,7 +87,9 @@ class AddressForm extends React.Component {
         <button
           className={`waves-effect waves-teal btn-flat center`}
           onClick={this.geolocate}
-          > Geolocate
+          >
+          <i className='fa fa-map-marker' style={{marginRight: '10px'}}></i>
+          FIND MY LOCATION
         </button>
       </div>
     );
