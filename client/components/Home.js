@@ -29,8 +29,7 @@ class Home extends React.Component {
           <ul className='collapsible' data-collapsible='accordion'>
             <li>
               <div className={`${civisGradient} ${accordion} center collapsible-header grey lighten-3`}>
-                Read some shit about
-                <img src={civis} style={{height: "50px", paddingLeft: '20px'}}/>
+                Read More
               </div>
               <div className='collapsible-body'><About /></div>
             </li>
