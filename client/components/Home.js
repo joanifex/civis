@@ -6,7 +6,8 @@ import AboutUs from './AboutUs';
 import Footer from './Footer';
 import About from './About';
 import HomeLinks from './HomeLinks';
-import { homeCardStyle, accordian } from './styles.scss';
+import { homeCardStyle, accordion, civisGradient } from './styles.scss';
+import civis from '../images/civis-white.svg';
 
 class Home extends React.Component {
 
@@ -23,14 +24,19 @@ class Home extends React.Component {
           </div>
         </div>
           <HomeLinks />
+          <br />
+          <div className='section'>
           <ul className='collapsible' data-collapsible='accordion'>
             <li>
-              <div className='center collapsible-header grey lighten-3'>
-                <h3 className={accordian}>Read More</h3>
+              <div className={`${civisGradient} ${accordion} center collapsible-header grey lighten-3`}>
+                Read some shit about
+                <img src={civis} style={{height: "50px", paddingLeft: '20px'}}/>
               </div>
               <div className='collapsible-body'><About /></div>
             </li>
           </ul>
+          </div>
+          <br />
           <Footer />
         </div>
       )
