@@ -14,13 +14,18 @@ const Articles = ({ articles }) => {
       } = article
       return (
         <li key={i} className="collection-item">
-          <a className='btn-flat' href={webUrl} target="_blank">
+          <a
+            className='btn-flat'
+            href={webUrl}
+            target="_blank"
+            style={{width: "100%", height: 'auto', textAlign: 'center'}}
+          >
             <i className='fa fa-newspaper-o' style={{marginRight: '10px'}}></i>
             <strong>{headline}</strong>
           </a>
-          <small className="right">{pubDate}</small>
-          <p>{leadParagraph}..</p>
-          <p><em>...{snippet}...</em></p>
+          <small style={{textAlign: "right"}}>{pubDate}</small>
+          <p style={{margin: "1.6rem 0"}}>{leadParagraph}..</p>
+          <p style={{margin: "1.6rem 0"}}><em>...{snippet}...</em></p>
         </li>
       );
     });
