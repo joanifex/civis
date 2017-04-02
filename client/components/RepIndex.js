@@ -18,7 +18,7 @@ const RepIndex = ({ reps, isAuthenticated, showAddressForm }) => {
     return reps.map( (rep) => {
       return(
           <li
-            style={{ cursor: 'pointer', margin: '5px' }}
+            style={{ cursor: 'pointer', margin: '5px', border: "1px solid #e0e0e0" }}
             key={rep.id} className="collection-item avatar hoverable"
             onClick={ () => linkToRep(rep) }
           >
@@ -50,7 +50,7 @@ const RepIndex = ({ reps, isAuthenticated, showAddressForm }) => {
 
   return(
     <div>
-      <ul className="collection">
+      <ul className="collection" style={{ border: "none"}}>
         { displayReps() }
       </ul>
       { isAuthenticated ? null : displaySignUp() }
