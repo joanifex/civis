@@ -4,6 +4,13 @@
   background: linear-gradient(to left, #A43931, #1D4350) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.backgroundImage {
+  background-image: url("https://c.tribune.com.pk/2016/12/1263514-protests-1481740192.jpg");
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: cover;
+}
+
 .backButton {
   position: absolute;
   right:    24px;

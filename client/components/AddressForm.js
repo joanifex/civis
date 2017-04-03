@@ -62,11 +62,11 @@ class AddressForm extends React.Component {
     let { address } = this.state
     return(
       <div>
-        <span className='card-title center'>
+        <span className='card-title center' style={{marginTop: "40px"}}>
           Find your legislators by zip code or address
         </span>
         <form className='center' onSubmit={this.handleSubmit}>
-          <div className="row" style={{marginTop: "10px"}}>
+          <div className="row" style={{marginTop: "65px"}}>
             <div className="input-field col s12 m8 offset-m1">
               <input
                 id="address"
