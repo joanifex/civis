@@ -24,7 +24,6 @@ class Home extends React.Component {
 
   render() {
     return(
-      <div>
       <div className={backgroundImage}>
         <div>
         <div className="row" style={{padding: "60px 0"}}>
@@ -49,7 +48,6 @@ class Home extends React.Component {
           <br />
           <Footer />
         </div>
-      </div>
       )
     }
   };
