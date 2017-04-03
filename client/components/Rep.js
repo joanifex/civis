@@ -70,7 +70,7 @@ class Rep extends React.Component {
     return (
       <div>
         <div className="row">
-          <div className="col s12 l4">
+          <div className="col s12 m8 l4">
             <div className="card grey lighten-4">
               <div className="card-content">
                 <RepHeader
@@ -94,7 +94,7 @@ class Rep extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col s12 l8">
+          <div className="col s12 m8 l8">
             <div className="card grey lighten-4">
               <div className="card-content" >
                 <RepBio bio={bio}/>

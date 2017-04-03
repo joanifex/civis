@@ -7,7 +7,7 @@ const displayTwitter = (twitterAccount) => {
         <a
           href={`https://twitter.com/${twitterAccount}`}
           target="_blank"
-          className="btn-flat" style={{width: "100%"}}
+          className="btn-flat" style={{width: "100%", padding: "0"}}
         >
           <i className="fa fa-twitter"></i>
           {`   Twitter`}
@@ -24,7 +24,7 @@ const displayContact = (contactUrl) => {
         <a
           href={contactUrl}
           target='_blank'
-          className="btn-flat" style={{width: "100%"}}
+          className="btn-flat" style={{width: "100%", padding: "0"}}
         >
           <i className="fa fa-envelope-o"></i>
             {`  Contact`}
@@ -39,7 +39,7 @@ const RepContact = ({ phone, twitterAccount, url, contactUrl, fullName }) => (
     <h5>Contact Info</h5>
     <ul className="collection">
       <li className="collection-item">
-        <a href={`tel:${phone}`} className="btn-flat" style={{width: "100%"}}>
+        <a href={`tel:${phone}`} className="btn-flat" style={{width: "100%", padding: "0"}}>
           <i className="fa fa-phone"></i>
           {`   ${phone}`}
         </a>
@@ -49,7 +49,7 @@ const RepContact = ({ phone, twitterAccount, url, contactUrl, fullName }) => (
         <a
           href={url}
           target="_blank"
-          className="btn-flat" style={{width: "100%"}}
+          className="btn-flat" style={{width: "100%", padding: "0"}}
         >
           <i className="fa fa-external-link"></i>
           {`   Website`}
