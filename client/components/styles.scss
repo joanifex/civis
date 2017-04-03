@@ -38,7 +38,7 @@ footer {
 
 .infopic {
   height: auto;
-  width: 90%;
+  width: 72%;
   border-radius: 50%;
   display: block;
   margin: 0 auto;
@@ -46,10 +46,16 @@ footer {
 
 .capitalpic {
   height: auto;
-  width: 100%;
+  width: 75%;
   border-radius: 50%;
   display: block;
   margin: 0 auto;
+}
+.samImg {
+  height: auto;
+  width: 25%;
+  border-radius: 50%;
+  margin-top: 64px;
 }
 
 .homeCardStyle {
