@@ -6,7 +6,7 @@ import AboutUs from './AboutUs';
 import Footer from './Footer';
 import About from './About';
 import HomeLinks from './HomeLinks';
-import { homeCardStyle, accordion, civisGradient } from './styles.scss';
+import { homeCardStyle, accordion, civisGradient, backgroundImage } from './styles.scss';
 import civis from '../images/civis-white.svg';
 
 class Home extends React.Component {
@@ -18,7 +18,9 @@ class Home extends React.Component {
   render() {
     return(
       <div>
-        <div className = "row" style={{margin: "60px 0"}}>
+      <div className={backgroundImage}>
+        <div>
+        <div className="row" style={{padding: "60px 0"}}>
           <div className="col s12 m10 offset-m1 l8 offset-l2">
             <HomeCard />
           </div>
@@ -35,9 +37,11 @@ class Home extends React.Component {
             </li>
           </ul>
           </div>
+        </div>
           <br />
           <Footer />
         </div>
+      </div>
       )
     }
   };
