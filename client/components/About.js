@@ -5,7 +5,7 @@ import civis from '../images/civis.svg';
 
 const About = () => (
   <div>
-    <img src={civis} style={{height: "80px", display: "block", margin: "0 auto"}} />
+    <img src={civis} style={{height: "80px", display: "block", margin: "30px auto 0 auto"}} />
     <br />
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis pellentesque magna. Fusce faucibus, lacus at tristique consectetur, tortor nibh ornare mi, lobortis suscipit ex libero tincidunt tortor. Nam blandit dolor ante, ut pulvinar nunc aliquam ac. Proin imperdiet, lacus ac commodo dignissim, libero velit consequat enim, scelerisque blandit risus mauris at quam. Sed a tincidunt massa, vitae egestas justo. Nam fringilla pulvinar ipsum, ac efficitur nisl aliquam vitae. Morbi gravida ut sem eu fringilla.

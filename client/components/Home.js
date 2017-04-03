@@ -6,13 +6,20 @@ import AboutUs from './AboutUs';
 import Footer from './Footer';
 import About from './About';
 import HomeLinks from './HomeLinks';
-import { homeCardStyle, accordion, civisGradient } from './styles.scss';
+import { homeCardStyle, aboutBar, civisGradient, btnStyle } from './styles.scss';
 import civis from '../images/civis-white.svg';
 
 class Home extends React.Component {
+  state = { showMore: false }
 
   componentDidMount() {
     $('.collapsible').collapsible();
+  }
+
+  toggleAbout = () => {
+    this.setState( (state) => {
+      return { showMore: !state.showMore }
+    })
   }
 
   render() {
@@ -26,14 +33,15 @@ class Home extends React.Component {
           <HomeLinks />
           <br />
           <div className='section'>
-          <ul className='collapsible' data-collapsible='accordion'>
-            <li>
-              <div className={`${civisGradient} ${accordion} center collapsible-header grey lighten-3`}>
-                Read More
-              </div>
-              <div className='collapsible-body'><About /></div>
-            </li>
-          </ul>
+            <div className={`${civisGradient} ${aboutBar} center collapsible-header grey lighten-3 white-text`}>
+              Be a Better Citizen
+              <br />
+              <br />
+              <button className={`${btnStyle} btn btn-large btn-outline center hoverable transparent`} onClick={ this.toggleAbout }> 
+                { this.state.showMore ? 'Close' : 'Read More' }
+              </button>
+            </div>
+            { this.state.showMore && <About /> }
           </div>
           <br />
           <Footer />
