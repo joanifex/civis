@@ -70,7 +70,7 @@ footer {
   color: #A43931 !important;
 }
 
-.accordion {
+.aboutBar {
   padding: 50px;
   font-size: 50px;
 }
@@ -82,4 +82,17 @@ footer {
 .AddressForm input[type=text]:focus {
  border-bottom: 1px solid  #A43931;
  box-shadow: 0 1px 0 0  #A43931;
+}
+
+.btnStyle {
+  background-color:  transparent;
+  font-size: 15px;
+  border: white solid 3px;
+  border-radius: 5px;
+}
+
+.aboutPage {
+  height: 80px; 
+  display: block; 
+  margin: 0 auto;
 }
