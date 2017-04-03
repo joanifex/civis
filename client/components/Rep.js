@@ -28,7 +28,6 @@ class Rep extends React.Component {
   componentDidUpdate() {
     const { loading } = this.state
     const { rep, auth } = this.props
-    //TODO: redirect home if user does not have rep
     // if ( auth.isAuthenticated && !loading && !rep )
     //   browserHistory.push('/');
     if ( loading && rep )
@@ -118,7 +117,16 @@ class Rep extends React.Component {
 
 const mapStateToProps = (state, props) => {
   const { auth, reps } = state;
-  return { rep: reps.find( r => r.id == props.params.id ), auth }
+  if(reps[0] !== 'loading') {
+    let rep = reps.find( r => r.id == props.params.id );
+    if(rep)
+      return { rep, auth }
+    else {
+      browserHistory.push('/');
+      return state;
+    }
+  } else
+    return state;
 }
 
 export default connect(mapStateToProps)(Rep);
