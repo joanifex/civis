@@ -4,7 +4,7 @@ import appStore from '../images/app_store.svg';
 import civis from '../images/civis.svg';
 
 const About = () => (
-  <div>
+  <div className='container'>
     <img src={civis} style={{height: "80px", display: "block", margin: "30px auto 0 auto"}} />
     <br />
     <p>

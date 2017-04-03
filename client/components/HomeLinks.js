@@ -2,7 +2,7 @@ import React from 'react';
 import vote_360 from '../images/vote_360.png';
 import election_480 from '../images/election_480.png';
 import capital from '../images/capital.png'
-import { aboutpic, infopic, capitalpic } from './styles.scss';
+import { infopic, capitalpic } from './styles.scss';
 
 const HomeLinks = () => (
     <div>
@@ -13,7 +13,7 @@ const HomeLinks = () => (
             >
           <div className='col s12 m6 l4 hoverable'>
           <h5 className="center black-text">VOTE</h5>
-          <img className={aboutpic} src={vote_360}/>
+          <img className={infopic} src={vote_360}/>
         </div>
         </a>
         <a className="center" target="_blank"
