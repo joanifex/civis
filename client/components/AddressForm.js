@@ -16,6 +16,11 @@ class AddressForm extends React.Component {
   }
 
   geolocate = () => {
+    const fail = () => {
+      this.setState({ loading: false });
+      Materialize.toast("Can't locate. Try searching with an address.");
+    }
+    
     if (navigator.geolocation) {
       this.setState({ loading: true });
       navigator.geolocation.getCurrentPosition( position => {
@@ -24,10 +29,11 @@ class AddressForm extends React.Component {
           lng: position.coords.longitude
         };
         this.findReps({ coords });
+      }, err => {
+        fail();
       });
     } else {
-      this.setState({ loading: false });
-      Materialize.toast("Can't Geolocate.");
+      fail();
     }
   }
 
