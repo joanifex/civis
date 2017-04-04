@@ -106,3 +106,14 @@ footer {
   display: block;
   margin: 0 auto;
 }
+
+/* label focus color */
+.inputField input[type=text]:focus + label {
+    color: #1D4350;
+}
+
+/* label underline focus color */
+.inputField input[type=text]:focus {
+  border-bottom: 1px solid #1D4350;
+  box-shadow: 0 1px 0 0 #1D4350;
+}
