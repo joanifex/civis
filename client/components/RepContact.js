@@ -36,7 +36,7 @@ const displayContact = (contactUrl) => {
 
 const RepContact = ({ phone, twitterAccount, url, contactUrl, fullName }) => (
   <div>
-    <h5>Contact Info</h5>
+    <h6 className="center">Contact Info</h6>
     <ul className="collection">
       <li className="collection-item">
         <a href={`tel:${phone}`} className="btn-flat" style={{width: "100%", padding: "0"}}>

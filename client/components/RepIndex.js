@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link, browserHistory } from 'react-router';
 import { civisBlueColor } from './styles.scss'
-import { civisRed, badge } from './styles.scss'
+import { civisRed } from './styles.scss'
 
 const RepIndex = ({ reps, isAuthenticated, showAddressForm }) => {
 
   const displayNewArticles = (new_articles) => {
-    if ( new_articles )
-      return <span className={`new badge ${civisRed} ${badge}`}>{`${new_articles}`}</span>
+    if (new_articles)
+      return <span className={`new badge ${civisRed}`}>{`${new_articles}`}</span>
   }
 
   const linkToRep = (rep) => {
@@ -23,7 +23,6 @@ const RepIndex = ({ reps, isAuthenticated, showAddressForm }) => {
             onClick={ () => linkToRep(rep) }
           >
             <img src={rep.profile_url} alt="" className="circle left" />
-            <br />
             <span className="title">{`${rep.first_name} ${rep.last_name}`}</span>
             <p>
               {`U.S. ${rep.title} of ${rep.state}`}
