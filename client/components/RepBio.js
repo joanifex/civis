@@ -15,7 +15,9 @@ class RepBio extends React.Component {
               <h5>Bio</h5>
               <ul className="collapsible hoverable" data-collapsible="accordion">
                 <li>
+                   
                   <div className="collapsible-header">
+                    <i className='fa fa-sort-amount-desc' aria-hidden="true"></i>
                     <p className='truncate'>{this.props.bio}</p>
                   </div>
                   <div className="collapsible-body">
