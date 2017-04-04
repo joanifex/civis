@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { handleSignUp } from '../actions/auth';
 import { connect } from 'react-redux';
 import { civisBlue } from './styles.scss';
+import { setFlash } from '../actions/flash';
 
 class SignUp extends React.Component {
 
@@ -13,10 +14,11 @@ class SignUp extends React.Component {
     const confirmPassword = this.refs.confirmPassword.value;
     const firstName = this.refs.firstName.value;
     const lastName = this.refs.lastName.value;
+    const { dispatch } = this.props;
     if ( password === confirmPassword )  {
-      this.props.dispatch(handleSignUp(email, password, confirmPassword, firstName, lastName));
+      dispatch(handleSignUp(email, password, confirmPassword, firstName, lastName));
     } else {
-      this.refs.confirmPassword.setCustomValidity("Passwords Don't Match");
+      dispatch(setFlash('Passwords Do Not Match', 'error'));
     }
   }
 
@@ -54,7 +56,13 @@ class SignUp extends React.Component {
 
                      <div className="input-field">
                        <i className="fa fa-unlock-alt prefix"></i>
-                       <input ref='confirmPassword' className="icon_prefix" type='password' required placeholder='confirm Password' />
+                       <input
+                         ref='confirmPassword'
+                         className="icon_prefix"
+                         type='password'
+                         required
+                         placeholder='Confirm Password'
+                       />
                      </div>
 
                      <input

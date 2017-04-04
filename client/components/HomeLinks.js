@@ -2,7 +2,7 @@ import React from 'react';
 import vote_360 from '../images/vote_360.png';
 import election_480 from '../images/election_480.png';
 import capital from '../images/capital.png'
-import { infopic, capitalpic } from './styles.scss';
+import { infopic, capitalpic, lato } from './styles.scss';
 
 const HomeLinks = () => (
   <div>
@@ -14,7 +14,7 @@ const HomeLinks = () => (
           href ="https://www.usvotefoundation.org/vote/sviddomestic.htm"
         >
           <div className='col s12 m6 l4 hoverable'>
-            <h5 className="center black-text">VOTE</h5>
+            <h5 className={`center black-text ${lato}`}>VOTE</h5>
             <img className={infopic} src={vote_360}/>
           </div>
         </a>
@@ -24,7 +24,7 @@ const HomeLinks = () => (
           href ="https://www.youtube.com/watch?v=pSANTRnEBgg"
         >
           <div className='col s12 m6 l4 hoverable'>
-            <h5 className="center black-text">INFORMATION</h5>
+            <h5 className={`center black-text ${lato}`}>INFORMATION</h5>
             <img className={capitalpic} src={capital}/>
           </div>
         </a>
@@ -34,7 +34,7 @@ const HomeLinks = () => (
           href ="https://ballotpedia.org/United_States_Congress_elections,_2018"
         >
           <div className='col s12 m6 l4 hoverable'>
-            <h5 className="center black-text">2018 ELECTION</h5>
+            <h5 className={`center black-text ${lato}`}>2018 ELECTION</h5>
             <img className={infopic} src={election_480}/>
           </div>
         </a>

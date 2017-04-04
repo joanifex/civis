@@ -18,7 +18,6 @@ class UserProfile extends React.Component {
         <div className="card-content black-text">
           <h3 className="center flow-text">{`${user.first_name} ${user.last_name}`}</h3>
           <br />
-
           <ul className="collapsible" data-collapsible="accordion">
             <li>
               <div className="collapsible-header">
@@ -26,9 +25,6 @@ class UserProfile extends React.Component {
               </div>
               <div className="collapsible-body">
                 <UserNameForm user={user} />
-                  {/* <button className='btn-flat' onClick={this.deleteUser} >
-                    Delete Account
-                  </button> */}
               <div className="center">
                 <a className="waves-effect waves-light btn-flat" href="#modal1">Delete Account</a>
                 <div id="modal1" className="modal">
