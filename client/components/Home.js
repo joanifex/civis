@@ -38,7 +38,7 @@ class Home extends React.Component {
               <br />
               <br />
               <button className={`${btnStyle} btn btn-large btn-outline center hoverable transparent`} onClick={ this.toggleAbout }>
-                { this.state.showMore ? 'Close' : 'Read More' }
+                { this.state.showMore ? 'Close' : 'About Civis' }
               </button>
             </div>
             { this.state.showMore && <About /> }
