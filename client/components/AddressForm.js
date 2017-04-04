@@ -11,6 +11,7 @@ class AddressForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.setState({loading: true});
     let { address } = this.state
     this.findReps({ address });
   }
@@ -20,7 +21,7 @@ class AddressForm extends React.Component {
       this.setState({ loading: false });
       Materialize.toast("Can't locate. Try searching with an address.");
     }
-    
+
     if (navigator.geolocation) {
       this.setState({ loading: true });
       navigator.geolocation.getCurrentPosition( position => {
@@ -52,6 +53,8 @@ class AddressForm extends React.Component {
         "That address includes multiple districts. Try searching for a full address."
         : "Could not find address. Try another one.";
       Materialize.toast(message, 3000);
+      this.setState({loading: false});
+      this.setState({address: ""});
     });
   }
 
@@ -80,6 +83,7 @@ class AddressForm extends React.Component {
                 value={address}
                 onChange={this.handleChange}
                 type="text"
+                data-error="wrong"
                 required
                 autoFocus
               />
