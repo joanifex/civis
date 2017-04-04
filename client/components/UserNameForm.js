@@ -33,7 +33,7 @@ class UserNameForm extends React.Component {
     return(
       <div>
       <span className='card-title center'>
-        Update user
+        Update User Name
       </span>
         <form className='center' onSubmit={this.handleSubmit} >
           <div className="row">
