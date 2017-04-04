@@ -7,6 +7,11 @@ import { updateUser, deleteUser } from '../actions/user';
 class Account extends React.Component {
   state = { loading: true }
 
+  componentDidMount() {
+    if (this.hasLoaded())
+      this.setState({loading: false});
+  }
+
   componentDidUpdate() {
     if ( this.state.loading && this.hasLoaded() )
       this.setState({ loading: false})
