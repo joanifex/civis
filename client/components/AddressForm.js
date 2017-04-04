@@ -55,6 +55,7 @@ class AddressForm extends React.Component {
       Materialize.toast(message, 3000);
       this.setState({loading: false});
       this.setState({address: ""});
+
     });
   }
 

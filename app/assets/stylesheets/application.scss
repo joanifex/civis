@@ -1,10 +1,24 @@
-@import 'materialize';
 @import 'alert';
 @import 'font-awesome';
+// @import "materialize/components/color";
+$primary-color: #1D4350 !default;
+$secondary-color: #1D4350 !default;
+@import 'materialize';
 
 body {
   font-family: 'Lato', sans-serif;
 }
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Raleway', sans-serif;
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+    color: #1D4350;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #1D4350;
+  box-shadow: 0 1px 0 0 #1D4350;
 }
