@@ -6,6 +6,18 @@ import { updateUser } from '../actions/user';
 class UserNameForm extends React.Component {
   state = {  firstName: "", lastName: "" }
 
+  hasLoaded() {
+    return Object.keys(this.props.user).length > 2 ? true : false
+  }
+
+  setNotLoading = () => {
+    this.setState({ loading: false });
+  }
+
+  displayLoading() {
+    return( <div><i className="fa fa-spinner fa-lg"></i></div> );
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.dispatch(updateUser(firstName.value, lastName.value))
@@ -16,7 +28,7 @@ class UserNameForm extends React.Component {
     this.setState({ [id]: value });
   }
 
-  render() {
+  displayForm = () => {
     let { firstName, lastName } = this.state;
     return(
       <div>
@@ -52,6 +64,15 @@ class UserNameForm extends React.Component {
             </div>
           </div>
         </form>
+      </div>
+    );
+  }
+
+  render() {
+    const { loading } = this.state;
+    return(
+      <div>
+        { loading ? this.displayLoading() : this.displayForm() }
       </div>
     );
   }

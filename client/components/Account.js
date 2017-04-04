@@ -5,6 +5,16 @@ import HomeCard from './HomeCard';
 import { updateUser, deleteUser } from '../actions/user';
 
 class Account extends React.Component {
+  state = { loading: true }
+
+  componentDidUpdate() {
+    if ( this.state.loading && this.hasLoaded() )
+      this.setState({ loading: false})
+  }
+
+  hasLoaded = () => {
+    return this.props.user ? true : false;
+  }
 
   deleteUser = () => {
     const { dispatch, user, history } = this.props
@@ -16,14 +26,16 @@ class Account extends React.Component {
     const { user } = this.props
     return(
       <div>
-        <div className="row">
-          <div className="col s12 l4">
-            <UserProfile user={user}/>
+        { this.state.loading ? null :
+          <div className="row">
+              <div className="col s12 l4">
+                <UserProfile user={user}/>
+              </div>
+              <div className="col s12 l8">
+                <HomeCard />
+              </div>
           </div>
-          <div className="col s12 l8">
-            <HomeCard />
-          </div>
-        </div>
+        }
       </div>
     )
   }
