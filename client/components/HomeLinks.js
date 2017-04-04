@@ -15,7 +15,7 @@ const HomeLinks = () => (
         >
           <div className='col s12 m6 l4 hoverable'>
             <h5 className={`center black-text ${lato}`}>VOTE</h5>
-            <img className={infopic} src={vote_360}/>
+            <img className={infopic} src={vote_360} style={{paddingBottom: "12px"}}/>
           </div>
         </a>
         <a
@@ -35,7 +35,7 @@ const HomeLinks = () => (
         >
           <div className='col s12 m6 l4 hoverable'>
             <h5 className={`center black-text ${lato}`}>2018 ELECTION</h5>
-            <img className={infopic} src={election_480}/>
+            <img className={infopic} src={election_480} style={{paddingBottom: "6px"}}/>
           </div>
         </a>
       </div>
