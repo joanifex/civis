@@ -16,7 +16,7 @@ class UserProfile extends React.Component {
     return(
       <div className="card grey lighten-4">
         <div className="card-content black-text">
-          <h3 className="center">{`${user.first_name} ${user.last_name}`} </h3>
+          <h3 className="center flow-text">{`${user.first_name} ${user.last_name}`}</h3>
           <br />
 
           <ul className="collapsible" data-collapsible="accordion">
