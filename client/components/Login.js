@@ -32,12 +32,12 @@ class Login extends React.Component {
                       required
                       autoFocus
                     />
-                    <label htmlFor="email" className="loginLabel">email</label>
+                    <label htmlFor="email" className="loginLabel">Email</label>
                   </div>
                   <div className="input-field">
                     <i className="fa fa-unlock-alt prefix"></i>
                     <input ref='password' className="icon_prefix" type='password'/>
-                    < label htmlFor="password">password</label>
+                    <label htmlFor="password">Password</label>
                   </div>
                   <input type='submit' className={` waves-effect waves-light btn ${styles.civisBlue}`} />
                   <Link to='/sign_up' className='waves-effect waves-teal btn-flat right'>
