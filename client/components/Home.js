@@ -32,8 +32,7 @@ class Home extends React.Component {
           </div>
         </div>
           <HomeLinks />
-          <br />
-          <div className='section'>
+          <div className='section' style={{padding: "8rem 0"}}>
             <div className={`${civisGradient} ${aboutBar} center collapsible-header grey lighten-3 white-text`}>
               Be a Better Citizen
               <br />

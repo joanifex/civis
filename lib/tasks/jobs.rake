@@ -7,10 +7,6 @@ namespace :jobs do
       sleep(1)
       rep.update(new_articles: 0 )
       url = "https://api.nytimes.com/svc/search/v2/articlesearch.json"
-      # TODO: Improve this query. Gets back any article with a matching name.
-      # Use Filtered Query: news_desk: politics
-      # ALSO some web_urls from the NYT are not valid.
-      # Ues Filtered Query: source: New York Times
       query = {
         "api-key" => ENV["NYT_API_KEY"],
         "q" => "\"#{rep.full_name}\"",
