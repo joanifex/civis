@@ -18,7 +18,6 @@ class AboutUs extends React.Component{
           <h5 className='center'>Ian Wright</h5>
           <br />
           <img className={`${aboutpic}`}src={ianpic} />
-          <p className='center'>About Ian</p>
           <br />
           <div className='center'>
             <a href={'https://github.com/wrightianb'}
@@ -31,7 +30,11 @@ class AboutUs extends React.Component{
             >
               <i className="black-text fa fa-linkedin-square fa-3x" style={{margin: "auto 15px"}}></i>
             </a>
-            <a className='email' href="mailto:wright.ianb@gmail.com?subject=Civis">
+            <a
+              className='email'
+              href="mailto:wright.ianb@gmail.com?subject=Civis"
+              target="_blank"
+            >
               <i className="black-text fa fa-envelope-square fa-3x"></i>
             </a>
           </div>
@@ -42,7 +45,6 @@ class AboutUs extends React.Component{
           <br />
           <div className='center'>
             <img className={`${aboutpic}`}src={ianpic} />
-            <p>About Jeremy</p>
             <br />
             <a href={'https://github.com/jeremycram'}
               target="_blank"
@@ -54,7 +56,11 @@ class AboutUs extends React.Component{
             >
               <i className="black-text fa fa-linkedin-square fa-3x" style={{margin: "auto 15px"}}></i>
             </a>
-            <a className='email' href="mailto:Jeremycrams@gmail.com?subject=Civis">
+            <a
+              className='email'
+              href="mailto:Jeremycrams@gmail.com?subject=Civis"
+              target="_blank"
+            >
               <i className="black-text fa fa-envelope-square fa-3x"></i>
             </a>
           </div>
@@ -65,7 +71,6 @@ class AboutUs extends React.Component{
           <br />
           <div className='center'>
             <img className={`${aboutpic}`} src={lindsaypic} />
-            <p className='center'>About Lindsay</p>
             <br />
             <a href={'https://github.com/lilarkin'}
               target="_blank"
@@ -77,7 +82,11 @@ class AboutUs extends React.Component{
             >
               <i className="black-text fa fa-linkedin-square fa-3x" style={{margin: "auto 15px"}}></i>
             </a>
-            <a className='email' href="mailto:lindsay.larkin@gmail.com?subject=Civis">
+            <a
+              className='email'
+              href="mailto:lindsay.larkin@gmail.com?subject=Civis"
+              target="_blank"
+            >
               <i className="black-text fa fa-envelope-square fa-3x"></i>
             </a>
            </div>
@@ -87,7 +96,6 @@ class AboutUs extends React.Component{
           <h5 className='center'>Valerie Barela</h5>
           <br />
           <img className={`${aboutpic}`} src={valpic} />
-          <p className='center'>About Valerie</p>
           <br />
           <div className='center'>
             <a href={'https://github.com/vbarela1'}
@@ -100,7 +108,11 @@ class AboutUs extends React.Component{
             >
               <i className="black-text fa fa-linkedin-square fa-3x" style={{margin: "auto 15px"}}></i>
             </a>
-            <a className='email' href="mailto:vbarela1@gmail.com?subject=Civis">
+            <a
+              className='email'
+              href="mailto:vbarela1@gmail.com?subject=Civis"
+              target="_blank"
+            >
               <i className="black-text fa fa-envelope-square fa-3x"></i>
             </a>
           </div>
