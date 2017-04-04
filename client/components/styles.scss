@@ -5,10 +5,11 @@
 }
 
 .backgroundImage {
-  background-image: url("https://c.tribune.com.pk/2016/12/1263514-protests-1481740192.jpg");
-  background-repeat: no-repeat;
-  height: 100vh;
+  background-image: url("../images/congress.jpg");
   background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .backButton {
@@ -105,8 +106,7 @@ footer {
 }
 
 .aboutPage {
-  height: 80px; 
-  display: block; 
+  height: 80px;
+  display: block;
   margin: 0 auto;
 }
-
