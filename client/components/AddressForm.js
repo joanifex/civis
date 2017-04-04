@@ -20,7 +20,7 @@ class AddressForm extends React.Component {
       this.setState({ loading: false });
       Materialize.toast("Can't locate. Try searching with an address.");
     }
-    
+
     if (navigator.geolocation) {
       this.setState({ loading: true });
       navigator.geolocation.getCurrentPosition( position => {
@@ -59,10 +59,6 @@ class AddressForm extends React.Component {
     let { target: { value } } = e;
     this.setState({ address: value });
   }
-
-  // TODO: Geolocation does not work on HTTP connection
-  // Geolocation can be stopped by adblocker
-  // Gracefully handle geolocation problems with timeout
 
   displayContent = () => {
     let { address } = this.state
