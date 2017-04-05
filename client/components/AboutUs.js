@@ -13,7 +13,7 @@ class AboutUs extends React.Component{
   render (){
     return(
       <div className='row'>
-        <h1 className='center'>Our Team</h1>
+        <h3 className='center'>Our Team</h3>
         <div className='col s12 m6 l3'>
           <h5 className='center'>Ian Wright</h5>
           <br />
