@@ -25,30 +25,26 @@ class Home extends React.Component {
   render() {
     return(
       <div className={backgroundImage}>
-        <div>
         <div className="row" style={{padding: "60px 0"}}>
           <div className="col s12 m10 offset-m1 l8 offset-l2">
             <HomeCard />
           </div>
         </div>
-          <HomeLinks />
-          <div className='section' style={{padding: "8rem 0"}}>
-            <div className={`${civisGradient} ${aboutBar} center collapsible-header grey lighten-3 white-text`}>
-              Be a Better Citizen
-              <br />
-              <br />
-              <button className={`${btnStyle} btn btn-large btn-outline center hoverable transparent`} onClick={ this.toggleAbout }>
-                { this.state.showMore ? 'Close' : 'About Civis' }
-              </button>
-            </div>
-            { this.state.showMore && <About /> }
+        <HomeLinks />
+        <div style={{paddingTop: "8rem"}}>
+          <div className={`${civisGradient} ${aboutBar} center collapsible-header grey lighten-3 white-text`}>
+            Be a Better Citizen
+            <br />
+            <br />
+            <button className={`${btnStyle} btn btn-large btn-outline center hoverable transparent`} onClick={ this.toggleAbout }>
+              { this.state.showMore ? 'Close' : 'About Civis' }
+            </button>
           </div>
+          { this.state.showMore && <About /> }
         </div>
-          <br />
-          <Footer />
-        </div>
-      )
-    }
-  };
+      </div>
+    )
+  }
+};
 
 export default connect()(Home);
