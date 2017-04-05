@@ -44,7 +44,7 @@ class AboutUs extends React.Component{
           <h5 className='center'>Jeremy Cram</h5>
           <br />
           <div className='center'>
-            <img className={`${aboutpic}`}src={ianpic} />
+            <img className={`${aboutpic}`}src={jerpic} />
             <br />
             <a href={'https://github.com/jeremycram'}
               target="_blank"
