@@ -1,6 +1,7 @@
 import React from 'react';
 import ianpic from '../images/ianpic.png';
 import valpic from '../images/valpic.jpeg';
+import jerpic from '../images/jerpic.jpg';
 import lindsaypic from '../images/lindsaypic.jpg';
 import { aboutpic, lindspic } from './styles.scss'
 
@@ -44,7 +45,7 @@ class AboutUs extends React.Component{
           <h5 className='center'>Jeremy Cram</h5>
           <br />
           <div className='center'>
-            <img className={`${aboutpic}`}src={jerpic} />
+            <img className={`${aboutpic}`} src={jerpic} />
             <br />
             <a href={'https://github.com/jeremycram'}
               target="_blank"
