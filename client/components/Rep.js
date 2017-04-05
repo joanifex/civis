@@ -80,7 +80,6 @@ class Rep extends React.Component {
                   party={party}
                   title={title}
                   state={state}
-                  bio={bio}
                   nextElection={nextElection}
                 />
                 <RepContact

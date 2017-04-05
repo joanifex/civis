@@ -1,5 +1,5 @@
 import React from 'react'
-  
+
 class RepBio extends React.Component {
 
   componentDidMount() {
@@ -12,10 +12,9 @@ class RepBio extends React.Component {
         {
           this.props.bio != "" ?
             <div>
-              <h5>Bio</h5>
+              <h5>Biography</h5>
               <ul className="collapsible hoverable" data-collapsible="accordion">
                 <li>
-                   
                   <div className="collapsible-header">
                     <i className='fa fa-sort-amount-desc' aria-hidden="true"></i>
                     <p className='truncate'>{this.props.bio}</p>
